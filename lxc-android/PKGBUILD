@@ -1,0 +1,20 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgname=lxc-android
+pkgver=1.38
+pkgrel=1
+pkgdesc="LXC configuration for starting Android containers"
+arch=('any')
+url="https://github.com/Halium/lxc-android"
+license=('custom')
+depends=('cpio' 'lxc' 'glibc' 'halium-wrappers' 'parse-android-dynparts' 'device-mapper')
+makedepends=('git')
+source=("git+https://github.com/droidian/lxc-android.git")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir/$pkgname"
+  cp -r etc "$pkgdir/"
+  cp -r usr "$pkgdir/"
+  cp -r var "$pkgdir/"
+  cp -r lib "$pkgdir/"
+}
