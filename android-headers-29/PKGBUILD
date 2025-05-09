@@ -1,0 +1,17 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+
+pkgname=android-headers-29
+pkgver=10.0.0
+pkgrel=1
+pkgdesc="Android Platform Headers from AOSP releases"
+arch=('any')
+url="https://github.com/droidian/android-headers-29"
+license=('custom')
+depends=()
+provides=('android-headers')
+source=("git+https://github.com/droidian/android-headers-29.git")
+md5sums=('SKIP')
+
+package() {
+    make -C "$pkgname" PREFIX=/usr DESTDIR="$pkgdir" install
+}
