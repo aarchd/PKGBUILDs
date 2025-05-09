@@ -1,0 +1,24 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgname=parse-android-dynparts
+pkgver=1.0
+pkgrel=1
+pkgdesc="A tool to parse Android super partition layout"
+arch=('aarch64')
+url="https://github.com/tchebb/parse-android-dynparts"
+license=('custom')
+depends=('openssl')
+makedepends=('cmake')
+source=("git+https://github.com/droidian/parse-android-dynparts.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/$pkgname"
+  cmake -B _build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_INSTALL_SBINDIR=/usr/bin
+  cmake --build _build
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  DESTDIR="$pkgdir" cmake --install _build
+  # TODO: initramfs hook
+}
