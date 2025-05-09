@@ -1,0 +1,62 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgbase=halium-wrappers
+pkgname=(
+	'halium-wrappers'
+	'libdroidian-workarounds'
+	'libtls-padding0'
+)
+pkgver=22
+pkgrel=1
+arch=('any')
+url="https://github.com/droidian/halium-wrappers"
+license=('custom')
+makedepends=(
+	'pkg-config'
+	'libhybris-dev'
+	'libhybris-common-dev'
+	'libandroid-properties-dev'
+	'zlib'
+	'libglvnd'
+)
+source=("git+https://github.com/droidian/halium-wrappers.git")
+sha256sums=('SKIP')
+install="${pkgname}.install"
+triplet="$(gcc -dumpmachine)"
+
+build() {
+	cd "$srcdir/$pkgbase"
+	make install DESTDIR="$srcdir/build"
+}
+
+package_halium-wrappers() {
+	pkgdesc="Convenience wrappers to Android utilities"
+
+	mkdir -p "$pkgdir/usr/bin/"
+	install -m755 $srcdir/build/usr/bin/* "$pkgdir/usr/bin/"
+	#makefile is made in a way that it cant work with this setup
+	#install -m755 $srcdir/build/usr/sbin/* "$pkgdir/usr/sbin/"
+	for file in $srcdir/build/usr/sbin/*; do
+		if [ -f "$file" ]; then
+		 filename=$(basename "$file")
+   	    	 ln -s "../../lib/halium-wrappers/halium-lxc-exec.sh" "$pkgdir/usr/bin/$filename"
+		fi
+	done
+	mkdir -p "$pkgdir/usr/lib/halium-wrappers/"
+	install -m755 $srcdir/build/usr/lib/halium-wrappers/* "$pkgdir/usr/lib/halium-wrappers/"
+	mkdir -p "$pkgdir/usr/lib/systemd/system/android-service@hwcomposer.service.d"
+	install -m755 $srcdir/build/usr/lib/systemd/system/android-service@hwcomposer.service.d/* "$pkgdir/usr/lib/systemd/system/android-service@hwcomposer.service.d/"
+	install -m755 $srcdir/build/usr/lib/systemd/system/android-service@.service "$pkgdir/usr/lib/systemd/system/"
+}
+
+package_libdroidian-workarounds() {
+	pkgdesc="Various workarounds for Droidian-specific workloads"
+
+	install -Dm755 "$srcdir/build/usr/lib/$triplet/libgtk6216workaround.so" "$pkgdir/usr/lib/$triplet/libgtk6216workaround.so"
+	install -Dm755 "$srcdir/build/usr/lib/$triplet/libglesshadercache.so" "$pkgdir/usr/lib/$triplet/libglesshadercache.so"
+}
+
+package_libtls-padding0() {
+	pkgdesc="Library that reserves some space into the Thread Local Storage"
+
+	install -Dm755 "$srcdir/build/usr/lib/$triplet/libtls-padding.so" "$pkgdir/usr/lib/$triplet/libtls-padding.so"
+}
