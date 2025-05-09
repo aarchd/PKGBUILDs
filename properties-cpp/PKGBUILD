@@ -1,0 +1,28 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+
+pkgname=properties-cpp
+pkgver=0.0.3
+pkgrel=2
+pkgdesc="A very simple convenience library for handling properties and signals in C++11"
+arch=('any')
+url="https://salsa.debian.org/ubports-team/properties-cpp"
+license=('custom')
+depends=()
+makedepends=('cmake' 'graphviz' 'pkg-config' 'gtest' 'doxygen' 'extra-cmake-modules')
+source=("git+$url")
+md5sums=('SKIP')
+
+build() {
+    git clone https://gitlab.com/ubports/development/core/cmake-extras --depth=1
+    cd cmake-extras
+    cmake -B _build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
+    cmake --build _build && sudo cmake --install _build
+    cd "$srcdir/$pkgname"
+    cmake -B _build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    cmake --build _build
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  DESTDIR="$pkgdir" cmake --install _build
+}
