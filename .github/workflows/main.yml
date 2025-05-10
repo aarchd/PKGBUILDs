@@ -21,7 +21,7 @@ jobs:
       - name: Fetch build-metadata from meta branch
         run: |
           git fetch origin meta
-          git show meta:build-metadata > build-metadata
+          git show origin/meta:build-metadata > build-metadata
 
       - name: Get changed packages
         run: |
