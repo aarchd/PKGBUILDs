@@ -59,6 +59,7 @@ jobs:
         if: env.CHANGED_PKGS != ''
         run: |
           sudo chown -R $USER:$USER .
+          rm build-metadata
           git switch meta
           mv ../build-metadata .
           git add build-metadata
