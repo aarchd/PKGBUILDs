@@ -57,11 +57,10 @@ jobs:
           sudo apt-get update && sudo apt-get install systemd-container
           mkdir -p /tmp/pkgs
           sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
-          --bind=/tmp/build-tools:/mnt/build-tools \ 
+          --bind=/tmp/build-tools:/mnt/build-tools \
           --bind=/tmp/pkgs:/mnt/pkgs \
-          --bind=/github/home/.gnupg:/aarchd-builder/.gnupg \
-          /bin/bash -c " \
-            /mnt/build-tools/buildpkg.sh $CHANGED_PKGS "
+          --bind=$HOME/.gnupg:/home/aarchd-builder/.gnupg \
+          /bin/bash -c "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
 
       - name: Update build-metadata
         if: env.CHANGED_PKGS != ''
