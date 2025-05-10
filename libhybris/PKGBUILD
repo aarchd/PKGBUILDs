@@ -149,13 +149,10 @@ package_libhybris() {
   install -m755 $srcdir/build/usr/lib/libGLESv2_libhybris.so.* "$pkgdir/usr/lib/"
   install -m755 $srcdir/build/usr/lib/libGLESv1_CM_libhybris.so.*  "$pkgdir/usr/lib/"
   install -m755 $srcdir/build/usr/lib/libOpenCL_libhybris.so.* "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/share/glvnd/egl_vendor.d/"
-  install -m755 "$srcdir/build/usr/share/glvnd/egl_vendor.d/10_libhybris.json" "$pkgdir/usr/share/glvnd/egl_vendor.d/"
-  mkdir -p "$pkgdir/usr/share/OpenCL/vendors/"
-  install -m755 "$srcdir/build/etc/OpenCL/vendors/libhybris.icd" "$pkgdir/usr/share/OpenCL/vendors/"
+  install -Dm755 "$srcdir/build/usr/share/glvnd/egl_vendor.d/10_libhybris.json" "$pkgdir/usr/share/glvnd/egl_vendor.d/10_libhybris.json"
+  install -Dm755 "$srcdir/build/usr/etc/OpenCL/vendors/libhybris.icd" "$pkgdir/etc/OpenCL/vendors/libhybris.icd"
 
-  triplet="$(gcc -dumpmachine)"
-  ln -s /usr/lib/$triplet/libhybris-common.so.1 /usr/lib/$triplet/libhybris_ics.so
+  ln -s /usr/lib/libhybris-common.so.1 "$pkgdir/usr/lib/libhybris_ics.so"
 }  
 
 package_libhybris-dev() {
