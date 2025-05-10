@@ -21,7 +21,10 @@ jobs:
           git clone https://github.com/aarchd/build-tools /tmp/build-tools
 
       - name: Run pkgmeta.sh gen
-        run: /tmp/build-tools/pkgmeta.sh gen
+        run: |
+          /tmp/build-tools/pkgmeta.sh gen
+          cat metadata # for debug, its not consistent idk why
+          cp metadata ../build-metadata
 
       - name: Fetch build-metadata from meta branch
         run: |
@@ -56,8 +59,6 @@ jobs:
         if: env.CHANGED_PKGS != ''
         run: |
           sudo chown -R $USER:$USER .
-          /tmp/build-tools/pkgmeta.sh buildc
-          mv build-metadata ../
           git switch meta
           mv ../build-metadata .
           git add build-metadata
