@@ -55,6 +55,7 @@ jobs:
       - name: Update build-metadata
         if: env.CHANGED_PKGS != ''
         run: |
+          sudo chown -R $USER:$USER .
           /tmp/build-tools/pkgmeta.sh buildc
           mv build-metadata ../
           git switch meta
