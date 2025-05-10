@@ -25,7 +25,7 @@ jobs:
 
       - name: Get changed packages
         run: |
-          pkgs=$(/tmp/build-tools/pkgmeta.sh check)
+          pkgs=$(/tmp/build-tools/pkgmeta.sh check | tr '\n' ' ')
           echo "CHANGED_PKGS=$pkgs" >> "$GITHUB_ENV"
 
       - name: Pull rootfs
