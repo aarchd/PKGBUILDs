@@ -1,0 +1,44 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgname=android-base
+pkgver=11
+pkgrel=1
+pkgdesc="Android base mountpoints, user and groups"
+arch=('any')
+url="https://github.com/droidian/android-base"
+license=('custom')
+depends=()
+makedepends=('git')
+source=("git+$url.git"
+	'login.defs'
+	'android-base-login-defs.hook'
+	'update-login-defs.sh')
+sha256sums=('SKIP'
+		'a1277764470cea0b30b971a7027966e320f74449963cc1bab2cec9370e56d852'
+		'e4e9dbbcb10e7e99f331975b24b5e964bce6aaea1942e47bdb3de8d3ef5ceb73'
+		'34f9c5e8142820dbe389cf3005b3a047a62ae85307022e9856ee6c52efd4398d')
+install=android-base.install
+
+package() {
+	# mountpoints
+	install -d "${pkgdir}/android"
+	ln -s /data           "${pkgdir}/android/data"
+	ln -s /system         "${pkgdir}/android/system"
+	ln -s /vendor         "${pkgdir}/android/vendor"
+	ln -s /cache          "${pkgdir}/android/cache"
+	ln -s /persist        "${pkgdir}/android/persist"
+	ln -s /product        "${pkgdir}/android/product"
+	ln -s /metadata       "${pkgdir}/android/metadata"
+	ln -s /apex           "${pkgdir}/android/apex"
+	ln -s /odm            "${pkgdir}/android/odm"
+	ln -s /vendor_dlkm    "${pkgdir}/android/vendor_dlkm"
+
+	# user UID, GID setup
+	install -Dm644 "${srcdir}/login.defs" "${pkgdir}/usr/share/android-base/login.defs"
+	
+	# re-update after shadow or android-base package gets updated
+	install -Dm644 "${srcdir}/android-base-login-defs.hook" "${pkgdir}/usr/share/libalpm/hooks/android-base-login-defs.hook"
+	install -Dm755 "${srcdir}/update-login-defs.sh" "${pkgdir}/usr/share/android-base/update-login-defs.sh"
+
+	# android user and groups
+	install -Dm644 "${srcdir}/${pkgname}/sysusers.d/android.conf" "${pkgdir}/usr/lib/sysusers.d/android.conf"
+}

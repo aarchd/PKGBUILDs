@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = android-base
+Target = shadow
+
+[Action]
+Description = Copying android-base login.defs to /etc/login.defs...
+When = PostTransaction
+Exec = /usr/share/android-base/update-login-defs.sh
