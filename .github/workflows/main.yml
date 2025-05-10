@@ -41,6 +41,16 @@ jobs:
           mkdir -p /tmp/rootfs
           tar -xzf rootfs.tar.gz -C /tmp/rootfs
 
+      - name: Build changed packages
+        if: env.CHANGED_PKGS != ''
+        run: |
+          sudo apt-get update && sudo apt-get install systemd-container
+          mkdir -p /tmp/pkgs
+          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
+          --bind=/tmp/build-tools:/mnt/build-tools \
+          --bind=/tmp/pkgs:/mnt/pkgs \
+          /bin/bash -c "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
+      
       - name: Update build-metadata
         if: env.CHANGED_PKGS != ''
         run: |
@@ -51,16 +61,6 @@ jobs:
           git add build-metadata
           git commit --amend --no-edit
           git push origin meta --force
-
-      - name: Build changed packages
-        if: env.CHANGED_PKGS != ''
-        run: |
-          sudo apt-get update && sudo apt-get install systemd-container
-          mkdir -p /tmp/pkgs
-          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
-          --bind=/tmp/build-tools:/mnt/build-tools \
-          --bind=/tmp/pkgs:/mnt/pkgs \
-          /bin/bash -c "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
 
       - name: Sign Packages
         if: env.CHANGED_PKGS != ''
