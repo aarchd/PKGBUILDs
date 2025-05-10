@@ -2,14 +2,14 @@
 pkgname=aarchd-mirrorlist
 pkgver=1.0
 pkgrel=1
-pkgdesc="aarchD mirror list"
+pkgdesc="aarchd mirror list"
 arch=('any')
 url="http://aarchd.who53.me"
 license=('GPL')
 groups=('base')
 backup=(etc/pacman.d/mirrorlist)
 source=(mirrorlist)
-sha256sums=('d9fe56b7906fdc49a6dd95c1c232d0324b654f50f3626acdf61be8336a2926fe')
+sha256sums=('b7153b09ffe9db4b0f80029cd193edba116e39ef8efeef9104eb065ec0da2b81')
 
 package() {
   install -Dm644 "$srcdir/mirrorlist" "$pkgdir/etc/pacman.d/aarchd-mirrorlist"

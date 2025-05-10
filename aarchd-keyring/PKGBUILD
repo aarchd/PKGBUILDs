@@ -2,7 +2,7 @@
 pkgname=aarchd-keyring
 pkgver=1.0
 pkgrel=1
-pkgdesc='aarchD keyring'
+pkgdesc='aarchd keyring'
 arch=('any')
 url='http://aarchd.who53.me'
 license=('GPL')

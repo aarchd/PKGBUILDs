@@ -41,7 +41,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          gh release download -R "aarchD/rootfs" -p "rootfs.tar.gz"
+          gh release download -R "aarchd/rootfs" -p "rootfs.tar.gz"
           mkdir -p /tmp/rootfs
           sudo tar -xzf rootfs.tar.gz -C /tmp/rootfs
 
@@ -89,7 +89,7 @@ jobs:
         env:
           PAT: ${{ secrets.PAT }}
         run: |
-          git clone https://$PAT@github.com/aarchD/repo.git --depth=1
+          git clone https://$PAT@github.com/aarchd/repo.git --depth=1
           cd repo && mkdir -p PKGS/
 
           for pkg in /tmp/pkgs/*.pkg.tar.zst; do
