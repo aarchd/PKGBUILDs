@@ -10,6 +10,7 @@ pkgrel=1
 arch=('any')
 url="https://github.com/droidian/halium-wrappers"
 license=('custom')
+depends=('util-linux')
 makedepends=(
 	'pkg-config'
 	'libhybris-dev'
