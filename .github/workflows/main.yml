@@ -36,7 +36,28 @@ jobs:
           mkdir -p /tmp/rootfs
           tar -xzf rootfs.tar.gz -C /tmp/rootfs
 
-      - name: Import GPG key and setup gpg
+      - name: Update build-metadata
+        if: env.CHANGED_PKGS != ''
+        run: |
+          /tmp/build-tools/pkgmeta.sh buildc
+          mv build-metadata ../
+          git switch meta
+          mv ../build-metadata .
+          git add build-metadata
+          git commit --amend --no-edit
+          git push origin meta --force
+
+      - name: Build changed packages
+        if: env.CHANGED_PKGS != ''
+        run: |
+          sudo apt-get update && sudo apt-get install systemd-container
+          mkdir -p /tmp/pkgs
+          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
+          --bind=/tmp/build-tools:/mnt/build-tools \
+          --bind=/tmp/pkgs:/mnt/pkgs \
+          /bin/bash -c "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
+
+      - name: Sign Packages
         if: env.CHANGED_PKGS != ''
         env:
           GPG_TTY: $(tty)
@@ -50,28 +71,10 @@ jobs:
           gpg-connect-agent reloadagent /bye
           KEYGRIP=$(gpg --list-secret-keys --with-keygrip --with-colons | awk -F: '/^grp/ {print $10; exit}')
           echo "$GPG_PASSPHRASE" | /usr/lib/gnupg/gpg-preset-passphrase --preset "$KEYGRIP"
-
-      - name: Build changed packages
-        if: env.CHANGED_PKGS != ''
-        run: |
-          sudo apt-get update && sudo apt-get install systemd-container
-          mkdir -p /tmp/pkgs
-          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
-          --bind=/tmp/build-tools:/mnt/build-tools \
-          --bind=/tmp/pkgs:/mnt/pkgs \
-          --bind=$HOME/.gnupg:/home/aarchd-builder/.gnupg \
-          /bin/bash -c "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
-
-      - name: Update build-metadata
-        if: env.CHANGED_PKGS != ''
-        run: |
-          /tmp/build-tools/pkgmeta.sh buildc
-          mv build-metadata ../
-          git switch meta
-          mv ../build-metadata .
-          git add build-metadata
-          git commit --amend --no-edit
-          git push origin meta --force
+          cd /tmp/pkgs
+          for pkg in *.pkg.tar.zst; do
+            gpg --detach-sign "$pkg"
+          done
 
       - name: Push packages
         if: env.CHANGED_PKGS != ''
