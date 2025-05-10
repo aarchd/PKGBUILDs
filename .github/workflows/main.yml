@@ -29,8 +29,11 @@ jobs:
           echo "CHANGED_PKGS=$pkgs" >> "$GITHUB_ENV"
 
       - name: Pull rootfs
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           gh release download -R "aarchD/rootfs" -p "rootfs.tar.gz"
+          mkdir -p /tmp/rootfs
           tar -xzf rootfs.tar.gz -C /tmp/rootfs
 
       - name: Import GPG key and setup gpg
