@@ -50,7 +50,7 @@ package_libandroid-properties1() {
   depends=('glibc')
   
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 $srcdir/build/usr/lib/libandroid-properties.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libandroid-properties.so.* "$pkgdir/usr/lib/"
 }
 
 package_libandroid-properties-dev() {
@@ -60,7 +60,7 @@ package_libandroid-properties-dev() {
   mkdir -p "$pkgdir/usr/include/hybris/properties/"
   install -m644 $srcdir/build/usr/include/hybris/properties/* "$pkgdir/usr/include/hybris/properties/"
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 "$srcdir/build/usr/lib/libandroid-properties.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libandroid-properties.so" "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/lib/pkgconfig"
   install -m644 "$srcdir/build/usr/lib/pkgconfig/libandroid-properties.pc" "$pkgdir/usr/lib/pkgconfig/"
 }
@@ -70,7 +70,7 @@ package_libmedia1() {
   depends=('glibc')
   
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 $srcdir/build/usr/lib/libmedia.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libmedia.so.* "$pkgdir/usr/lib/"
 }
 
 package_libmedia-dev() {
@@ -80,7 +80,7 @@ package_libmedia-dev() {
   mkdir -p "$pkgdir/usr/include/hybris/media/"
   install -m644 $srcdir/build/usr/include/hybris/media/* "$pkgdir/usr/include/hybris/media/"
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 "$srcdir/build/usr/lib/libmedia.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libmedia.so" "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/lib/pkgconfig/"
   install -m644 "$srcdir/build/usr/lib/pkgconfig/libmedia.pc" "$pkgdir/usr/lib/pkgconfig/"
 }
@@ -90,7 +90,7 @@ package_libhardware2() {
   depends=('glibc')
   
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 $srcdir/build/usr/lib/libhardware.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libhardware.so.* "$pkgdir/usr/lib/"
 }
 
 package_libhardware-dev() {
@@ -98,7 +98,7 @@ package_libhardware-dev() {
   depends=('libhardware2')
 
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 "$srcdir/build/usr/lib/libhardware.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libhardware.so" "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/lib/pkgconfig/"
   install -m644 "$srcdir/build/usr/lib/pkgconfig/libhardware.pc" "$pkgdir/usr/lib/pkgconfig/"
 }
@@ -108,9 +108,9 @@ package_libhybris-common1() {
   depends=('glibc')
   
   mkdir -p "$pkgdir/usr/lib/"
-  install -m777 $srcdir/build/usr/lib/libhybris-common.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libhybris-common.so.* "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/lib/libhybris/linker/"
-  install -m777 $srcdir/build/usr/lib/libhybris/linker/*.so "$pkgdir/usr/lib/libhybris/linker/"
+  cp -a $srcdir/build/usr/lib/libhybris/linker/*.so "$pkgdir/usr/lib/libhybris/linker/"
 }
 
 package_libhybris-common-dev() {
@@ -131,24 +131,24 @@ package_libhybris() {
   )
   
   mkdir -p "$pkgdir/usr/lib/" 
-  install -m755 $srcdir/build/usr/lib/libhybris-*platformcommon.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libhybris-hwcomposerwindow.so.* "$pkgdir/usr/lib/" 
-  install -m755 $srcdir/build/usr/lib/libsync.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libhwc2.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libgralloc.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libui.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libsf.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libis.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libcamera.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libwifi.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libnfc_nxp.so.*  "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libnfc_ndef_nxp.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libvibrator.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libhybris/*.so "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libEGL_libhybris.so.*  "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libGLESv2_libhybris.so.* "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libGLESv1_CM_libhybris.so.*  "$pkgdir/usr/lib/"
-  install -m755 $srcdir/build/usr/lib/libOpenCL_libhybris.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libhybris-*platformcommon.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libhybris-hwcomposerwindow.so.* "$pkgdir/usr/lib/" 
+  cp -a $srcdir/build/usr/lib/libsync.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libhwc2.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libgralloc.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libui.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libsf.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libis.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libcamera.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libwifi.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libnfc_nxp.so.*  "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libnfc_ndef_nxp.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libvibrator.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libhybris/*.so "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libEGL_libhybris.so.*  "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libGLESv2_libhybris.so.* "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libGLESv1_CM_libhybris.so.*  "$pkgdir/usr/lib/"
+  cp -a $srcdir/build/usr/lib/libOpenCL_libhybris.so.* "$pkgdir/usr/lib/"
   install -Dm755 "$srcdir/build/usr/share/glvnd/egl_vendor.d/10_libhybris.json" "$pkgdir/usr/share/glvnd/egl_vendor.d/10_libhybris.json"
   install -Dm755 "$srcdir/build/usr/etc/OpenCL/vendors/libhybris.icd" "$pkgdir/etc/OpenCL/vendors/libhybris.icd"
 
@@ -185,37 +185,37 @@ package_libhybris-dev() {
   mkdir -p "$pkgdir/usr/include/hybris/ui/"
   install -m644 $srcdir/build/usr/include/hybris/ui/* "$pkgdir/usr/include/hybris/ui/"
   mkdir -p "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libcamera.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libgralloc.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libhwc2.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libhybris-platformcommon.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libhybris-eglplatformcommon.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libhybris-hwcomposerwindow.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libis.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libnfc_nxp.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libnfc_ndef_nxp.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libsf.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libsync.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libui.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libvibrator.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libwifi.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libEGL_libhybris.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libGLESv1_CM_libhybris.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libGLESv2_libhybris.so" "$pkgdir/usr/lib/"
-  install -m755 "$srcdir/build/usr/lib/libOpenCL_libhybris.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libcamera.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libgralloc.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libhwc2.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libhybris-platformcommon.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libhybris-eglplatformcommon.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libhybris-hwcomposerwindow.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libis.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libnfc_nxp.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libnfc_ndef_nxp.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libsf.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libsync.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libui.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libvibrator.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libwifi.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libEGL_libhybris.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libGLESv1_CM_libhybris.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libGLESv2_libhybris.so" "$pkgdir/usr/lib/"
+  cp -a "$srcdir/build/usr/lib/libOpenCL_libhybris.so" "$pkgdir/usr/lib/"
   mkdir -p "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/hwcomposer-egl.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/hybris-egl-platform.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libcamera.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libgralloc.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libhwc2.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libis.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libnfc_nxp.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libnfc_ndef_nxp.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libsf.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libsync.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libvibrator.pc" "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libwifi.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/hwcomposer-egl.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/hybris-egl-platform.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libcamera.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libgralloc.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libhwc2.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libis.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libnfc_nxp.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libnfc_ndef_nxp.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libsf.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libsync.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libvibrator.pc" "$pkgdir/usr/lib/pkgconfig/"
+  cp -a "$srcdir/build/usr/lib/pkgconfig/libwifi.pc" "$pkgdir/usr/lib/pkgconfig/"
 }
 
 package_libhybris-utils() {
