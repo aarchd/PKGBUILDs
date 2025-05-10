@@ -54,6 +54,7 @@ jobs:
       - name: Build changed packages
         if: env.CHANGED_PKGS != ''
         run: |
+          sudo apt-get update && sudo apt-get install systemd-container
           mkdir -p /tmp/pkgs
           sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
           --bind=/tmp/build-tools:/mnt/build-tools \ 
