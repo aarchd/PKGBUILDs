@@ -1,0 +1,18 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgname=aarchd-keyring
+pkgver=1.0
+pkgrel=1
+pkgdesc='aarchD keyring'
+arch=('any')
+url='http://aarchd.who53.me'
+license=('GPL')
+groups=('base-devel')
+install="${pkgname}.install"
+depends=('pacman')
+source=('aarchd.gpg')
+sha256sums=('33eafafbfe0d69087fee8fc358aa28a4240e4918c89dc4780c7a5b22779446e4')
+
+package() {
+	install -dm755 "${pkgdir}"/usr/share/pacman/keyrings/
+	install -m0644 aarchd.gpg "${pkgdir}"/usr/share/pacman/keyrings/
+}
