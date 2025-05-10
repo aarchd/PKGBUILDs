@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/droidian/android-base"
 license=('custom')
 depends=()
-makedepends=('git')
 source=("git+$url.git"
 	'login.defs'
 	'android-base-login-defs.hook'

@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/droidian/hybris-usb"
 license=('custom')
 depends=('net-tools' 'dhcp')
-makedepends=('git')
 install=hybris-usb.install
 source=("git+https://github.com/droidian/hybris-usb.git")
 sha256sums=('SKIP')

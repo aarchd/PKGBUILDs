@@ -7,7 +7,6 @@ arch=('any')
 url="https://github.com/Halium/lxc-android"
 license=('custom')
 depends=('cpio' 'lxc' 'glibc' 'halium-wrappers' 'parse-android-dynparts' 'device-mapper')
-makedepends=('git')
 source=("git+https://github.com/droidian/lxc-android.git")
 sha256sums=('SKIP')
 
