@@ -33,11 +33,30 @@ jobs:
           gh release download -R "aarchD/rootfs" -p "rootfs.tar.gz"
           tar -xzf rootfs.tar.gz -C /tmp/rootfs
 
+      - name: Import GPG key and setup gpg
+        if: env.CHANGED_PKGS != ''
+        env:
+          GPG_TTY: $(tty)
+          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
+          GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        run: |
+          echo "$GPG_PRIVATE_KEY" | gpg --import --batch
+          echo "allow-preset-passphrase" > ~/.gnupg/gpg-agent.conf
+          echo "pinentry-mode loopback" >> ~/.gnupg/gpg.conf
+          echo "no-tty" >> ~/.gnupg/gpg.conf
+          gpg-connect-agent reloadagent /bye
+          KEYGRIP=$(gpg --list-secret-keys --with-keygrip --with-colons | awk -F: '/^grp/ {print $10; exit}')
+          echo "$GPG_PASSPHRASE" | /usr/lib/gnupg/gpg-preset-passphrase --preset "$KEYGRIP"
+
       - name: Build changed packages
         if: env.CHANGED_PKGS != ''
         run: |
           mkdir -p /tmp/pkgs
-          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs --bind=/tmp/build-tools:/mnt/build-tools --bind=/tmp/pkgs:/mnt/pkgs /bin/bash -c " \
+          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
+          --bind=/tmp/build-tools:/mnt/build-tools \ 
+          --bind=/tmp/pkgs:/mnt/pkgs \
+          --bind=/github/home/.gnupg:/aarchd-builder/.gnupg \
+          /bin/bash -c " \
             /mnt/build-tools/buildpkg.sh $CHANGED_PKGS "
 
       - name: Update build-metadata
