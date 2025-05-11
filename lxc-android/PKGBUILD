@@ -12,8 +12,23 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname"
-  cp -r etc "$pkgdir/"
-  cp -r usr "$pkgdir/"
-  cp -r var "$pkgdir/"
-  cp -r lib "$pkgdir/"
+
+  install -d "$pkgdir/etc/udev/rules.d"
+  install -d "$pkgdir/usr/lib/systemd/system"
+  install -d "$pkgdir/usr/lib/udev/rules.d"
+  install -d "$pkgdir/usr/lib/lxc-android"
+
+  install -Dm644 etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf "$pkgdir/etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf"
+  install -Dm644 etc/systemd/system/lxc@android.service "$pkgdir/etc/systemd/system/lxc@android.service"
+  install -m644 etc/udev/rules.d/* "$pkgdir/etc/udev/rules.d/"
+
+  install -m644 lib/systemd/system/*.service "$pkgdir/usr/lib/systemd/system/"
+  install -m644 lib/udev/rules.d/* "$pkgdir/usr/lib/udev/rules.d/"
+
+  install -m755 usr/lib/lxc-android/* "$pkgdir/usr/lib/lxc-android/"
+
+  install -Dm755 usr/sbin/mount-android.sh "$pkgdir/usr/bin/mount-android.sh"
+
+  install -Dm644 var/lib/lxc/android/config "$pkgdir/var/lib/lxc/android/config"
+  install -Dm755 var/lib/lxc/android/pre-start.sh "$pkgdir/var/lib/lxc/android/pre-start.sh"
 }
