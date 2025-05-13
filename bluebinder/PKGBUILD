@@ -1,0 +1,22 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=bluebinder
+pkgver=1.0.17
+pkgrel=3
+pkgdesc="Simple proxy for using Android binder based Bluetooth through VHCI"
+arch=('aarch64')
+url="https://github.com/mer-hybris/bluebinder"
+license=('custom')
+depends=('halium-wrappers' 'libgbinder')
+makedepends=('glib2-devel' 'libglibutil-dev' 'libgbinder-dev' 'bluez-libs' 'systemd')
+source=("git+https://github.com/droidian/bluebinder.git")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir/$pkgname"
+  
+  make
+  install -Dm755 bluebinder "$pkgdir/usr/bin/bluebinder"
+  install -Dm644 bluebinder.service "$pkgdir/usr/lib/systemd/system/bluebinder.service"
+  install -Dm755 bluebinder_post.sh "$pkgdir/usr/bin/droid/bluebinder_post.sh"
+  install -Dm755 bluebinder_wait.sh "$pkgdir/usr/bin/droid/bluebinder_wait.sh"
+}
