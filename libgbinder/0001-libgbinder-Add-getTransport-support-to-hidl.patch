@@ -1,0 +1,137 @@
+From 162415354c7a537c93aa0dc9fb4c4b70d08a1a8e Mon Sep 17 00:00:00 2001
+From: Erfan Abdi <erfangplus@gmail.com>
+Date: Sun, 2 Jul 2023 02:50:43 +0000
+Subject: [PATCH 1/2] libgbinder: Add getTransport support to hidl
+
+---
+ include/gbinder_servicemanager.h  |  6 ++++
+ src/gbinder_servicemanager.c      | 14 +++++++++
+ src/gbinder_servicemanager_hidl.c | 49 +++++++++++++++++++++++++++++++
+ src/gbinder_servicemanager_p.h    |  2 ++
+ 4 files changed, 71 insertions(+)
+
+diff --git a/include/gbinder_servicemanager.h b/include/gbinder_servicemanager.h
+index b502f68..6c5c979 100644
+--- a/include/gbinder_servicemanager.h
++++ b/include/gbinder_servicemanager.h
+@@ -172,6 +172,12 @@ gbinder_servicemanager_add_service_sync(
+     const char* name,
+     GBinderLocalObject* obj);
+ 
++guint8
++gbinder_servicemanager_get_service_transport_sync(
++    GBinderServiceManager* self,
++    const char* name,
++    int* status);
++
+ void
+ gbinder_servicemanager_cancel(
+     GBinderServiceManager* sm,
+diff --git a/src/gbinder_servicemanager.c b/src/gbinder_servicemanager.c
+index 587d7d5..11edcc8 100644
+--- a/src/gbinder_servicemanager.c
++++ b/src/gbinder_servicemanager.c
+@@ -906,6 +906,20 @@ gbinder_servicemanager_add_service_sync(
+     }
+ }
+ 
++guint8
++gbinder_servicemanager_get_service_transport_sync(
++    GBinderServiceManager* self,
++    const char* name,
++    int* status)
++{
++    if (G_LIKELY(self) && name) {
++        return GBINDER_SERVICEMANAGER_GET_CLASS(self)->
++            get_service_transport(self, name, status, &gbinder_ipc_sync_main);
++    } else {
++        return (-EINVAL);
++    }
++}
++
+ void
+ gbinder_servicemanager_cancel(
+     GBinderServiceManager* self,
+diff --git a/src/gbinder_servicemanager_hidl.c b/src/gbinder_servicemanager_hidl.c
+index 3128403..c65b1cf 100644
+--- a/src/gbinder_servicemanager_hidl.c
++++ b/src/gbinder_servicemanager_hidl.c
+@@ -253,6 +253,54 @@ gbinder_servicemanager_hidl_add_service(
+     return status;
+ }
+ 
++static
++guint8
++gbinder_servicemanager_hidl_get_service_transport(
++    GBinderServiceManager* self,
++    const char* fqinstance,
++    int* status,
++    const GBinderIpcSyncApi* api)
++{
++    /* e.g. "android.hardware.radio@1.1::IRadio/slot1" */
++    const char* sep = strchr(fqinstance, '/');
++    guint8 transport = 0;
++
++    if (sep) {
++        GBinderRemoteReply* reply;
++        GBinderLocalRequest* req = gbinder_client_new_request(self->client);
++        char* fqname = g_strndup(fqinstance, sep - fqinstance);
++        const char* name = sep + 1;
++
++        gbinder_local_request_append_hidl_string(req, fqname);
++        gbinder_local_request_append_hidl_string(req, name);
++
++        reply = gbinder_client_transact_sync_reply2(self->client,
++            GET_TRANSPORT_TRANSACTION, req, status, api);
++
++        if (reply) {
++            GBinderReader reader;
++            int status = -1;
++
++            gbinder_remote_reply_init_reader(reply, &reader);
++
++            /* Read status */
++            GVERIFY(gbinder_reader_read_int32(&reader, &status));
++            GASSERT(status == GBINDER_STATUS_OK);
++
++            /* Read the transport */
++            GVERIFY(gbinder_reader_read_uint8(&reader, &transport));
++            gbinder_remote_reply_unref(reply);
++        }
++
++        gbinder_local_request_unref(req);
++        g_free(fqname);
++    } else {
++        GERR("Invalid instance \"%s\"", fqinstance);
++        if (status) *status = (-EINVAL);
++    }
++    return transport;
++}
++
+ static
+ void
+ gbinder_servicemanager_hidl_watch_free(
+@@ -452,6 +500,7 @@ gbinder_servicemanager_hidl_class_init(
+     klass->list = gbinder_servicemanager_hidl_list;
+     klass->get_service = gbinder_servicemanager_hidl_get_service;
+     klass->add_service = gbinder_servicemanager_hidl_add_service;
++    klass->get_service_transport = gbinder_servicemanager_hidl_get_service_transport;
+     klass->check_name = gbinder_servicemanager_hidl_check_name;
+     klass->normalize_name = gbinder_servicemanager_hidl_normalize_name;
+     klass->watch = gbinder_servicemanager_hidl_watch;
+diff --git a/src/gbinder_servicemanager_p.h b/src/gbinder_servicemanager_p.h
+index 1cdea17..dadd025 100644
+--- a/src/gbinder_servicemanager_p.h
++++ b/src/gbinder_servicemanager_p.h
+@@ -67,6 +67,8 @@ typedef struct gbinder_servicemanager_class {
+         const char* name, int* status, const GBinderIpcSyncApi* api);
+     int (*add_service)(GBinderServiceManager* self, const char* name,
+         GBinderLocalObject* obj, const GBinderIpcSyncApi* api);
++    guint8 (*get_service_transport)(GBinderServiceManager* self,
++        const char* name, int* status, const GBinderIpcSyncApi* api);
+ 
+     /* Checking/normalizing watch names */
+     GBINDER_SERVICEMANAGER_NAME_CHECK (*check_name)
+-- 
+2.49.0
+

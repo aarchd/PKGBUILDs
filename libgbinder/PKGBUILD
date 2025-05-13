@@ -12,11 +12,17 @@ arch=('aarch64')
 url="https://github.com/mer-hybris/libgbinder.git"
 license=('BSD-3-Clause')
 makedepends=('flex' 'bison' 'glib2-devel' 'libglibutil-dev')
-source=("git+${url}")
-sha512sums=('SKIP')
+source=("git+${url}"
+	'0001-libgbinder-Add-getTransport-support-to-hidl.patch'
+	'0002-libgbinder-Implement-binder-wait.patch')
+sha256sums=('SKIP'
+	'0805f79cacf6c926981506a4fdaff6f833108408332d8377e40004345ff6c88a'
+	'45bf38052ad29391e55003d726e7d9b2221e25f651daf5bd1d02a982cd6fac65')
 
 build() {
 	cd $srcdir/$pkgbase
+	patch -p1 < $srcdir/0001-libgbinder-Add-getTransport-support-to-hidl.patch
+	patch -p1 < $srcdir/0002-libgbinder-Implement-binder-wait.patch
 	make KEEP_SYMBOLS=1 release pkgconfig
 }
 
