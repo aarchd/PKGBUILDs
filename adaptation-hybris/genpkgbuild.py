@@ -17,7 +17,7 @@ COMMON_PACKAGES = [
 	"droidian-quirks-tls-padding",
 	"droidian-quirks-xtables-legacy",
 	"gstreamer1.0-droid",
-	"flash-bootimage",
+	#"flash-bootimage",
 	"droidian-quirks-device",
 	"flashlightd",
 ]
