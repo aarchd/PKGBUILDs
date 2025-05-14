@@ -1,0 +1,20 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=libdroid
+pkgver=0.2.0
+pkgrel=1
+pkgdesc="Library to ease interaction with Android HALs"
+arch=('aarch64')
+url="https://github.com/droidian/libdroid"
+license=('custom')
+makedepends=('meson' 'glib2-devel' 'libgbinder-dev' 'systemd' 'libgirepository' 'libgudev' 'gobject-introspection')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+	arch-meson "$srcdir/$pkgbase" build
+	ninja -C build
+}
+
+package_libdroid() {
+    DESTDIR="$pkgdir" ninja -C build install
+}
