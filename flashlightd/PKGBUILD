@@ -1,0 +1,26 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=flashlightd
+pkgver=14
+pkgrel=1
+pkgdesc="Simple daemon to manage camera flash light using gstreamer."
+arch=('aarch64')
+url="https://github.com/droidian/flashlightd"
+license=('custom')
+makedepends=('meson' 'glib2-devel' 'vala' 'gst-devtools-libs')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" ninja -C build install
+    install -Dm644 "$srcdir/$pkgname/org.droidian.Flashlightd.service" \
+		"$pkgdir/usr/lib/systemd/user/org.droidian.Flashlightd.service"
+
+    mkdir -p "$pkgdir/usr/lib/systemd/user/graphical-session.target.wants"
+    ln -sf "/usr/lib/systemd/user/org.droidian.Flashlightd.service" \
+		"$pkgdir/usr/lib/systemd/user/graphical-session.target.wants/org.droidian.Flashlightd.service"
+}
