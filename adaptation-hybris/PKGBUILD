@@ -44,10 +44,7 @@ package_adaptation-hybris-common() {
 package_adaptation-hybris-phone() {
     pkgdesc="Base metapackage for adaptation-hybris adaptations (phone variant)"
     depends=(
-	"adaptation-hybris-common"
-	"ofono"
-	"ofono-scripts"
-	"ofono2mm")
+	"adaptation-hybris-common")
 }
 
 package_adaptation-hybris-devtools() {
@@ -81,8 +78,6 @@ package_adaptation-hybris-api28-phone() {
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
 	"adaptation-hybris-api28"
-	"ofono-binder-plugin"
-	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
 }
@@ -104,8 +99,6 @@ package_adaptation-hybris-api29-phone() {
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
 	"adaptation-hybris-api29"
-	"ofono-binder-plugin"
-	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
 }
@@ -127,8 +120,6 @@ package_adaptation-hybris-api30-phone() {
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
 	"adaptation-hybris-api30"
-	"ofono-binder-plugin"
-	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
 }
@@ -150,8 +141,6 @@ package_adaptation-hybris-api32-phone() {
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
 	"adaptation-hybris-api32"
-	"ofono-binder-plugin"
-	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
 }
@@ -173,8 +162,6 @@ package_adaptation-hybris-api33-phone() {
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
 	"adaptation-hybris-api33"
-	"ofono-binder-plugin"
-	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
 }
