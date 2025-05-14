@@ -33,7 +33,7 @@ package_libgbinder() {
 }
 
 package_libgbinder-dev() {
-	depends=('libgbinder' 'libgbinder-dev')
+	depends=('libgbinder' 'libgbinder-dev' 'libglibutil-dev')
 	cd $srcdir/$pkgbase
 	make install-dev DESTDIR="${pkgdir}"
 	rm $pkgdir/usr/lib/libgbinder.so.*
