@@ -7,6 +7,7 @@ arch=('aarch64')
 url="https://github.com/droidian/libdroid"
 license=('custom')
 makedepends=('meson' 'glib2-devel' 'libgbinder-dev' 'systemd' 'libgirepository' 'libgudev' 'gobject-introspection')
+depends=('libgbinder-dev')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -15,6 +16,6 @@ build() {
 	ninja -C build
 }
 
-package_libdroid() {
+package() {
     DESTDIR="$pkgdir" ninja -C build install
 }
