@@ -16,39 +16,28 @@ pkgname=(
   "adaptation-hybris-phosh"
   "adaptation-hybris-api28"
   "adaptation-hybris-api28-phone"
-  "adaptation-hybris-api28-phone-dual-sim"
   "adaptation-hybris-api29"
   "adaptation-hybris-api29-phone"
-  "adaptation-hybris-api29-phone-dual-sim"
   "adaptation-hybris-api30"
   "adaptation-hybris-api30-phone"
-  "adaptation-hybris-api30-phone-dual-sim"
   "adaptation-hybris-api32"
   "adaptation-hybris-api32-phone"
-  "adaptation-hybris-api32-phone-dual-sim"
   "adaptation-hybris-api33"
   "adaptation-hybris-api33-phone"
-  "adaptation-hybris-api33-phone-dual-sim"
 )
 
 package_adaptation-hybris-common() {
     pkgdesc="Base metapackage for adaptation-hybris adaptations (common variant)"
     depends=(
-	"droidian-quirks-writable-image"
-	"android-base-passwd"
-	"android-base-files"
-	"udev"
+	"android-base"
 	"lxc-android"
 	"libhybris"
 	"libhybris-utils"
-	"udev-config-hybris"
 	"hadess-sensorfw-proxy"
 	"droidian-quirks-hybris-gl"
-	"droidian-quirks-qt-force-gles"
 	"droidian-quirks-tls-padding"
 	"droidian-quirks-xtables-legacy"
 	"gstreamer1.0-droid"
-	"package-sideload"
 	"flash-bootimage"
 	"droidian-quirks-device"
 	"flashlightd")
@@ -100,13 +89,6 @@ package_adaptation-hybris-api28-phone() {
 	"audiosystem-passthrough")
 }
 
-package_adaptation-hybris-api28-phone-dual-sim() {
-    pkgdesc="Base metapackage for adaptation-hybris-api28 adaptations (phone-dual-sim variant)"
-    depends=(
-	"adaptation-hybris-api28-phone"
-	"ofono-configs-binder-dual-sim")
-}
-
 package_adaptation-hybris-api29() {
     pkgdesc="Base metapackage for adaptation-hybris-api29 adaptations (standard variant)"
     depends=(
@@ -128,13 +110,6 @@ package_adaptation-hybris-api29-phone() {
 	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
-}
-
-package_adaptation-hybris-api29-phone-dual-sim() {
-    pkgdesc="Base metapackage for adaptation-hybris-api29 adaptations (phone-dual-sim variant)"
-    depends=(
-	"adaptation-hybris-api29-phone"
-	"ofono-configs-binder-dual-sim")
 }
 
 package_adaptation-hybris-api30() {
@@ -160,13 +135,6 @@ package_adaptation-hybris-api30-phone() {
 	"audiosystem-passthrough")
 }
 
-package_adaptation-hybris-api30-phone-dual-sim() {
-    pkgdesc="Base metapackage for adaptation-hybris-api30 adaptations (phone-dual-sim variant)"
-    depends=(
-	"adaptation-hybris-api30-phone"
-	"ofono-configs-binder-dual-sim")
-}
-
 package_adaptation-hybris-api32() {
     pkgdesc="Base metapackage for adaptation-hybris-api32 adaptations (standard variant)"
     depends=(
@@ -190,13 +158,6 @@ package_adaptation-hybris-api32-phone() {
 	"audiosystem-passthrough")
 }
 
-package_adaptation-hybris-api32-phone-dual-sim() {
-    pkgdesc="Base metapackage for adaptation-hybris-api32 adaptations (phone-dual-sim variant)"
-    depends=(
-	"adaptation-hybris-api32-phone"
-	"ofono-configs-binder-dual-sim")
-}
-
 package_adaptation-hybris-api33() {
     pkgdesc="Base metapackage for adaptation-hybris-api33 adaptations (standard variant)"
     depends=(
@@ -218,11 +179,4 @@ package_adaptation-hybris-api33-phone() {
 	"ofono-configs-binder-common"
 	"pulseaudio-modules-droid-hidl"
 	"audiosystem-passthrough")
-}
-
-package_adaptation-hybris-api33-phone-dual-sim() {
-    pkgdesc="Base metapackage for adaptation-hybris-api33 adaptations (phone-dual-sim variant)"
-    depends=(
-	"adaptation-hybris-api33-phone"
-	"ofono-configs-binder-dual-sim")
 }

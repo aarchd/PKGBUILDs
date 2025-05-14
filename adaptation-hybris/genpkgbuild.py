@@ -8,21 +8,15 @@
 
 # Common packages for every api level
 COMMON_PACKAGES = [
-	"droidian-quirks-writable-image",
-	"android-base-passwd",
-	"android-base-files",
-	"udev",
+	"android-base",
 	"lxc-android",
 	"libhybris",
 	"libhybris-utils",
-	"udev-config-hybris",
 	"hadess-sensorfw-proxy",
 	"droidian-quirks-hybris-gl",
-	"droidian-quirks-qt-force-gles",
 	"droidian-quirks-tls-padding",
 	"droidian-quirks-xtables-legacy",
 	"gstreamer1.0-droid",
-	"package-sideload",
 	"flash-bootimage",
 	"droidian-quirks-device",
 	"flashlightd",
@@ -81,11 +75,12 @@ COMMON_26_PHONE_PACKAGES = [
 	"audiosystem-passthrough",
 ]
 
+# DISABLED
 # Common phone packages for dual sim devices for api levels 26+ (8+)
-COMMON_26_DUAL_SIM_PACKAGES = [
-	"adaptation-hybris-api%(level)d-phone",
-	"ofono-configs-binder-dual-sim",
-]
+# COMMON_26_DUAL_SIM_PACKAGES = [
+# 	"adaptation-hybris-api%(level)d-phone",
+# 	"ofono-configs-binder-dual-sim",
+# ]
 
 SUPPORTED_APILEVELS = {
 	0 : {
@@ -97,27 +92,27 @@ SUPPORTED_APILEVELS = {
 	28 : {
 		"standard"       : COMMON_16_PACKAGES + COMMON_16_29_PACKAGES + COMMON_26_PACKAGES,
 		"phone"          : COMMON_26_PHONE_PACKAGES,
-		"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
+		#"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
 	},
 	29 : {
 		"standard"       : COMMON_16_PACKAGES + COMMON_16_29_PACKAGES + COMMON_26_PACKAGES,
 		"phone"          : COMMON_26_PHONE_PACKAGES,
-		"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
+		#"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
 	},
 	30 : {
 		"standard"       : COMMON_16_PACKAGES + COMMON_30_PACKAGES + COMMON_26_PACKAGES,
 		"phone"          : COMMON_26_PHONE_PACKAGES,
-		"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
+		#"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
 	},
         32 : {
                 "standard"       : COMMON_16_PACKAGES + COMMON_30_PACKAGES + COMMON_26_PACKAGES,
                 "phone"          : COMMON_26_PHONE_PACKAGES,
-                "phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
+                #"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
         },
         33 : {
                 "standard"       : COMMON_16_PACKAGES + COMMON_30_PACKAGES + COMMON_26_PACKAGES,
                 "phone"          : COMMON_26_PHONE_PACKAGES,
-                "phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
+                #"phone-dual-sim" : COMMON_26_DUAL_SIM_PACKAGES,
         },
 }
 
