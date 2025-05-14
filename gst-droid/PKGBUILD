@@ -1,0 +1,25 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgbase=gst-droid
+pkgname=(
+    'gstreamer1.0-droid'
+    'gstreamer1.0-droid-dev'
+    'gstreamer1.0-droid-tools'
+    )
+pkgver=0.20241209.0
+pkgrel=1
+pkgdesc="GStreamer droid plug-in."
+arch=('aarch64')
+url="https://github.com/sailfishos/gst-droid"
+license=('custom')
+makedepends=('meson' 'droidmedia' 'libexif' 'libhybris-dev' 'nemo-gst-interfaces' 'gst-plugins-bad-libs')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
+}
+
+package_libdroid() {
+    DESTDIR="$pkgdir" ninja -C build install
+}
