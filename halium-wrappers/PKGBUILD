@@ -7,7 +7,7 @@ pkgname=(
 )
 pkgver=22
 pkgrel=1
-arch=('any')
+arch=('aarch64')
 url="https://github.com/droidian/halium-wrappers"
 license=('custom')
 depends=('util-linux')
