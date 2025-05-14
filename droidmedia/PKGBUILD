@@ -1,0 +1,20 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=droidmedia
+pkgver=0.20241121.0
+pkgrel=1
+pkgdesc="Android media wrapper library"
+arch=('aarch64')
+url="https://github.com/sailfishos/droidmedia"
+license=('custom')
+makedepends=('meson')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
+}
+
+package_libdroid() {
+    DESTDIR="$pkgdir" ninja -C build install
+}
