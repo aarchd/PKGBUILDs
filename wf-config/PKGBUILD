@@ -1,0 +1,26 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=wf-config
+pkgver=0.9.0
+pkgrel=1
+epoch=1
+pkgdesc="A library for managing configuration files, written for wayfire"
+arch=(aarch64)
+url=https://wayfire.org
+license=(MIT)
+depends=('libevdev' 'libxml2')
+makedepends=('meson' 'ninja' 'pkg-config' 'wayland-protocols' 'glm' 'doctest' 'cmake')
+source=("git+https://github.com/droidian/wf-config.git")
+sha256sums=('SKIP')
+
+build() {
+	rm -rf build
+	arch-meson "${srcdir}/${pkgname}" build \
+		--auto-features=disabled
+	ninja -C build
+}
+
+package() {
+	DESTDIR="${pkgdir}" ninja -C build install
+	install -Dm644 "${srcdir}/${pkgname}/LICENSE" \
+		"${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+}
