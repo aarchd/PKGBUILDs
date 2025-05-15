@@ -131,7 +131,7 @@ package_droidian-quirks-hybris-gl() {
 	install -Dm777 hybris-gl/zz-gles-shader-cache.sh $pkgdir/etc/profile.d/zz-gles-shader-cache.sh
 }
 
-package_droidian-systemd() {
+package_droidian-quirks-systemd() {
 	pkgdesc="Various systemd quirks"
 
 	cd $srcdir/$pkgbase
