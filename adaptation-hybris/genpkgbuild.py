@@ -44,18 +44,18 @@ COMMON_DEVTOOLS_PACKAGES = [
 # Common packages for api levels 16+
 COMMON_16_PACKAGES = [
 	"adaptation-hybris-common",
-	"pulseaudio-config-droid",
+	#"pulseaudio-config-droid",
 	"droidian-quirks-api%(level)d",
 ]
 
 # Common packages for api levels 16 through 29 (4.1 to 29)
 COMMON_16_29_PACKAGES = [
-	"pulseaudio-modules-droid-jb2q",
+	#"pulseaudio-modules-droid-jb2q",
 ]
 
 # Common packages for api levels 30+ (11+)
 COMMON_30_PACKAGES = [
-	"pulseaudio-modules-droid-modern",
+	#"pulseaudio-modules-droid-modern",
 ]
 
 # Common packages for api levels 26+ (8+)
@@ -71,8 +71,8 @@ COMMON_26_PHONE_PACKAGES = [
 	"adaptation-hybris-api%(level)s",
 	#"ofono-binder-plugin",
 	#"ofono-configs-binder-common",
-	"pulseaudio-modules-droid-hidl",
-	"audiosystem-passthrough",
+	#"pulseaudio-modules-droid-hidl",
+	#"audiosystem-passthrough",
 ]
 
 # DISABLED

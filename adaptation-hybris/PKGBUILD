@@ -65,9 +65,7 @@ package_adaptation-hybris-api28() {
     pkgdesc="Base metapackage for adaptation-hybris-api28 adaptations (standard variant)"
     depends=(
 	"adaptation-hybris-common"
-	"pulseaudio-config-droid"
 	"droidian-quirks-api28"
-	"pulseaudio-modules-droid-jb2q"
 	"bluebinder"
 	"timekeeper")
 }
@@ -77,18 +75,14 @@ package_adaptation-hybris-api28-phone() {
     depends=(
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
-	"adaptation-hybris-api28"
-	"pulseaudio-modules-droid-hidl"
-	"audiosystem-passthrough")
+	"adaptation-hybris-api28")
 }
 
 package_adaptation-hybris-api29() {
     pkgdesc="Base metapackage for adaptation-hybris-api29 adaptations (standard variant)"
     depends=(
 	"adaptation-hybris-common"
-	"pulseaudio-config-droid"
 	"droidian-quirks-api29"
-	"pulseaudio-modules-droid-jb2q"
 	"bluebinder"
 	"timekeeper")
 }
@@ -98,18 +92,14 @@ package_adaptation-hybris-api29-phone() {
     depends=(
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
-	"adaptation-hybris-api29"
-	"pulseaudio-modules-droid-hidl"
-	"audiosystem-passthrough")
+	"adaptation-hybris-api29")
 }
 
 package_adaptation-hybris-api30() {
     pkgdesc="Base metapackage for adaptation-hybris-api30 adaptations (standard variant)"
     depends=(
 	"adaptation-hybris-common"
-	"pulseaudio-config-droid"
 	"droidian-quirks-api30"
-	"pulseaudio-modules-droid-modern"
 	"bluebinder"
 	"timekeeper")
 }
@@ -119,18 +109,14 @@ package_adaptation-hybris-api30-phone() {
     depends=(
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
-	"adaptation-hybris-api30"
-	"pulseaudio-modules-droid-hidl"
-	"audiosystem-passthrough")
+	"adaptation-hybris-api30")
 }
 
 package_adaptation-hybris-api32() {
     pkgdesc="Base metapackage for adaptation-hybris-api32 adaptations (standard variant)"
     depends=(
 	"adaptation-hybris-common"
-	"pulseaudio-config-droid"
 	"droidian-quirks-api32"
-	"pulseaudio-modules-droid-modern"
 	"bluebinder"
 	"timekeeper")
 }
@@ -140,18 +126,14 @@ package_adaptation-hybris-api32-phone() {
     depends=(
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
-	"adaptation-hybris-api32"
-	"pulseaudio-modules-droid-hidl"
-	"audiosystem-passthrough")
+	"adaptation-hybris-api32")
 }
 
 package_adaptation-hybris-api33() {
     pkgdesc="Base metapackage for adaptation-hybris-api33 adaptations (standard variant)"
     depends=(
 	"adaptation-hybris-common"
-	"pulseaudio-config-droid"
 	"droidian-quirks-api33"
-	"pulseaudio-modules-droid-modern"
 	"bluebinder"
 	"timekeeper")
 }
@@ -161,7 +143,5 @@ package_adaptation-hybris-api33-phone() {
     depends=(
 	"adaptation-hybris-common"
 	"adaptation-hybris-phone"
-	"adaptation-hybris-api33"
-	"pulseaudio-modules-droid-hidl"
-	"audiosystem-passthrough")
+	"adaptation-hybris-api33")
 }
