@@ -100,9 +100,11 @@ jobs:
           cd repo && mkdir -p PKGS/
 
           for pkg in /tmp/pkgs/*.pkg.tar.zst; do
-            base=$(basename "$pkg")
-            prefix="${base%%-*}"
-            find PKGS/ -type f -name "${prefix}-*.pkg.tar.zst" -exec rm -v {} +
+            base=$(basename "$pkg" .pkg.tar.zst)
+            version=$(echo "$base" | rev | cut -d- -f1-3 | rev)
+            name=${base%-$version}
+          
+            find PKGS/ -type f -name "${name}-*.pkg.tar.zst" ! -name "$(basename "$pkg")" -exec rm -v {} +
           done
 
           cp /tmp/pkgs/* PKGS/
