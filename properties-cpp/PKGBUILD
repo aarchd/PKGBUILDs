@@ -15,12 +15,22 @@ md5sums=('SKIP')
 build() {
     git clone https://gitlab.com/ubports/development/core/cmake-extras --depth=1
     cd cmake-extras
-    cmake -B _build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5 
+    cmake -B _build -S . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_CXX_STANDARD=17
     cmake --build _build && sudo cmake --install _build
+
     cd "$srcdir/$pkgname"
-    cmake -B _build -S . -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    cmake -B _build -S . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+        -DCMAKE_CXX_STANDARD=17
     cmake --build _build
 }
+
 
 package() {
   cd "$srcdir/$pkgname"
