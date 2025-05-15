@@ -39,6 +39,7 @@ COMMON_DEVTOOLS_PACKAGES = [
 	"adaptation-hybris-common",
 	"libhybris-test",
 	"hybris-usb",
+	"openssh",
 ]
 
 # Common packages for api levels 16+

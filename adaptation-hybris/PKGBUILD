@@ -52,7 +52,8 @@ package_adaptation-hybris-devtools() {
     depends=(
 	"adaptation-hybris-common"
 	"libhybris-test"
-	"hybris-usb")
+	"hybris-usb"
+	"openssh")
 }
 
 package_adaptation-hybris-phosh() {
