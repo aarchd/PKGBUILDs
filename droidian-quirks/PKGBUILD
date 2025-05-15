@@ -1,0 +1,164 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgbase=droidian-quirks
+pkgname=(
+	'droidian-quirks-api28'
+	'droidian-quirks-api29'
+	'droidian-quirks-api30'
+	'droidian-quirks-api32'
+	'droidian-quirks-api33'
+	'droidian-quirks-device'
+	'droidian-quirks-hybris-gl'
+	'droidian-quirks-systemd'
+	'droidian-quirks-tls-padding'
+	'droidian-quirks-wayland'
+	'droidian-quirks-xtables-legacy'
+)
+pkgver=95
+pkgrel=1
+arch=('any')
+url="https://github.com/droidian/droidian-quirks"
+license=('custom')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package_droidian-quirks-api28() {
+	pkgdesc="Various generic quirks for API 28 (P) devices"
+	depends=('libgbinder')
+
+	cd $srcdir/$pkgbase
+	install -Dm644 quirks-28/gbinder.d/9-android-p.conf "$pkgdir/etc/gbinder.d/9-android-p.conf"
+}
+
+package_droidian-quirks-api29() {
+	pkgdesc="Various generic quirks for API 29 (Q) devices"
+	depends=('libgbinder')
+
+	cd $srcdir/$pkgbase
+	install -Dm644 quirks-29/gbinder.d/10-android-q.conf "$pkgdir/etc/gbinder.d/10-android-q.conf"
+
+	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
+	ln -s /apex/com.android.runtime/lib/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libandroidicu.so
+	ln -s /apex/com.android.runtime/lib64/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libandroidicu.so
+	ln -s /vendor/lib64/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/eglSubDriverAndroid.so
+	ln -s /vendor/lib/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib/eglSubDriverAndroid.so
+}
+
+package_droidian-quirks-api30() {
+	pkgdesc="Various generic quirks for API 30 (R) devices"
+	depends=('libgbinder')
+
+	cd $srcdir/$pkgbase
+	install -Dm644 quirks-30/gbinder.d/11-android-r.conf "$pkgdir/etc/gbinder.d/11-android-r.conf"
+	install -Dm644 quirks-30/systemd/android-mount.service.d/10-selinux.conf "$pkgdir/usr/lib/systemd/system/android-mount.service.d/10-selinux.conf"
+
+	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
+	cp -a quirks-30/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
+
+	ln -s /vendor/lib64/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/eglSubDriverAndroid.so
+	ln -s /vendor/lib/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib/eglSubDriverAndroid.so
+}
+
+package_droidian-quirks-api32() {
+	pkgdesc="Various generic quirks for API 32 (S) devices"
+	depends=('libgbinder')
+
+	cd $srcdir/$pkgbase
+	install -Dm644 quirks-32/gbinder.d/12-android-s.conf "$pkgdir/etc/gbinder.d/12-android-s.conf"
+	install -Dm644 quirks-32/systemd/android-mount.service.d/10-selinux.conf "$pkgdir/usr/lib/systemd/system/android-mount.service.d/10-selinux.conf"
+
+	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
+	cp -a quirks-32/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
+
+	ln -s /apex/com.android.i18n/lib/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libandroidicu.so
+	ln -s /apex/com.android.i18n/lib64/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libandroidicu.so
+	ln -s /vendor/lib64/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/eglSubDriverAndroid.so
+	ln -s /vendor/lib/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib/eglSubDriverAndroid.so
+	ln -s /apex/com.android.i18n/lib/libicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libicu.so
+	ln -s /apex/com.android.i18n/lib64/libicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libicu.so
+	ln -s /apex/com.android.media/lib/libmediaformatshaper.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libmediaformatshaper.so
+	ln -s /apex/com.android.media/lib64/libmediaformatshaper.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libmediaformatshaper.so
+}
+
+package_droidian-quirks-api33() {
+	pkgdesc="Various generic quirks for API 33 (T) devices"
+	depends=('libgbinder')
+
+	cd $srcdir/$pkgbase
+	install -Dm644 quirks-33/gbinder.d/13-android-t.conf "$pkgdir/etc/gbinder.d/13-android-t.conf"
+	install -Dm644 quirks-33/systemd/android-mount.service.d/10-selinux.conf "$pkgdir/usr/lib/systemd/system/android-mount.service.d/10-selinux.conf"
+
+	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
+	cp -a quirks-33/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
+
+	ln -s /apex/com.android.i18n/lib/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libandroidicu.so
+	ln -s /apex/com.android.i18n/lib64/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libandroidicu.so
+	ln -s /apex/com.android.i18n/lib/libicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libicu.so
+	ln -s /apex/com.android.i18n/lib64/libicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libicu.so
+	ln -s /apex/com.android.media/lib/libmediaformatshaper.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libmediaformatshaper.so
+	ln -s /apex/com.android.media/lib64/libmediaformatshaper.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libmediaformatshaper.so
+}
+
+package_droidian-quirks-device() {
+	pkgdesc="Various quirks to enable device features at boot"
+	depends=('halium-wrappers' 'systemd')
+	install=droidian-quirks-device.install
+
+	cd $srcdir/$pkgbase
+	mkdir -p $pkgdir/usr/bin
+	cp -a device/*.sh "$pkgdir/usr/bin/"
+
+	install -Dm644 "device/systemd-drop-ins/lxc.service.d/90-disable-apparmor.conf" "$pkgdir/usr/lib/systemd/system/lxc.service.d/90-disable-apparmor.conf"
+	install -Dm644 "device/tmpfiles.d/10-droidian-net.conf" "$pkgdir/usr/lib/tmpfiles.d/10-droidian-net.conf"
+
+	install -Dm644 "debian/droidian-quirks-device.droidian-boot-wlan.path" "${pkgdir}/etc/systemd/system/droidian-boot-wlan.path"
+	install -Dm644 "debian/droidian-quirks-device.droidian-boot-wlan.service" "${pkgdir}/etc/systemd/system/droidian-boot-wlan.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-ipa-enable.service" "${pkgdir}/etc/systemd/system/droidian-ipa-enable.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-lmk-disable.service" "${pkgdir}/etc/systemd/system/droidian-lmk-disable.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-wcnss-enable.service" "${pkgdir}/etc/systemd/system/droidian-wcnss-enable.service"
+
+	mkdir -p $pkgdir/etc/systemd/{system,user}
+	ln -s /dev/null $pkgdir/etc/systemd/system/apparmor.service
+	ln -s /dev/null $pkgdir/etc/systemd/user/pipewire-pulse.service
+	ln -s /dev/null $pkgdir/etc/systemd/user/pipewire-pulse.socket
+	ln -s /dev/null $pkgdir/etc/systemd/system/power-profiles-daemon.service
+}
+
+package_droidian-quirks-hybris-gl() {
+	pkgdesc="Various quirks to make GL apps happy"
+
+	cd $srcdir/$pkgbase
+	install -Dm777 hybris-gl/zz-droidian.sh $pkgdir/etc/profile.d/zz-droidian.sh
+	install -Dm777 hybris-gl/zz-gles-shader-cache.sh $pkgdir/etc/profile.d/zz-gles-shader-cache.sh
+}
+
+package_droidian-systemd() {
+	pkgdesc="Various systemd quirks"
+
+	cd $srcdir/$pkgbase
+	mkdir -p $pkgdir/etc/systemd
+	cp -a systemd/* $pkgdir/etc/systemd/
+}
+
+package_droidian-quirks-tls-padding() {
+	pkgdesc="Quirk to preload libtls-padding"
+	depends=('libtls-padding0' 'libdroidian-workarounds')
+
+	cd $srcdir/$pkgbase
+	install -Dm777 tls-padding/zz-tls-padding.sh $pkgdir/etc/profile.d/zz-tls-padding.sh
+}
+
+package_droidian-quirks-wayland() {
+	pkgdesc="Various wayland tweaks"
+
+	cd $srcdir/$pkgbase
+	install -Dm777 wayland/zz-wayland.sh $pkgdir/etc/profile.d/zz-wayland.sh
+}
+
+package_droidian-quirks-xtables-legacy() {
+	pkgdesc="Quirk to set xtables-legacy as the default iptables implementation"
+	depends=('iptables')
+	install=droidian-quirks-xtables-legacy.install
+
+	cd $srcdir/$pkgbase
+	install -Dm644 xtables-legacy/99-droidian-backend.conf $pkgdir/etc/NetworkManager/conf.d/99-droidian-backend.conf
+}

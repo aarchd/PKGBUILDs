@@ -1,0 +1,11 @@
+post_install() {
+  for alt in iptables ip6tables; do
+    update-alternatives --set ${alt} /usr/sbin/${alt}-legacy
+  done
+}
+
+pre_remove() {
+  for alt in iptables ip6tables; do
+    update-alternatives --auto ${alt}
+  done
+}

@@ -1,0 +1,7 @@
+post_install() {
+  systemctl --system daemon-reload
+  systemctl --system enable droidian-boot-wlan.service
+  systemctl --system enable droidian-ipa-enable.service
+  systemctl --system enable droidian-lmk-disable.service
+  systemctl --system enable droidian-wcnss-enable.service
+}
