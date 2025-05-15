@@ -15,6 +15,6 @@ build() {
 	ninja -C build
 }
 
-package_libdroid() {
+package() {
     DESTDIR="$pkgdir" ninja -C build install
 }
