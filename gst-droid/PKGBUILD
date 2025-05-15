@@ -1,10 +1,5 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
-pkgbase=gst-droid
-pkgname=(
-    'gstreamer1.0-droid'
-    'gstreamer1.0-droid-dev'
-    'gstreamer1.0-droid-tools'
-    )
+pkgname=gst-droid
 pkgver=0.20241209.0
 pkgrel=1
 pkgdesc="GStreamer droid plug-in."
@@ -20,6 +15,6 @@ build() {
 	ninja -C build
 }
 
-package_libdroid() {
+package() {
     DESTDIR="$pkgdir" ninja -C build install
 }

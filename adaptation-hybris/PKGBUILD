@@ -36,7 +36,7 @@ package_adaptation-hybris-common() {
 	"droidian-quirks-hybris-gl"
 	"droidian-quirks-tls-padding"
 	"droidian-quirks-xtables-legacy"
-	"gstreamer1.0-droid"
+	"gst-droid"
 	"droidian-quirks-device"
 	"flashlightd")
 }
