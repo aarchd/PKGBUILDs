@@ -48,12 +48,18 @@ jobs:
       - name: Build changed packages
         if: env.CHANGED_PKGS != ''
         run: |
-          sudo apt-get update && sudo apt-get install systemd-container
+          git clone https://github.com/aarchd/arch-install-scripts --depth 1
+          sudo make -j4 -C arch-install-scripts install
           mkdir -p /tmp/pkgs
-          sudo systemd-nspawn -D /tmp/rootfs --bind=$PWD:/mnt/PKGBUILDs \
-          --bind=/tmp/build-tools:/mnt/build-tools \
-          --bind=/tmp/pkgs:/mnt/pkgs \
-          /bin/bash -c "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
+          sudo mkdir -p /tmp/rootfs/mnt/{PKGBUILDs,build-tools,pkgs}
+          sudo mount --bind "$PWD" /tmp/rootfs/mnt/PKGBUILDs
+          sudo mount --bind /tmp/build-tools /tmp/rootfs/mnt/build-tools
+          sudo mount --bind /tmp/pkgs /tmp/rootfs/mnt/pkgs
+          sudo arch-chroot /tmp/rootfs /bin/bash -c \
+            "/mnt/build-tools/buildpkg.sh $CHANGED_PKGS"
+          sudo umount /tmp/rootfs/mnt/PKGBUILDs
+          sudo umount /tmp/rootfs/mnt/build-tools
+          sudo umount /tmp/rootfs/mnt/pkgs
       
       - name: Update build-metadata
         if: env.CHANGED_PKGS != ''
