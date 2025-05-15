@@ -1,0 +1,52 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgbase=aarchd-meta
+pkgname=(
+	'aarchd-base'
+)
+pkgver=1
+pkgrel=1
+arch=('any')
+url="https://aarchd.who53.me"
+license=('custom')
+source=()
+sha256sums=()
+
+package_aarchd-base() {
+	pkgdesc="aarchd base meta package"
+	depends=(
+		'alsa-utils'
+		'ca-certificates'
+		'systemd'
+		'f2fs-tools'
+		'lvm2'
+		'file'
+		'kbd'
+		'glibc'
+		'libcanberra'
+		'pam'
+		'bash-completion'
+		'gawk'
+		'less'
+		'vim'
+		'sudo'
+		'curl'
+		'wget'
+		'unzip'
+		'zip'
+		'xz'
+		'dnsmasq'
+		'iw'
+		'networkmanager'
+		'iputils'
+		'util-linux'
+		'wireless_tools'
+		'wpa_supplicant'
+		'libgbinder-tools'
+		'cups'
+		'dialog'
+		'droidian-quirks-systemd'
+		'droidian-quirks-wayland'
+		'aarchd-keyring'
+		'aarchd-mirrorlist'
+	)
+}
