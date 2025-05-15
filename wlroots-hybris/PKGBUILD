@@ -24,6 +24,7 @@ depends=(
     'xcb-util-errors'
     'xcb-util-renderutil'
     'xcb-util-wm'
+    'libdroid'
 )
 makedepends=(
     'glslang'
