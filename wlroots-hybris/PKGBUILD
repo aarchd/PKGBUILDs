@@ -25,6 +25,8 @@ depends=(
     'xcb-util-renderutil'
     'xcb-util-wm'
     'libdroid'
+    'android-headers'
+    'libhybris-dev'
 )
 makedepends=(
     'glslang'
