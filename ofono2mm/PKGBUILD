@@ -1,0 +1,17 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=ofono2mm
+pkgver=1.0.17
+pkgrel=3
+pkgdesc="A simple python script implementing ModemManager DBus API and using ofono to manage the modem"
+arch=('any')
+url="https://github.com/droidian/ofono2mm"
+license=('BSD 3-Clause')
+depends=('python-dbus-next' 'python-gobject' 'modemmanager' 'ofono' 'geoclue')
+makedepends=('python')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" install
+}
