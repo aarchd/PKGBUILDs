@@ -1,0 +1,26 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=timekeeper
+pkgver=0.3
+pkgrel=1
+pkgdesc="utility to keep/restore RTC offset for Qualcomm devices."
+arch=('aarch64')
+url="https://github.com/ubports/timekeeper"
+license=('GPL3')
+makedepends=('cmake')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+    cd $srcdir/$pkgname
+    cmake -B _build -S . \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_SBINDIR=/usr/bin \
+        -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+    cmake --build _build
+}
+
+package() {
+    cd $srcdir/$pkgname
+    DESTDIR="$pkgdir" cmake --install _build
+}
