@@ -1,0 +1,32 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgbase=libgrilio
+pkgname=(
+	'libgrilio'
+	'libgrilio-dev'
+)
+pkgver=1.0.44
+pkgrel=1
+pkgdesc="RIL I/O library"
+arch=('aarch64')
+url="https://github.com/sailfishos/libgrilio.git"
+license=('custom')
+makedepends=('glib2-devel' 'libglibutil-dev')
+source=("git+${url}")
+sha256sums=('SKIP')
+
+build() {
+	cd $srcdir/$pkgbase
+	make KEEP_SYMBOLS=1 release pkgconfig
+}
+
+package_libgrilio() {
+	cd $srcdir/$pkgbase
+	make install DESTDIR="${pkgdir}"
+}
+
+package_libgrilio-dev() {
+	depends=('libgrilio' 'libglibutil')
+	cd $srcdir/$pkgbase
+	make install-dev DESTDIR="${pkgdir}"
+	rm $pkgdir/usr/lib/libgrilio.so.*
+}
