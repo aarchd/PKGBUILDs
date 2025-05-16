@@ -1,0 +1,33 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgbase=libgbinder-radio
+pkgname=(
+	'libgbinder-radio'
+	'libgbinder-radio-dev'
+)
+pkgver=1.6.0
+pkgrel=1
+pkgdesc="GLib-style interface to binder"
+arch=('aarch64')
+url="https://github.com/mer-hybris/libgbinder-radio.git"
+license=('custom')
+makedepends=('glib2-devel' 'libgbinder-dev' 'libglibutil-dev')
+source=("git+${url}")
+sha256sums=('SKIP')
+
+build() {
+	cd $srcdir/$pkgbase
+	make KEEP_SYMBOLS=1 release pkgconfig
+}
+
+package_libgbinder-radio() {
+	depends=('libglibutil')
+	cd $srcdir/$pkgbase
+	make install DESTDIR="${pkgdir}"
+}
+
+package_libgbinder-radio-dev() {
+	depends=('libgbinder-radio' 'libgbinder-radio-dev' 'libglibutil-dev')
+	cd $srcdir/$pkgbase
+	make install-dev DESTDIR="${pkgdir}"
+	rm $pkgdir/usr/lib/libgbinder-radio.so.*
+}

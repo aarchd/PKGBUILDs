@@ -1,0 +1,23 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=mobile-power-saver
+pkgver=0.9.2
+pkgrel=1
+pkgdesc="Mobile Power Saver enable hard power saving when screen is off."
+arch=('aarch64')
+url="https://github.com/droidian/mobile-power-saver"
+license=('custom')
+makedepends=('meson' 'glib2-devel' 'libgbinder-radio-dev' 'libgbinder-dev' 'libnl')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" ninja -C build install
+    # just phosh schema for now
+    install -Dm644 $srcdir/$pkgname/data/overrides/10_mobile_power_saver_droidian_phosh.gschema.override \
+        -t $pkgdir/usr/share/glib-2.0/schemas/10_mobile_power_saver_droidian_phosh.gschema.override
+}
