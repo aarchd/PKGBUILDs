@@ -1,0 +1,4 @@
+post_install() {
+	systemctl --system daemon-reload
+	systemctl --system enable ofono.service
+}

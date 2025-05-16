@@ -1,0 +1,49 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=ofono
+pkgver=1.29
+pkgrel=1
+pkgdesc='Infrastructure for building mobile telephony (GSM/UMTS) applications'
+url='https://01.org/ofono'
+arch=(aarch64)
+license=('GPL2')
+depends=('bluez' 'dbus-glib' 'glib2' 'udev' 'mobile-broadband-provider-info' 'systemd' 'python')
+makedepends=('bluez' 'dbus-glib' 'glib2-devel' 'udev' 'mobile-broadband-provider-info' 'systemd' 'libglibutil-dev' 'libgrilio-dev'
+	'libmce-glib-dev' 'libwspcodec-dev')
+source=('git+https://github.com/sailfishos/ofono.git')
+sha256sums=('SKIP')
+install=ofono.install
+
+build() {
+	cd $pkgname/$pkgname
+	ls
+	./bootstrap
+	autoreconf -fi
+	./configure \
+		--prefix=/usr \
+		--sbindir=/usr/bin \
+		--sysconfdir=/etc \
+		--localstatedir=/var \
+		--enable-test \
+		--disable-static \
+		--enable-sailfish-bt \
+		--enable-sailfish-provision \
+		--enable-sailfish-pushforwarder \
+		--disable-rilmodem \
+		--disable-add-remove-context \
+		--disable-isimodem \
+		--disable-qmimodem \
+		--disable-upower \
+		--with-systemdunitdir=/usr/lib/systemd/system
+	make
+}
+
+package() {
+	cd $pkgname/$pkgname
+	make DESTDIR="$pkgdir" install
+
+	install -d "$pkgdir/usr/share/ofono/scripts"
+	mv "$pkgdir/usr/lib/ofono/test/"* "$pkgdir/usr/share/ofono/scripts/"
+	rm -r "$pkgdir/usr/lib/ofono/test"
+
+	install -Dm644 "debian/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
+}
