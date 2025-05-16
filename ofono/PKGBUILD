@@ -9,8 +9,10 @@ license=('GPL2')
 depends=('bluez' 'dbus-glib' 'glib2' 'udev' 'mobile-broadband-provider-info' 'systemd' 'python')
 makedepends=('bluez' 'dbus-glib' 'glib2-devel' 'udev' 'mobile-broadband-provider-info' 'systemd' 'libglibutil-dev' 'libgrilio-dev'
 	'libmce-glib-dev' 'libwspcodec-dev')
-source=('git+https://github.com/sailfishos/ofono.git')
-sha256sums=('SKIP')
+source=('git+https://github.com/sailfishos/ofono.git'
+	'ofono.service')
+sha256sums=('SKIP'
+	'58aa96394b43fcbf147e0bdb6644d5089ece95e91aefb906a16ceec01f8e657c')
 install=ofono.install
 
 build() {
@@ -45,5 +47,5 @@ package() {
 	mv "$pkgdir/usr/lib/ofono/test/"* "$pkgdir/usr/share/ofono/scripts/"
 	rm -r "$pkgdir/usr/lib/ofono/test"
 
-	install -Dm644 "debian/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
+	install -Dm644 "$srcdir/ofono.service" "$pkgdir/usr/lib/systemd/system/ofono.service"
 }
