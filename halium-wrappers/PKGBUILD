@@ -52,12 +52,12 @@ package_halium-wrappers() {
 package_libdroidian-workarounds() {
 	pkgdesc="Various workarounds for Droidian-specific workloads"
 
-	install -Dm755 "$srcdir/build/usr/lib/$triplet/libgtk6216workaround.so" "$pkgdir/usr/lib/$triplet/libgtk6216workaround.so"
-	install -Dm755 "$srcdir/build/usr/lib/$triplet/libglesshadercache.so" "$pkgdir/usr/lib/$triplet/libglesshadercache.so"
+	install -Dm755 "$srcdir/build/usr/lib/$triplet/libgtk6216workaround.so" "$pkgdir/usr/lib/libgtk6216workaround.so"
+	install -Dm755 "$srcdir/build/usr/lib/$triplet/libglesshadercache.so" "$pkgdir/usr/lib/libglesshadercache.so"
 }
 
 package_libtls-padding0() {
 	pkgdesc="Library that reserves some space into the Thread Local Storage"
 
-	install -Dm755 "$srcdir/build/usr/lib/$triplet/libtls-padding.so" "$pkgdir/usr/lib/$triplet/libtls-padding.so"
+	install -Dm755 "$srcdir/build/usr/lib/$triplet/libtls-padding.so" "$pkgdir/usr/lib/libtls-padding.so"
 }
