@@ -1,0 +1,49 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgbase=ofono-binder-plugin
+pkgname=(
+  'ofono-binder-plugin'
+  'libofonobinderpluginext'
+  )
+pkgver=1.1.15
+pkgrel=1
+arch=('any')
+url="https://github.com/mer-hybris/ofono-binder-plugin"
+license=('BSD 3-Clause')
+makedepends=('glib2-devel' 'libgbinder-dev' 'libgbinder-radio-dev' 'ofono' 'libglibutil-dev')
+depends=('ofono' 'libgbinder' 'libgbinder-radio')
+source=("git+https://github.com/droidian/ofono-binder-plugin.git")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/$pkgbase"
+
+  PLUGINDIR="$(pkg-config --variable=plugindir ofono)"
+  LIBDIR="/usr/lib"
+  KEEP_SYMBOLS=1
+
+  make PLUGINDIR="$PLUGINDIR" release
+  make -C lib LIBDIR="$LIBDIR" release pkgconfig
+  make DESTDIR="$srcdir/build" PLUGINDIR="$PLUGINDIR" install
+  make DESTDIR="$srcdir/build" -C lib LIBDIR="$LIBDIR" TARGET_INCLUDE_DIR="$INCLUDEDIR" install install-dev
+}
+
+package_ofono-binder-plugin() {
+  pkgdesc="Binder plugin for the Sailfish OS fork of ofono"
+  depends+=('libofonobinderpluginext')
+
+  install -Dm644 "$srcdir/build/usr/lib/ofono/plugins/binderplugin.so" \
+    "$pkgdir/usr/lib/ofono/plugins/binderplugin.so"
+}
+
+package_libofonobinderpluginext() {
+  pkgdesc="Extension interfaces for ofono-binder-plugin"
+
+  mkdir -p "$pkgdir/usr/lib"
+  install -Dm644 $srcdir/build/usr/lib/libofonobinderpluginext.so{,.*} \
+    "$pkgdir/usr/lib/"
+  install -Dm644 $srcdir/build/usr/lib/pkgconfig/libofonobinderpluginext.pc \
+    "$pkgdir/usr/lib/pkgconfig/libofonobinderpluginext.pc"
+  mkdir -p "$pkgdir/usr/include/ofonobinderpluginext"
+  install -Dm644 $srcdir/build/ofonobinderpluginext/*.h \
+    "$pkgdir/usr/include/ofonobinderpluginext/"
+}
