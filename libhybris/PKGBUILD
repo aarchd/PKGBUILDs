@@ -33,10 +33,13 @@ makedepends=(
   'pkgconf'
   'mesa'
 )
-source=("git+https://github.com/droidian/libhybris.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/droidian/libhybris.git"
+  "0002-Fix-gralloc-wrapper-include-file-installation.patch")
+sha256sums=('SKIP'
+  '75de53d880ad70cc37d82772f9331884a310ac952e22262dca70b8b34fb8a1bb')
 
 build() {
+  patch -p1 < "$srcdir/0002-Fix-gralloc-wrapper-include-file-installation.patch" -d "$srcdir/$pkgbase"
   cd "$srcdir/$pkgbase/hybris"
 
   autoreconf -fi
@@ -184,6 +187,8 @@ package_libhybris-dev() {
   install -m644 $srcdir/build/usr/include/hybris/surface_flinger/* "$pkgdir/usr/include/hybris/surface_flinger/"
   mkdir -p "$pkgdir/usr/include/hybris/ui/"
   install -m644 $srcdir/build/usr/include/hybris/ui/* "$pkgdir/usr/include/hybris/ui/"
+  mkdir -p "$pkgdir/usr/include/hybris/gralloc/"
+  install -m644 $srcdir/build/usr/include/hybris/gralloc/* "$pkgdir/usr/include/hybris/gralloc/"
   mkdir -p "$pkgdir/usr/lib/"
   cp -a "$srcdir/build/usr/lib/libcamera.so" "$pkgdir/usr/lib/"
   cp -a "$srcdir/build/usr/lib/libgralloc.so" "$pkgdir/usr/lib/"
