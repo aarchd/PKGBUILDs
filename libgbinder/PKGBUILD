@@ -9,10 +9,10 @@ pkgver=1.1.42
 pkgrel=1
 pkgdesc="GLib-style interface to binder"
 arch=('aarch64')
-url="https://github.com/mer-hybris/libgbinder.git"
+url="https://github.com/mer-hybris/libgbinder"
 license=('BSD-3-Clause')
 makedepends=('flex' 'bison' 'glib2-devel' 'libglibutil-dev')
-source=("git+${url}"
+source=("git+${url}.git"
 	'0001-libgbinder-Add-getTransport-support-to-hidl.patch'
 	'0002-libgbinder-Implement-binder-wait.patch')
 sha256sums=('SKIP'

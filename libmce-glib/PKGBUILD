@@ -8,10 +8,10 @@ pkgver=1.0.44
 pkgrel=1
 pkgdesc="Client library for mce"
 arch=('aarch64')
-url="https://github.com/sailfishos/libmce-glib.git"
+url="https://github.com/sailfishos/libmce-glib"
 license=('custom')
 makedepends=('glib2-devel' 'libglibutil-dev' 'mce-dev')
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {

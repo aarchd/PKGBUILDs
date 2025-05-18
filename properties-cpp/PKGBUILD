@@ -9,7 +9,7 @@ url="https://salsa.debian.org/ubports-team/properties-cpp"
 license=('custom')
 depends=()
 makedepends=('cmake' 'graphviz' 'pkg-config' 'gtest' 'doxygen' 'extra-cmake-modules')
-source=("git+$url")
+source=("git+$url.git")
 md5sums=('SKIP')
 
 build() {

@@ -8,9 +8,9 @@ pkgver=1.0.79
 pkgrel=1
 pkgdesc="Library of glib utilities"
 arch=('aarch64')
-url="https://github.com/sailfishos/libglibutil.git"
+url="https://github.com/sailfishos/libglibutil"
 license=('BSD-3-Clause')
-source=("git+${url}")
+source=("git+${url}.git")
 sha512sums=('SKIP')
 
 build() {

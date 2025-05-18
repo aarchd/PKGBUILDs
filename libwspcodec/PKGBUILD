@@ -8,10 +8,10 @@ pkgver=2.2.6
 pkgrel=1
 pkgdesc="WSP encoder and decoder library"
 arch=('aarch64')
-url="https://github.com/sailfishos/libwspcodec.git"
+url="https://github.com/sailfishos/libwspcodec"
 license=('custom')
 makedepends=('glib2-devel')
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {

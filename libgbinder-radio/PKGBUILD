@@ -8,10 +8,10 @@ pkgver=1.6.0
 pkgrel=1
 pkgdesc="GLib-style interface to binder"
 arch=('aarch64')
-url="https://github.com/mer-hybris/libgbinder-radio.git"
+url="https://github.com/mer-hybris/libgbinder-radio"
 license=('custom')
 makedepends=('glib2-devel' 'libgbinder-dev' 'libglibutil-dev')
-source=("git+${url}")
+source=("git+${url}.git")
 sha256sums=('SKIP')
 
 build() {
