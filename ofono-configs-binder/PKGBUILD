@@ -1,0 +1,50 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgbase=ofono-configs-binder
+pkgname=(
+	'ofono-configs-binder-common'
+	'ofono-configs-binder-single-sim-sim2'
+	'ofono-config-ril-binder'
+	'ofono-config-ril-binder-single-sim-sim2'
+)
+pkgver=6
+pkgrel=1
+pkgdesc="ofono configuration for devices using the binder plugin"
+arch=('aarch64')
+url="https://github.com/droidian/ofono-config-ril-binder"
+license=('custom')
+makedepends=('ofono' 'libgbinder-dev' 'libglibutil-dev' 'libgbinder-radio-dev' 'libgrilio-dev')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+
+package_ofono-configs-binder-common() {
+	pkgdesc="ofono configuration for devices using the binder plugin - common configurations"
+	depends=('ofono-binder-plugin')
+	provides=('ofono-configs-binder')
+
+	cd $srcdir/ofono-config-ril-binder
+	install -Dm644 systemd/10-droidian-lxc-android.conf \
+		$pkgdir/etc/systemd/system/ofono.service.d/10-droidian-lxc-android.conf
+	install -Dm644 systemd/20-droidian-droid-wait.conf \
+		$pkgdir/etc/systemd/system/ofono.service.d/20-droidian-droid-wait.conf
+	install -Dm777 binder.conf $pkgdir/etc/ofono/binder.conf
+}
+
+package_ofono-configs-binder-single-sim-sim2() {
+	pkgdesc="ofono configuration for devices using the binder plugin - single sim on slot2"
+	depends=('ofono-configs-binder-common')
+
+	cd $srcdir/ofono-config-ril-binder
+	install -Dm777 20-binder-single-sim-sim2.conf \
+		$pkgdir/etc/ofono/binder.d/20-binder-single-sim-sim2.conf
+}
+
+package_ofono-config-ril-binder() {
+	pkgdesc="ofono configuration for devices using binder as transport - transactional package"
+	depends=('ofono-configs-binder-common')
+}
+
+package_ofono-config-ril-binder-single-sim-sim2() {
+	pkgdesc="ofono configuration for devices using binder as transport (dual sim addon, SIM2-only) - transactional package"
+	depends=('ofono-configs-binder-single-sim-sim2')
+}
