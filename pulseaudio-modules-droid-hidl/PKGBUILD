@@ -1,0 +1,28 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=pulseaudio-modules-droid-hidl
+pkgver=1.4.0
+pkgrel=1
+pkgdesc="HIDL module for PulseAudio"
+arch=('aarch64')
+url="https://github.com/mer-hybris/pulseaudio-modules-droid-hidl"
+license=('custom')
+depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific')
+makedepends=('meson' 'dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'audiosystem-passthrough')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+prepare() {
+    cd "$srcdir/$pkgname"
+    echo "$pkgver" > .tarball-version
+}
+
+build() {
+  PA_MODULE_DIR=$(readlink -f /usr/lib/pulse-*/modules)
+  arch-meson $pkgname build -Dmodlibexecdir=${PA_MODULE_DIR}
+  meson compile -C build
+}
+
+package() {
+  depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific')
+  DESTDIR="$pkgdir" meson install -C build
+}
