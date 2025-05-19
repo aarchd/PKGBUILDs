@@ -1,5 +1,5 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
-pkgname=wlroots-hybris
+pkgname=wlroots
 pkgver=0.17.4
 pkgrel=3
 license=('MIT')
