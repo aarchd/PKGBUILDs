@@ -1,0 +1,46 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgbase=ofono-ril-binder-plugin
+pkgname=(
+	'ofono-ril-binder-plugin'
+	'libgrilio-binder'
+	'libgrilio-binder-dev'
+)
+pkgver=1.2.8
+pkgrel=1
+pkgdesc="ofono plugin which implements binder transport for RIL"
+arch=('aarch64')
+url="https://github.com/mer-hybris/ofono-ril-binder-plugin"
+license=('custom')
+makedepends=('ofono' 'libgbinder-dev' 'libglibutil-dev' 'libgbinder-radio-dev' 'libgrilio-dev')
+source=("git+${url}.git")
+sha256sums=('SKIP')
+
+build() {
+	cd $srcdir/$pkgbase
+	make KEEP_SYMBOLS=1 release pkgconfig
+	make DESTDIR="$srcdir/build" install
+	make DESTDIR="$srcdir/build" install-dev
+}
+
+package_ofono-ril-binder-plugin() {
+	depends=('libgbinder')
+
+	install -Dm644 $srcdir/build/usr/lib/ofono/plugins/rilbinderplugin.so \
+		"$pkgdir/usr/lib/ofono/plugins/rilbinderplugin.so"
+}
+
+package_libgrilio-binder() {
+	depends=('libgbinder' 'libgbinder-radio')
+
+	mkdir -p "$pkgdir/usr/lib"
+	install -m644 $srcdir/build/usr/lib/libgrilio-binder.so.* $pkgdir/usr/lib/
+}
+
+package_libgrilio-binder-dev() {
+	depends=('libgrilio-binder' 'libgrilio')
+
+	install -Dm644 $srcdir/build/usr/lib/libgrilio-binder.so $pkgdir/usr/lib/libgrilio-binder.so
+	install -Dm644 $srcdir/build/usr/lib/pkgconfig/libgrilio-binder.pc $pkgdir/usr/lib/pkgconfig/libgrilio-binder.pc
+	mkdir -p "$pkgdir/usr/include/grilio-binder"
+	install -m644 $srcdir/build/usr/include/grilio-binder/*.h $pkgdir/usr/include/grilio-binder
+}
