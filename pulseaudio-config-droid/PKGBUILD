@@ -1,0 +1,27 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=pulseaudio-config-droid
+pkgver=1.0.17
+pkgrel=3
+pkgdesc="pulseaudio configs for hybris devices"
+arch=('aarch64')
+url="https://github.com/droidian/pulseaudio-config-droid"
+license=('custom')
+depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package() {
+  cd "$srcdir/$pkgname"
+
+  install -Dm644 pulse/default.pa.droid $pkgdir/usr/lib/pulseaudio-config-droid/default.pa.droid
+  install -Dm644 pulse/touch-stream-restore.table $pkgdir/etc/pulse/touch-stream-restore.table
+
+  mkdir -p $pkgdir/etc/systemd/user/pulseaudio.service.d
+  install -m644 pulseaudio.service.d/* $pkgdir/etc/systemd/user/pulseaudio.service.d/
+
+  mkdir -p $pkgdir/usr/lib/udev/rules.d
+  install -m644 rules.d/* $pkgdir/usr/lib/udev/rules.d/
+
+  mkdir -p $pkgdir/etc/pulse
+  ln -s "/usr/lib/pulseaudio-config-droid/default.pa.droid" "$pkgdir/etc/pulse/default.pa"
+}
