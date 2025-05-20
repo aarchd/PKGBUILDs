@@ -29,9 +29,9 @@ COMMON_PHOSH = [
 # Common packages for phones
 COMMON_PHONE_PACKAGES = [
 	"adaptation-hybris-common",
-	#"ofono",
-	#"ofono-scripts",
-	#"ofono2mm",
+	"ofono",
+	"ofono-scripts",
+	"ofono2mm",
 ]
 
 # Devtools packages
@@ -70,8 +70,8 @@ COMMON_26_PHONE_PACKAGES = [
 	"adaptation-hybris-common",
 	"adaptation-hybris-phone",
 	"adaptation-hybris-api%(level)s",
-	#"ofono-binder-plugin",
-	#"ofono-configs-binder-common",
+	"ofono-binder-plugin",
+	"ofono-configs-binder-common",
 	"pulseaudio-modules-droid-hidl",
 	"audiosystem-passthrough",
 ]
