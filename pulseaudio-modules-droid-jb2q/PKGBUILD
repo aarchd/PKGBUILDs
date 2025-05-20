@@ -1,6 +1,6 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgbase=pulseaudio-modules-droid-jb2q
-pkgname=('pulseaudio-modules-droid-jb2q' 'pulseaudio-modules-droid')
+pkgname=('pulseaudio-modules-droid-jb2q' 'pulseaudio-modules-droid' 'pulseaudio-modules-droid-apispecific')
 pkgver=14.2.102
 pkgrel=1
 arch=('aarch64')
@@ -20,8 +20,10 @@ build() {
 }
 
 package_pulseaudio-modules-droid-jb2q() {
-  depends=('pulseaudio' 'libhybris' 'libhardware')
   pkgdesc="PulseAudio Droid HAL module"
+  depends=('pulseaudio' 'libhybris' 'libhardware')
+  provides=('pulseaudio-modules-droid-apispecific')
+  conflicts=('pulseaudio-modules-droid-apispecific')
   DESTDIR="$pkgdir" meson install -C "$srcdir/build"
 }
 

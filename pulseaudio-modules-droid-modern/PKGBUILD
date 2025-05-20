@@ -20,8 +20,10 @@ build() {
 }
 
 package_pulseaudio-modules-droid-modern() {
-  depends=('pulseaudio' 'libhybris' 'libhardware')
   pkgdesc="PulseAudio Droid HAL module"
+  depends=('pulseaudio' 'libhybris' 'libhardware')
+  provides=('pulseaudio-modules-droid-apispecific')
+  conflicts=('pulseaudio-modules-droid-apispecific')
   DESTDIR="$pkgdir" meson install -C "$srcdir/build"
 }
 
