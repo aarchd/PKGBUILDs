@@ -1,0 +1,26 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=audiosystem-passthrough
+pkgver=1.3.0
+pkgrel=1
+arch=('aarch64')
+url="https://github.com/mer-hybris/audiosystem-passthrough"
+license=('custom')
+pkgdesc="Audio passthrough helper"
+depends=('libgbinder' 'glib2')
+makedepends=('libgbinder-dev' 'glib2-devel' 'libglibutil-dev')
+source=("git+https://github.com/droidian/audiosystem-passthrough.git")
+sha256sums=('SKIP')
+install=audiosystem-passthrough.install
+
+build() {
+  cd "$srcdir/$pkgname"
+  make KEEP_SYMBOLS=1
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  make DESTDIR="$pkgdir" install
+
+  install -Dm644 debian/audiosystem-passthrough.user.service \
+    "${pkgdir}/usr/lib/systemd/user/audiosystem-passthrough.service"
+}

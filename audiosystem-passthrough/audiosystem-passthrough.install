@@ -1,0 +1,4 @@
+post_install() {
+	systemctl --user daemon-reload
+	systemctl --user enable audiosystem-passthrough.service
+}
