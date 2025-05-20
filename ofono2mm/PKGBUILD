@@ -13,5 +13,14 @@ sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname"
-  make DESTDIR="$pkgdir" install
+
+  install -Dm755 main.py "$pkgdir/usr/lib/ofono2mm/main.py"
+  mkdir -p "$pkgdir/usr/bin"
+  ln -sf /usr/lib/ofono2mm/main.py "$pkgdir/usr/bin/ofono2mm"
+
+  cp -r ofono2mm "$pkgdir/usr/lib/ofono2mm/"
+  install -m644 dbus.xml ofono.xml ofono_modem.xml ofono_operator.xml ofono_context.xml "$pkgdir/usr/lib/ofono2mm/"
+
+  install -Dm644 systemd/10-ofono2mm.conf "$pkgdir/usr/lib/systemd/system/ModemManager.service.d/10-ofono2mm.conf"
+  install -Dm644 extra/ofono2mm-radio.pkla "$pkgdir/etc/polkit-1/localauthority/10-vendor.d/ofono2mm-radio.pkla"
 }
