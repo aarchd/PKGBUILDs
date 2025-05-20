@@ -17,7 +17,15 @@ install=ofono.install
 
 build() {
 	cd $pkgname/$pkgname
-	ls
+
+	export CFLAGS="$CFLAGS -Wall \
+		-Wno-unused-parameter \
+		-Wno-missing-field-initializers \
+		-Wdeclaration-after-statement \
+		-Wmissing-declarations \
+		-Wcast-align \
+		-DG_DISABLE_DEPRECATED"
+
 	./bootstrap
 	autoreconf -fi
 	./configure \
