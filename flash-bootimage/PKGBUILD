@@ -1,0 +1,29 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=flash-bootimage
+pkgver=8
+pkgrel=1
+pkgdesc="Utility to flash Android boot images"
+arch=('any')
+url="https://github.com/droidian/flash-bootimage"
+license=('custom')
+depends=('halium-wrappers' 'util-linux' 'coreutils')
+source=("git+$url.git"
+	"zz-flash-bootimage")
+sha256sums=('SKIP'
+	'5098f9effef8c3c610e8063270b466ef99863db9b838539ac17d31ea594bc8a3')
+
+package() {
+	cd "$srcdir/$pkgname"
+
+	install -Dm644 src/common.sh $pkgdir/usr/share/flash-bootimage/common.sh
+	install -Dm755 src/flash-bootimage $pkgdir/usr/share/flash-bootimage/flash-bootimage
+	mkdir -p $pkgdir/usr/bin
+	ln -s /usr/share/flash-bootimage/flash-bootimage $pkgdir/usr/bin/flash-bootimage
+	install -Dm755 src/flash-bootimage-switch-slot $pkgdir/usr/share/flash-bootimage/flash-bootimage-switch-slot
+	install -Dm755 src/flash-bootimage-generator $pkgdir/lib/systemd/system-generators/flash-bootimage-generator
+	install -Dm644 config/flash-bootimage.conf $pkgdir/lib/flash-bootimage/flash-bootimage.conf
+	install -Dm644 config/00-empty $pkgdir/etc/flash-bootimage/00-empty
+	install -Dm644 $srcdir/zz-flash-bootimage $pkgdir/etc/kernel/bootimage_postinst.d/zz-flash-bootimage
+	mkdir -p $pkgdir/lib/systemd/system
+	cp -ar systemd/* $pkgdir/lib/systemd/system/
+}
