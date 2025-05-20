@@ -11,11 +11,14 @@ makedepends=('libasyncns' 'libcap' 'attr' 'libxtst' 'libsm' 'libsndfile' 'rtkit'
     'speexdsp' 'tdb' 'systemd' 'dbus' 'avahi' 'bluez' 'bluez-libs' 'jack2' 'sbc'
     'lirc' 'openssl' 'fftw' 'orc' 'gtk3' 'webrtc-audio-processing-1' 'check' 'git' 'meson'
     'xmltoman' 'doxygen')
-source=("git+https://github.com/droidian/pulseaudio.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/droidian/pulseaudio.git"
+    "build-sys-meson-Add-missing-include-dir.patch")
+sha256sums=('SKIP'
+    'afd7d4b1991636d7e72ee80df609a609071309d331adaa933af9582010411426')
 
 prepare() {
     cd pulseaudio
+    patch -p1 < ../build-sys-meson-Add-missing-include-dir.patch
     echo "$pkgver-$pkgrel" > .tarball-version
 }
 
