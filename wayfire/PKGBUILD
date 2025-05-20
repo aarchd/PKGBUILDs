@@ -6,8 +6,8 @@ pkgdesc="3D wayland compositor"
 arch=(aarch64)
 url=https://wayfire.org
 license=(MIT)
-depends=('cairo' 'pango' 'wf-config' 'libjpeg' 'libinput' 'wlroots-hybris' 'glibmm' 'iio-sensor-proxy')
-makedepends=('meson' 'ninja' 'wayland-protocols' 'glm' 'cmake' 'doctest' 'nlohmann-json' 'wf-config' 'wlroots-hybris' 'glibmm')
+depends=('cairo' 'pango' 'wf-config' 'libjpeg' 'libinput' 'wlroots' 'glibmm' 'iio-sensor-proxy')
+makedepends=('meson' 'ninja' 'wayland-protocols' 'glm' 'cmake' 'doctest' 'nlohmann-json' 'wf-config' 'wlroots' 'glibmm')
 source=("git+https://github.com/droidian/wayfire.git")
 sha256sums=('SKIP')
 
