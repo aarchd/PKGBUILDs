@@ -6,25 +6,27 @@ pkgrel=1
 arch=('aarch64')
 url="https://github.com/mer-hybris/pulseaudio-modules-droid-modern"
 license=('custom')
-makedepends=('dbus' 'android-headers' 'pulseaudio' 'expat' 'evdev' 'udev' 'meson' 'libhardware-dev' 'libhybris-dev')
+makedepends=('dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'expat' 'libevdev' 'udev' 'meson' 'libhardware-dev' 'libhybris-dev')
 source=("git+https://github.com/droidian/pulseaudio-modules-droid-modern.git")
 sha256sums=('SKIP')
 
-build() {
-  cd "$srcdir/$pkgname"
+prepare() {
+    cd "$srcdir/$pkgname"
+    echo "$pkgver" > .tarball-version
+}
 
-  echo $pkgver > .tarball-version
-  PA_MODULE_DIR := $$(readlink -f /usr/lib/pulse-*/modules)
-  arch-meson setup "$srcdir/build" -Dmodlibexecdir=${PA_MODULE_DIR}
-  meson compile -C builddir
+build() {
+  PA_MODULE_DIR=$(readlink -f /usr/lib/pulse-*/modules)
+  arch-meson $pkgname build -Dmodlibexecdir=${PA_MODULE_DIR}
+  meson compile -C build
 }
 
 package_pulseaudio-modules-droid-modern() {
   pkgdesc="PulseAudio Droid HAL module"
-  depends=('pulseaudio' 'libhybris' 'libhardware')
+  depends=('pulseaudio')
   provides=('pulseaudio-modules-droid-apispecific')
   conflicts=('pulseaudio-modules-droid-apispecific')
-  DESTDIR="$pkgdir" meson install -C "$srcdir/build"
+  DESTDIR="$pkgdir" meson install -C build
 }
 
 package_pulseaudio-modules-droid() {

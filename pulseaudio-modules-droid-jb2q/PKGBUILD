@@ -1,27 +1,29 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgbase=pulseaudio-modules-droid-jb2q
-pkgname=('pulseaudio-modules-droid-jb2q' 'pulseaudio-modules-droid' 'pulseaudio-modules-droid-apispecific')
+pkgname=('pulseaudio-modules-droid-jb2q' 'pulseaudio-modules-droid')
 pkgver=14.2.102
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/mer-hybris/pulseaudio-modules-droid-jb2q"
 license=('custom')
-makedepends=('dbus' 'android-headers' 'pulseaudio' 'expat' 'evdev' 'udev' 'meson' 'libhardware-dev' 'libhybris-dev')
+makedepends=('dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'expat' 'libevdev' 'udev' 'meson' 'libhardware-dev' 'libhybris-dev')
 source=("git+https://github.com/droidian/pulseaudio-modules-droid-jb2q.git")
 sha256sums=('SKIP')
 
-build() {
-  cd "$srcdir/$pkgname"
+prepare() {
+    cd "$srcdir/$pkgname"
+    echo "$pkgver" > .tarball-version
+}
 
-  echo $pkgver > .tarball-version
-  PA_MODULE_DIR := $$(readlink -f /usr/lib/pulse-*/modules)
-  arch-meson setup "$srcdir/build" -Dmodlibexecdir=${PA_MODULE_DIR}
-  meson compile -C builddir
+build() {
+  PA_MODULE_DIR=$(readlink -f /usr/lib/pulse-*/modules)
+  arch-meson $pkgname build -Dmodlibexecdir=${PA_MODULE_DIR}
+  meson compile -C build
 }
 
 package_pulseaudio-modules-droid-jb2q() {
   pkgdesc="PulseAudio Droid HAL module"
-  depends=('pulseaudio' 'libhybris' 'libhardware')
+  depends=('pulseaudio')
   provides=('pulseaudio-modules-droid-apispecific')
   conflicts=('pulseaudio-modules-droid-apispecific')
   DESTDIR="$pkgdir" meson install -C "$srcdir/build"
