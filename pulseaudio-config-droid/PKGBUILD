@@ -7,8 +7,12 @@ arch=('aarch64')
 url="https://github.com/droidian/pulseaudio-config-droid"
 license=('custom')
 depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+  "pulseaudio-config-droid.hook"
+  "update-default-pa.sh")
+sha256sums=('SKIP'
+  'c46fcfe72a15fe6624d556156c8886573f778497b4ff6683d44276934c5819f6'
+  '0ac7717d0eb332dfa7040d0dca739e7be4e35a6408561621001f7ff214d7a5b1')
 
 package() {
   cd "$srcdir/$pkgname"
@@ -22,6 +26,6 @@ package() {
   mkdir -p $pkgdir/usr/lib/udev/rules.d
   install -m644 rules.d/* $pkgdir/usr/lib/udev/rules.d/
 
-  mkdir -p $pkgdir/etc/pulse
-  ln -s "/usr/lib/pulseaudio-config-droid/default.pa.droid" "$pkgdir/etc/pulse/default.pa"
+  install -Dm644 "${srcdir}/pulseaudio-config-droid.hook" "${pkgdir}/usr/share/libalpm/hooks/pulseaudio-config-droid.hook"
+  install -Dm755 "${srcdir}/update-default-pa.sh" "${pkgdir}/usr/share/pulseaudio-config-droid/update-default-pa.sh"
 }

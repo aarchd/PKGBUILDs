@@ -1,0 +1,11 @@
+[Trigger]
+Type = Package
+Operation = Install
+Operation = Upgrade
+Target = pulseaudio-config-droid
+Target = pulseaudio
+
+[Action]
+Description = Copying pulseaudio-config-droid default.pa to /etc/pulse/default.pa
+When = PostTransaction
+Exec = /usr/share/pulseaudio-config-droid/update-default-pa.sh
