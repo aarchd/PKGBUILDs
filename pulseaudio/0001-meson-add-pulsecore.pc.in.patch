@@ -1,0 +1,25 @@
+From 73f547c70fc8aeb6b6784dd4ee6125856f0e00e2 Mon Sep 17 00:00:00 2001
+From: Deepak Meena <notwho53@gmail.com>
+Date: Tue, 20 May 2025 13:30:00 +0530
+Subject: [PATCH] meson: add pulsecore.pc.in
+
+Signed-off-by: Deepak Meena <notwho53@gmail.com>
+---
+ meson.build | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/meson.build b/meson.build
+index 569886b..35cfbac 100644
+--- a/meson.build
++++ b/meson.build
+@@ -732,6 +732,7 @@ pc_cdata.set('PTHREAD_LIBS', '-pthread')
+ pc_files = [
+   'libpulse.pc',
+   'libpulse-simple.pc',
++  'pulsecore.pc',
+ ]
+ 
+ if glib_dep.found()
+-- 
+2.49.0
+

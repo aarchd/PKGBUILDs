@@ -1,6 +1,6 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgbase=pulseaudio
-pkgname=(pulseaudio libpulse pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp})
+pkgname=(pulseaudio libpulse pulsecore pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp})
 pkgdesc="A featureful, general-purpose sound server"
 pkgver=14.2
 pkgrel=2
@@ -12,13 +12,16 @@ makedepends=('libasyncns' 'libcap' 'attr' 'libxtst' 'libsm' 'libsndfile' 'rtkit'
     'lirc' 'openssl' 'fftw' 'orc' 'gtk3' 'webrtc-audio-processing-1' 'check' 'git' 'meson'
     'xmltoman' 'doxygen')
 source=("git+https://github.com/droidian/pulseaudio.git"
-    "build-sys-meson-Add-missing-include-dir.patch")
+    "build-sys-meson-Add-missing-include-dir.patch"
+    "0001-meson-add-pulsecore.pc.in.patch")
 sha256sums=('SKIP'
-    'afd7d4b1991636d7e72ee80df609a609071309d331adaa933af9582010411426')
+    'afd7d4b1991636d7e72ee80df609a609071309d331adaa933af9582010411426'
+    '5b2a3683b911108e43401038eaf9789b45ddde9f027f04776c492c20efb8bdae')
 
 prepare() {
     cd pulseaudio
     patch -p1 < ../build-sys-meson-Add-missing-include-dir.patch
+    patch -p1 < ../0001-meson-add-pulsecore.pc.in.patch
     echo "$pkgver-$pkgrel" > .tarball-version
 }
 
@@ -163,4 +166,15 @@ package_pulseaudio-rtp() {
     depends=("pulseaudio")
 
     mv rtp/* "$pkgdir"
+}
+
+package_pulsecore() {
+    pkgdesc="PulseAudio client development headers and libraries (out of tree modules support)"
+    depends=("pulseaudio" "libpulse")
+
+    #have to do it manually build system doesnt install it at path
+    mkdir -p "$pkgdir/usr/include/pulsecore"
+    cp -pR pulseaudio/src/pulsecore/* "$pkgdir/usr/include/pulsecore"
+    find "$pkgdir/usr/include/pulsecore" -type f ! -name '*.h' -delete
+    rm "$pkgdir/usr/include/pulsecore/Makefile"
 }
