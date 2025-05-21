@@ -18,12 +18,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Clone build-tools repo
-        run: |
-          git clone https://github.com/aarchd/build-tools /tmp/build-tools
-
       - name: Run pkgmeta.sh gen
         run: |
+          mkdir -p /tmp/build-tools
+          cp .github/workflows/*.sh /tmp/build-tools
           /tmp/build-tools/pkgmeta.sh gen
           cat metadata # for debug, its not consistent idk why
           cp metadata ../build-metadata
