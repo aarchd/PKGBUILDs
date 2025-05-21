@@ -20,10 +20,10 @@ package() {
 	mkdir -p $pkgdir/usr/bin
 	ln -s /usr/share/flash-bootimage/flash-bootimage $pkgdir/usr/bin/flash-bootimage
 	install -Dm755 src/flash-bootimage-switch-slot $pkgdir/usr/share/flash-bootimage/flash-bootimage-switch-slot
-	install -Dm755 src/flash-bootimage-generator $pkgdir/lib/systemd/system-generators/flash-bootimage-generator
-	install -Dm644 config/flash-bootimage.conf $pkgdir/lib/flash-bootimage/flash-bootimage.conf
+	install -Dm755 src/flash-bootimage-generator $pkgdir/usr/lib/systemd/system-generators/flash-bootimage-generator
+	install -Dm644 config/flash-bootimage.conf $pkgdir/usr/lib/flash-bootimage/flash-bootimage.conf
 	install -Dm644 config/00-empty $pkgdir/etc/flash-bootimage/00-empty
 	install -Dm644 $srcdir/zz-flash-bootimage $pkgdir/etc/kernel/bootimage_postinst.d/zz-flash-bootimage
-	mkdir -p $pkgdir/lib/systemd/system
-	cp -ar systemd/* $pkgdir/lib/systemd/system/
+	mkdir -p $pkgdir/usr/lib/systemd/system
+	cp -ar systemd/* $pkgdir/usr/lib/systemd/system/
 }
