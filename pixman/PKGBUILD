@@ -1,0 +1,45 @@
+# Maintainer: Andreas Radke <andyrtr@archlinux.org>
+# Contributor: Jan de Groot <jgc@archlinux.org>
+# Contributor: Alexander Baldeck <alexander@archlinux.org>
+
+# ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
+#  - disable x86 extensions (mmx, sse2, ssse3)
+
+# aarchd: Deepak Meena <notwho53@gmail.com>
+# - enable asimd
+# - drop checks
+
+pkgname=pixman
+pkgver=0.46.0
+pkgrel=1
+pkgdesc="The pixel-manipulation library for X and cairo"
+arch=(aarch64)
+url="https://cgit.freedesktop.org/pixman/"
+license=('MIT')
+depends=('glibc')
+makedepends=('meson' 'libpng')
+provides=('libpixman-1.so')
+source=(https://xorg.freedesktop.org/releases/individual/lib/${pkgname}-${pkgver}.tar.xz)
+sha512sums=('c7ef987b7db89c58278c537f862bc9eb17c19f8288a3b7e88f8501a0486662f1e2cb6a2c0b81d4bf0464310475192428d6e29d05a6ae3cfc1d2c0941fbb0b9a3')
+#validpgpkeys=('') # Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
+
+build() {
+  arch-meson $pkgname-$pkgver build \
+    -D loongson-mmi=disabled \
+    -D vmx=disabled \
+    -D arm-simd=disabled \
+    -D neon=disabled \
+    -D a64-neon=enabled \
+    -D rvv=disabled \
+    -D mmx=disabled \
+    -D sse2=disabled \
+    -D ssse3=disabled \
+    -D mips-dspr2=disabled \
+    -D gtk=disabled
+  ninja -C build
+}
+
+package() {
+  DESTDIR="$pkgdir" meson install -C build
+  install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname-$pkgver/COPYING
+}
