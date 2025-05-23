@@ -1,0 +1,19 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=android-minui
+pkgver=0.0.2
+pkgrel=1
+pkgdesc="Android minui library"
+arch=('aarch64')
+url="https://github.com/droidian/android-minui"
+makedepends=('libadf' 'libpng' 'libdrm' 'meson')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+    arch-meson "$srcdir/$pkgname" build
+    ninja -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" ninja -C build install
+}
