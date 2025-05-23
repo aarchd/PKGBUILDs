@@ -1,0 +1,26 @@
+From 1ddeef918aa5dffaa561a1b894b1fa07a89310ab Mon Sep 17 00:00:00 2001
+From: Deepak Meena <notwho53@gmail.com>
+Date: Fri, 17 Jan 2025 18:19:22 +0530
+Subject: [PATCH 2/2] graphics_drm: fix incompatible pointer type in drm_init
+
+Signed-off-by: Deepak Meena <notwho53@gmail.com>
+---
+ graphics_drm.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/graphics_drm.c b/graphics_drm.c
+index 2abd9cd..f2e7dd5 100644
+--- a/graphics_drm.c
++++ b/graphics_drm.c
+@@ -314,7 +314,7 @@ static void disable_non_main_crtcs(int fd,
+         drmModeFreeCrtc(crtc);
+     }
+ }
+-static GRSurface* drm_init(minui_backend* backend __unused) {
++static GRSurface* drm_init(minui_backend* backend __unused, _Bool unused __unused) {
+     drmModeRes *res = NULL;
+     uint32_t selected_mode;
+     char *dev_name;
+-- 
+2.49.0
+

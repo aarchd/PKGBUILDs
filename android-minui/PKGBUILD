@@ -5,11 +5,17 @@ pkgrel=1
 pkgdesc="Android minui library"
 arch=('aarch64')
 url="https://github.com/droidian/android-minui"
-makedepends=('libadf' 'libpng' 'libdrm' 'meson')
-source=("git+$url.git")
-sha256sums=('SKIP')
+makedepends=('libpng' 'libdrm' 'meson')
+source=("git+$url.git"
+    "0001-drop-libadf.patch"
+    "0002-graphics_drm-fix-incompatible-pointer-type-in-drm_in.patch")
+sha256sums=('SKIP'
+    '9146f900933d30eaf9404d3f3261201b9aa4a3f3a492d0e34b901a7fea897f2a'
+    '91c8594f67050d18481327608cc18fec1c7e151cdb951e373ce8d64a3d266872')
 
 build() {
+    patch -p1 < "$srcdir/0001-drop-libadf.patch" -d "$srcdir/$pkgname"
+    patch -p1 < "$srcdir/0002-graphics_drm-fix-incompatible-pointer-type-in-drm_in.patch" -d "$srcdir/$pkgname"
     arch-meson "$srcdir/$pkgname" build
     ninja -C build
 }
