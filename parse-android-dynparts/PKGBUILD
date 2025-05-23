@@ -8,8 +8,10 @@ url="https://github.com/tchebb/parse-android-dynparts"
 license=('custom')
 depends=('openssl')
 makedepends=('cmake')
-source=("git+https://github.com/droidian/parse-android-dynparts.git")
-sha256sums=('SKIP')
+source=("git+https://github.com/droidian/parse-android-dynparts.git"
+  "parse-android-dynparts.initcpio_install")
+sha256sums=('SKIP'
+  '9e408c79eb2740ba48d889064546ee288376d7d140af186523015ad5ae539af8')
 
 build() {
   cd "$srcdir/$pkgname"
@@ -20,5 +22,5 @@ build() {
 package() {
   cd "$srcdir/$pkgname"
   DESTDIR="$pkgdir" cmake --install _build
-  # TODO: initramfs hook
+  install -Dm644 "$srcdir/parse-android-dynparts.initcpio_install" "$pkgdir/usr/lib/initcpio/install/parse-android-dynparts"
 }
