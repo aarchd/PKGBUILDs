@@ -6,31 +6,34 @@ pkgdesc="Sensor framework daemon"
 arch=('aarch64')
 url="https://github.com/sailfishos/sensorfw"
 license=('GPL-2.1')
-makedepends=('qt6-base' 'udev' 'systemd' 'doxygen' 'graphviz' 'libhardware-dev' 'android-headers' 
+makedepends=('qt6-base' 'udev' 'systemd' 'libhardware-dev' 'android-headers' 
   'libhybris-dev' 'glib2-devel' 'libglibutil-dev' 'libgbinder-dev')
-source=("git+$url.git")
-sha256sums=('SKIP')
+source=("git+$url.git"
+    "0001-drop-doc-test-example.patch")
+sha256sums=('SKIP'
+    '49b5f97ac175ec3050778c8056acc30e75e2f0ff44812f0a63932e9b49ed2767')
 
 _projname=sensorfw
 _builddir=build
 
 prepare() {
     cd "$srcdir/$pkgname"
+    patch -p1 < "$srcdir/0001-drop-doc-test-example.patch"
     mkdir -p "$_builddir"
 }
 
 build() {
     cd "$srcdir/$pkgname/$_builddir"
 
-    export CFLAGS="-Wall -g -Wno-psabi"
+    export CFLAGS="-Wall -Wno-psabi"
     [[ "$CFLAGS" != *-O* ]] && CFLAGS+=" -O2"
 
     qmake6 CONFIG+="configs autohybris binder systemdunit" \
-        QMAKE_CXXFLAGS="$CFLAGS" MAKE_DOCS=yes ../${_projname}.pro
+        QMAKE_CXXFLAGS="$CFLAGS" ../${_projname}.pro
 
     make -j$(nproc)
 
-    sed "s|@LIB@|lib/$(uname -m)-linux-gnu|g" "$srcdir/$pkgname/sensord-qt6.pc.in" \
+    sed "s|@LIB@|lib|g" "$srcdir/$pkgname/sensord-qt6.pc.in" \
         > "$srcdir/$pkgname/sensord-qt6.pc"
 }
 
@@ -39,8 +42,11 @@ package() {
 
     make INSTALL_ROOT="$pkgdir" install
 
+    mv "$pkgdir/lib/"* "$pkgdir/usr/lib/"
+    rm -rf "$pkgdir/lib/"
+    mv "$pkgdir/usr/sbin/"* "$pkgdir/usr/bin/"
+    rm -rf "$pkgdir/usr/sbin/"
+
     install -Dm644 "$srcdir/$pkgname/sensord-qt6.pc" \
         "$pkgdir/usr/lib/pkgconfig/sensord-qt6.pc"
-
-
 }
