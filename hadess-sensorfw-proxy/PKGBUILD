@@ -1,0 +1,28 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=hadess-sensorfw-proxy
+pkgver=0.2.1
+pkgrel=1
+pkgdesc="Sensorfw sensors to hadess iio proxy adaptor"
+arch=('aarch64')
+url="https://github.com/droidian/hadess-sensorfw-proxy"
+license=('custom')
+depends=('sensorfw')
+makedepends=('dbus' 'glib2-devel' 'systemd' 'cmake' 'libglibutil-dev' 'libgbinder-dev')
+source=("git+https://github.com/who53/hadess-sensorfw-proxy.git#branch=waydroid-sensors")
+sha256sums=('SKIP')
+
+build() {
+  cd "$srcdir/$pkgname"
+  cmake -B _build -S . \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_POLICY_VERSION_MINIMUM=3.5
+  cmake --build _build --parallel
+}
+
+package() {
+  cd "$srcdir/$pkgname"
+  DESTDIR="$pkgdir" cmake --install _build
+  install -Dm644 10-hadess-sensorfw-proxy.conf \
+    $pkgdir/etc/systemd/system/iio-sensor-proxy.service.d/10-hadess-sensorfw-proxy.conf
+}
