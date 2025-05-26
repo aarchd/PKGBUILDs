@@ -8,6 +8,8 @@ url="https://github.com/droidian/hadess-sensorfw-proxy"
 license=('custom')
 depends=('sensorfw')
 makedepends=('dbus' 'glib2-devel' 'systemd' 'cmake' 'libglibutil-dev' 'libgbinder-dev')
+provides=('iio-sensor-proxy')
+conflicts=('iio-sensor-proxy')
 source=("git+https://github.com/who53/hadess-sensorfw-proxy.git#branch=waydroid-sensors")
 sha256sums=('SKIP')
 
