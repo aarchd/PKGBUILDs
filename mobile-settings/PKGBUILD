@@ -1,0 +1,21 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=mobile-settings
+pkgver=0.2.3
+pkgrel=1
+pkgdesc="Allows tweaking OS from userspace."
+arch=('aarch64')
+url="https://github.com/droidian/mobile-settings"
+license=('custom')
+depends=('dbus' 'glib2')
+makedepends=('meson' 'glib2-devel' 'systemd')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+build() {
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" ninja -C build install
+}
