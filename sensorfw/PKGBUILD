@@ -9,11 +9,11 @@ license=('GPL-2.1')
 makedepends=('qt6-base' 'udev' 'systemd' 'libhardware-dev' 'android-headers' 
   'libhybris-dev' 'glib2-devel' 'libglibutil-dev' 'libgbinder-dev')
 source=("git+$url.git"
-    "0001-drop-doc-test-example.patch"
+    "0001-drop-doc-test-example-qt-api.patch"
     "sensorfwd.service"
     "sensorfwd-hybris-dropin.conf")
 sha256sums=('SKIP'
-    '49b5f97ac175ec3050778c8056acc30e75e2f0ff44812f0a63932e9b49ed2767'
+    '0d2a4c54f1c49e1d62571b4562a1ec087d335be0603ba5178abd582e7c30631a'
     'b9223498ed0a9c15cd317d5375ee8f211f5508b4c684576fa1937f3b47391361'
     '1282f58a06ef5b4265f051097c0fba95aa6e69d9482d597fd560a2d680196271')
 
@@ -22,7 +22,7 @@ _builddir=build
 
 prepare() {
     cd "$srcdir/$pkgname"
-    patch -p1 < "$srcdir/0001-drop-doc-test-example.patch"
+    patch -p1 < "$srcdir/0001-drop-doc-test-example-qt-api.patch"
     mkdir -p "$_builddir"
 }
 
