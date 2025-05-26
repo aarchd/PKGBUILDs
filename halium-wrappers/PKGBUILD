@@ -21,7 +21,6 @@ makedepends=(
 )
 source=("git+https://github.com/droidian/halium-wrappers.git")
 sha256sums=('SKIP')
-install="${pkgname}.install"
 triplet="$(gcc -dumpmachine)"
 
 build() {
@@ -31,6 +30,7 @@ build() {
 
 package_halium-wrappers() {
 	pkgdesc="Convenience wrappers to Android utilities"
+	install="${pkgname}.install"
 
 	mkdir -p "$pkgdir/usr/bin/"
 	install -m755 $srcdir/build/usr/bin/* "$pkgdir/usr/bin/"
