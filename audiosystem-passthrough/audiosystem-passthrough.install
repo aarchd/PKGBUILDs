@@ -1,7 +1,7 @@
 post_install() {
-	systemctl --user enable audiosystem-passthrough.service
+	systemctl --user --global enable audiosystem-passthrough.service
 }
 
 pre_remove() {
-	systemctl --user disable audiosystem-passthrough.service
+	systemctl --user --global disable audiosystem-passthrough.service
 }
