@@ -1,4 +1,7 @@
 post_install() {
-    systemctl --system daemon-reload
     systemctl --system enable iio-sensor-proxy.service
+}
+
+pre_remove() {
+    systemctl --system disable iio-sensor-proxy.service
 }

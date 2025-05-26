@@ -1,12 +1,7 @@
-#!/bin/sh
-
 post_install() {
-	systemctl --system unmask android-service@hwcomposer.service
-	systemctl --system daemon-reload
 	systemctl --system enable android-service@hwcomposer.service
 }
 
-post_remove() {
-	systemctl --system daemon-reload
-	systemctl --system mask android-service@hwcomposer.service
+pre_remove() {
+	systemctl --system disable android-service@hwcomposer.service
 }

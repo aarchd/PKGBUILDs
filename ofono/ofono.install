@@ -1,4 +1,7 @@
 post_install() {
-	systemctl --system daemon-reload
 	systemctl --system enable ofono.service
+}
+
+pre_remove() {
+	systemctl --system disable ofono.service
 }

@@ -1,4 +1,7 @@
 post_install() {
-	systemctl daemon-reload
 	systemctl enable usb-tethering.service
+}
+
+pre_remove() {
+	systemctl disable usb-tethering.service
 }
