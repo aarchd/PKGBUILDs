@@ -45,8 +45,8 @@ package_halium-wrappers() {
 	mkdir -p "$pkgdir/usr/lib/halium-wrappers/"
 	install -m755 $srcdir/build/usr/lib/halium-wrappers/* "$pkgdir/usr/lib/halium-wrappers/"
 	mkdir -p "$pkgdir/usr/lib/systemd/system/android-service@hwcomposer.service.d"
-	install -m755 $srcdir/build/usr/lib/systemd/system/android-service@hwcomposer.service.d/* "$pkgdir/usr/lib/systemd/system/android-service@hwcomposer.service.d/"
-	install -m755 $srcdir/build/usr/lib/systemd/system/android-service@.service "$pkgdir/usr/lib/systemd/system/"
+	install -m644 $srcdir/build/usr/lib/systemd/system/android-service@hwcomposer.service.d/* "$pkgdir/usr/lib/systemd/system/android-service@hwcomposer.service.d/"
+	install -m644 $srcdir/build/usr/lib/systemd/system/android-service@.service "$pkgdir/usr/lib/systemd/system/"
 }
 
 package_libdroidian-workarounds() {
