@@ -105,6 +105,7 @@ jobs:
             name=${base%-$version}
           
             find PKGS/ -type f -name "${name}-*.pkg.tar.zst" ! -name "$(basename "$pkg")" -exec rm -v {} +
+            find PKGS/ -type f -name "${name}-*.pkg.tar.zst.sig" ! -name "$(basename "$pkg").sig" -exec rm -v {} +
           done
 
           cp /tmp/pkgs/* PKGS/
