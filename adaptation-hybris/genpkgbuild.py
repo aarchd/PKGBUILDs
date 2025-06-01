@@ -30,7 +30,6 @@ COMMON_PHOSH = [
 COMMON_PHONE_PACKAGES = [
 	"adaptation-hybris-common",
 	"ofono",
-	"ofono-scripts",
 	"ofono2mm",
 ]
 
