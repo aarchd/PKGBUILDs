@@ -12,7 +12,7 @@ COMMON_PACKAGES = [
 	"lxc-android",
 	"libhybris",
 	"libhybris-utils",
-	#"hadess-sensorfw-proxy",
+	"hadess-sensorfw-proxy",
 	"droidian-quirks-hybris-gl",
 	"droidian-quirks-tls-padding",
 	"droidian-quirks-xtables-legacy",
