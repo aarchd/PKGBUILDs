@@ -1,6 +1,6 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgname=mint
-pkgver=0.3
+pkgver=0.4
 pkgrel=1
 pkgdesc="minui-based splash and info display tool for Linux and Android devices"
 arch=('aarch64')
