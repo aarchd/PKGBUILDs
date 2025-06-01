@@ -1,0 +1,13 @@
+#!/usr/bin/ash
+
+run_hook() {
+    # get androidboot.mode= value from kernel command line and check if its "charger" if yes then do mint --charging battery
+    local mode=$(cat /proc/cmdline | grep -oP 'androidboot\.mode=\K\w+')
+    if [ "$mode" = "charger" ]; then
+        mint --charging battery
+    fi
+
+    mint --splash
+}
+
+# vim: set ft=sh ts=4 sw=4 et:

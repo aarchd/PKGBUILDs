@@ -1,0 +1,26 @@
+# Maintainer: Deepak Meena <notwho53@gmail.com>
+pkgname=mint
+pkgver=0.3
+pkgrel=1
+pkgdesc="minui-based splash and info display tool for Linux and Android devices"
+arch=('aarch64')
+url="https://github.com/aarchd/mint"
+depends=('android-minui' 'cairo')
+makedepends=('meson' 'android-minui' 'cairo')
+source=("git+$url.git"
+    "mint.initcpio_install"
+    "mint.initcpio_hook")
+sha256sums=('SKIP'
+    '106a0e22e2dc2ead12abfee6d428411defac4f9ea945c30f9ff8ed1a860b201f'
+    '147831a3ee3da06aa03bc5e5a70ecf79ba0bce4704a891cd96457b47d7919262')
+
+build() {
+	arch-meson "$srcdir/$pkgname" build
+	ninja -C build
+}
+
+package() {
+    DESTDIR="$pkgdir" ninja -C build install
+    install -Dm644 "$srcdir/mint.initcpio_install" "$pkgdir/usr/lib/initcpio/install/mint"
+    install -Dm644 "$srcdir/mint.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/mint"
+}
