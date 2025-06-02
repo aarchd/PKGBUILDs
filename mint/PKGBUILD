@@ -1,11 +1,11 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgname=mint
-pkgver=0.4
+pkgver=0.5
 pkgrel=1
 pkgdesc="minui-based splash and info display tool for Linux and Android devices"
 arch=('aarch64')
 url="https://github.com/aarchd/mint"
-depends=('android-minui' 'cairo')
+depends=('android-minui' 'cairo' 'freetype2')
 makedepends=('meson' 'android-minui' 'cairo')
 source=("git+$url.git"
     "mint.initcpio_install"
