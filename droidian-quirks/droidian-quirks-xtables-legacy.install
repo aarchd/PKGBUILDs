@@ -9,3 +9,7 @@ pre_remove() {
     update-alternatives --auto ${alt}
   done
 }
+
+post_upgrade() {
+	post_install
+}
