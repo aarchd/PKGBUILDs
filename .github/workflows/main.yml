@@ -98,14 +98,14 @@ jobs:
         run: |
           git clone https://$PAT@github.com/aarchd/repo.git --depth=1
           cd repo && mkdir -p PKGS/
+          sudo apt-get install pacman-package-manager
 
           for pkg in /tmp/pkgs/*.pkg.tar.zst; do
-            base=$(basename "$pkg" .pkg.tar.zst)
-            version=$(echo "$base" | rev | cut -d- -f1-3 | rev)
-            name=${base%-$version}
+            name=$(sudo pacman -Qip "$pkg" | awk '/^Name/ {print $3}')
+            version=$(sudo pacman -Qip "$pkg" | awk '/^Version/ {print $3}')
           
-            find PKGS/ -type f -name "${name}-*.pkg.tar.zst" ! -name "$(basename "$pkg")" -exec rm -v {} +
-            find PKGS/ -type f -name "${name}-*.pkg.tar.zst.sig" ! -name "$(basename "$pkg").sig" -exec rm -v {} +
+            find PKGS/ -type f -name "${name}-*.pkg.tar.zst" -exec rm -v {} +
+            find PKGS/ -type f -name "${name}-*.pkg.tar.zst.sig" -exec rm -v {} +
           done
 
           cp /tmp/pkgs/* PKGS/
