@@ -1,10 +1,23 @@
 #!/usr/bin/ash
 
 run_hook() {
-    # get androidboot.mode= value from kernel command line and check if its "charger" if yes then do mint --charging battery
-    local mode=$(cat /proc/cmdline | grep -oP 'androidboot\.mode=\K\w+')
-    if [ "$mode" = "charger" ]; then
-        mint --charging battery
+    local mode
+    mode=$(grep -oP 'androidboot\.mode=\K\w+' /proc/cmdline)
+
+    if [ -f /proc/bootconfig ]; then
+        mode=$(cat /proc/bootconfig | grep -oP 'androidboot\.bootreason=\K\w+')
+    fi
+
+    if [ -f /proc/bootconfig ]; then
+        local bootreason
+        bootreason=$(grep -oP 'androidboot\.bootreason\s*=\s*"\K[^"]+' /proc/bootconfig)
+        if [ -n "$bootreason" ]; then
+            mode=$bootreason
+        fi
+    fi
+
+    if [ "$mode" = "charger" ] || [ "$mode" = "usb" ]; then
+        mint --charging battery # battery is the node name /sys/class/power_supply/NODE_NAME
     fi
 
     mint --splash
