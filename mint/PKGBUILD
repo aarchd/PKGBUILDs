@@ -12,7 +12,7 @@ source=("git+$url.git"
     "mint.initcpio_hook")
 sha256sums=('SKIP'
     '106a0e22e2dc2ead12abfee6d428411defac4f9ea945c30f9ff8ed1a860b201f'
-    '147831a3ee3da06aa03bc5e5a70ecf79ba0bce4704a891cd96457b47d7919262')
+    'fbfa8a44f572f41dfa90057abd56974b870fe8edbabf5f2d2fa58c88820e7a7b')
 
 build() {
 	arch-meson "$srcdir/$pkgname" build
