@@ -12,7 +12,6 @@ pkgname=(
 	'droidian-quirks-systemd'
 	'droidian-quirks-tls-padding'
 	'droidian-quirks-wayland'
-	'droidian-quirks-xtables-legacy'
 )
 pkgver=95
 pkgrel=1
@@ -160,13 +159,4 @@ package_droidian-quirks-wayland() {
 
 	cd $srcdir/$pkgbase
 	install -Dm777 wayland/zz-wayland.sh $pkgdir/etc/profile.d/zz-wayland.sh
-}
-
-package_droidian-quirks-xtables-legacy() {
-	pkgdesc="Quirk to set xtables-legacy as the default iptables implementation"
-	depends=('iptables')
-	install=droidian-quirks-xtables-legacy.install
-
-	cd $srcdir/$pkgbase
-	install -Dm644 xtables-legacy/99-droidian-backend.conf $pkgdir/etc/NetworkManager/conf.d/99-droidian-backend.conf
 }

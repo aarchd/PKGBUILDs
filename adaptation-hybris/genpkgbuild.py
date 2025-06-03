@@ -15,7 +15,6 @@ COMMON_PACKAGES = [
 	"hadess-sensorfw-proxy",
 	"droidian-quirks-hybris-gl",
 	"droidian-quirks-tls-padding",
-	"droidian-quirks-xtables-legacy",
 	"gst-droid",
 	"flash-bootimage",
 	"droidian-quirks-device",
