@@ -44,6 +44,7 @@ package_aarchd-base() {
 		'libgbinder-tools'
 		'cups'
 		'dialog'
+		'droidian-quirks-journald-standard'
 		'droidian-quirks-systemd'
 		'droidian-quirks-wayland'
 		'aarchd-keyring'
