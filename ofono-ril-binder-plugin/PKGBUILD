@@ -33,7 +33,7 @@ package_libgrilio-binder() {
 	depends=('libgbinder' 'libgbinder-radio')
 
 	mkdir -p "$pkgdir/usr/lib"
-	install -m644 $srcdir/build/usr/lib/libgrilio-binder.so.* $pkgdir/usr/lib/
+	cp -a $srcdir/build/usr/lib/libgrilio-binder.so.* $pkgdir/usr/lib/
 }
 
 package_libgrilio-binder-dev() {
