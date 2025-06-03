@@ -5,10 +5,6 @@ run_hook() {
     mode=$(grep -oP 'androidboot\.mode=\K\w+' /proc/cmdline)
 
     if [ -f /proc/bootconfig ]; then
-        mode=$(cat /proc/bootconfig | grep -oP 'androidboot\.bootreason=\K\w+')
-    fi
-
-    if [ -f /proc/bootconfig ]; then
         local bootreason
         bootreason=$(grep -oP 'androidboot\.bootreason\s*=\s*"\K[^"]+' /proc/bootconfig)
         if [ -n "$bootreason" ]; then
@@ -16,9 +12,16 @@ run_hook() {
         fi
     fi
 
-    if [ "$mode" = "charger" ] || [ "$mode" = "usb" ]; then
-        mint --charging battery # battery is the node name /sys/class/power_supply/NODE_NAME
-    fi
+    case "$mode" in
+        *charger*|usb)
+            for dev in /sys/class/power_supply/*; do
+                if udevadm info -q property -p "$dev" 2>/dev/null | grep -q '^POWER_SUPPLY_TYPE=Battery$'; then
+                    mint --charging "$(basename "$dev")"
+                    break
+                fi
+            done
+            ;;
+    esac
 
     mint --splash
 }
