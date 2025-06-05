@@ -6,10 +6,10 @@ pkgdesc="USB control for Android with hybris"
 arch=('any')
 url="https://github.com/droidian/hybris-usb"
 license=('custom')
-depends=('net-tools' 'dhcp')
-install=hybris-usb.install
-source=("git+https://github.com/droidian/hybris-usb.git")
+depends=('net-tools' 'dhcp' 'systemd')
+source=("git+https://github.com/aarchd/hybris-usb.git")
 sha256sums=('SKIP')
+install=hybris-usb.install
 
 package() {
    cd $srcdir/$pkgname
@@ -19,5 +19,5 @@ package() {
 
    install -Dm644 dhcpd.conf ${pkgdir}/etc/hybris-usb/dhcpd.conf
 
-   install -Dm644 debian/hybris-usb.usb-tethering.service ${pkgdir}/etc/systemd/system/usb-tethering.service
+   install -Dm644 hybris-usb.service ${pkgdir}/usr/lib/systemd/system/hybris-usb.service
 }

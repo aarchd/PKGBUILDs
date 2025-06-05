@@ -1,9 +1,9 @@
 post_install() {
-	systemctl enable usb-tethering.service
+	systemctl enable hybris-usb.service
 }
 
 pre_remove() {
-	systemctl disable usb-tethering.service
+	systemctl disable hybris-usb.service
 }
 
 post_upgrade() {
