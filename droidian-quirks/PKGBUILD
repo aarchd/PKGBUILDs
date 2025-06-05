@@ -151,6 +151,7 @@ package_droidian-quirks-tls-padding() {
 	depends=('halium-wrappers')
 
 	cd $srcdir/$pkgbase
+	sed -i 's/:libgtk6216workaround\.so//' tls-padding/zz-tls-padding.sh
 	install -Dm777 tls-padding/zz-tls-padding.sh $pkgdir/etc/profile.d/zz-tls-padding.sh
 }
 
