@@ -1,7 +1,7 @@
 # Maintainer: Deepak Kumar <notwho53@gmail.com>
 pkgname=lxc-android
 pkgver=1.38
-pkgrel=1
+pkgrel=2
 pkgdesc="LXC configuration for starting Android containers"
 arch=('any')
 url="https://github.com/droidian/lxc-android"
