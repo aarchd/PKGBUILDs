@@ -4,31 +4,29 @@ pkgver=1.38
 pkgrel=1
 pkgdesc="LXC configuration for starting Android containers"
 arch=('any')
-url="https://github.com/Halium/lxc-android"
+url="https://github.com/droidian/lxc-android"
 license=('custom')
 depends=('cpio' 'lxc' 'glibc' 'halium-wrappers' 'parse-android-dynparts' 'device-mapper')
-source=("git+https://github.com/droidian/lxc-android.git")
+source=("git+https://github.com/aarchd/lxc-android.git")
 sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname"
 
-  install -d "$pkgdir/etc/udev/rules.d"
-  install -d "$pkgdir/usr/lib/systemd/system"
-  install -d "$pkgdir/usr/lib/udev/rules.d"
-  install -d "$pkgdir/usr/lib/lxc-android"
-
-  install -Dm644 etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf "$pkgdir/etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf"
-  install -Dm644 etc/systemd/system/lxc@android.service "$pkgdir/etc/systemd/system/lxc@android.service"
-  install -m644 etc/udev/rules.d/* "$pkgdir/etc/udev/rules.d/"
-
-  install -m644 lib/systemd/system/*.service "$pkgdir/usr/lib/systemd/system/"
-  install -m644 lib/udev/rules.d/* "$pkgdir/usr/lib/udev/rules.d/"
-
-  install -m755 usr/lib/lxc-android/* "$pkgdir/usr/lib/lxc-android/"
-
-  install -Dm755 usr/sbin/mount-android.sh "$pkgdir/usr/bin/mount-android.sh"
-
-  install -Dm644 var/lib/lxc/android/config "$pkgdir/var/lib/lxc/android/config"
-  install -Dm755 var/lib/lxc/android/pre-start.sh "$pkgdir/var/lib/lxc/android/pre-start.sh"
+  install -Dm644 etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf \
+      "$pkgdir/etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf"
+  
+  install -Dm644 etc/systemd/system/lxc@android.service \
+      "$pkgdir/etc/systemd/system/lxc@android.service"
+  
+  install -Dm644 etc/udev/rules.d/50-firmware.rules "$pkgdir/etc/udev/rules.d/50-firmware.rules"
+  install -Dm644 etc/udev/rules.d/60-persistent-v4l.rules "$pkgdir/etc/udev/rules.d/60-persistent-v4l.rules"
+  install -Dm644 etc/udev/rules.d/90-alsa-restore.rules "$pkgdir/etc/udev/rules.d/90-alsa-restore.rules"
+  install -Dm644 etc/udev/rules.d/90-alsa-ucm.rules "$pkgdir/etc/udev/rules.d/90-alsa-ucm.rules"
+  install -Dm644 etc/udev/rules.d/90-btdevice-cursorfix.rules "$pkgdir/etc/udev/rules.d/90-btdevice-cursorfix.rules"
+  install -Dm644 etc/udev/rules.d/90-touchscreen.rules "$pkgdir/etc/udev/rules.d/90-touchscreen.rules"
+  
+  mkdir -p "$pkgdir/{usr,var}"
+  cp -r usr/lib "$pkgdir/usr/"
+  cp -r var/lib "$pkgdir/var/"
 }
