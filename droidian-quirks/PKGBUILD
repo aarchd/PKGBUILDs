@@ -148,7 +148,7 @@ package_droidian-quirks-systemd() {
 
 package_droidian-quirks-tls-padding() {
 	pkgdesc="Quirk to preload libtls-padding"
-	depends=('libtls-padding0' 'libdroidian-workarounds')
+	depends=('halium-wrappers')
 
 	cd $srcdir/$pkgbase
 	install -Dm777 tls-padding/zz-tls-padding.sh $pkgdir/etc/profile.d/zz-tls-padding.sh
