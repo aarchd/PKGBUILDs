@@ -19,17 +19,10 @@ install=android-base.install
 
 package() {
 	# mountpoints
-	install -d "${pkgdir}/android"
-	ln -s /data           "${pkgdir}/android/data"
-	ln -s /system         "${pkgdir}/android/system"
-	ln -s /vendor         "${pkgdir}/android/vendor"
-	ln -s /cache          "${pkgdir}/android/cache"
-	ln -s /persist        "${pkgdir}/android/persist"
-	ln -s /product        "${pkgdir}/android/product"
-	ln -s /metadata       "${pkgdir}/android/metadata"
-	ln -s /apex           "${pkgdir}/android/apex"
-	ln -s /odm            "${pkgdir}/android/odm"
-	ln -s /vendor_dlkm    "${pkgdir}/android/vendor_dlkm"
+	for dir in data system vendor cache persist product metadata apex odm vendor_dlkm; do
+	    mkdir -p "${pkgdir}/$dir"
+	    ln -s "/android/$dir" "${pkgdir}/$dir"
+	done
 
 	# user UID, GID setup
 	install -Dm644 "${srcdir}/login.defs" "${pkgdir}/usr/share/android-base/login.defs"
