@@ -1,0 +1,28 @@
+# Maintainer: Deepak Kumar <notwho53@gmail.com>
+pkgname=runonce
+pkgver=5
+pkgrel=1
+arch=('any')
+url="https://github.com/droidian/runonce"
+depends=('systemd')
+source=("git+$url.git")
+sha256sums=('SKIP')
+
+package() {
+	cd "$srcdir/runonce"
+
+	install -Dm755 src/runonce.sh "$pkgdir/usr/share/runonce/runonce.sh"
+	install -Dm755 src/include.sh "$pkgdir/usr/share/runonce/include.sh"
+	install -Dm644 src/runonce-generator "$pkgdir/usr/lib/systemd/system-generators/runonce-generator"
+	install -Dm644 systemd/system/runonce@.service "$pkgdir/usr/lib/systemd/system/runonce@.service"
+	install -Dm644 systemd/user/runonce@.service "$pkgdir/usr/lib/systemd/user/runonce@.service"
+
+	install -d -m755 "$pkgdir/usr/bin"
+	ln -s /usr/share/runonce/runonce.sh "$pkgdir/usr/bin/runonce"
+	ln -s /usr/share/runonce/runonce.sh "$pkgdir/usr/bin/runonce-queue"
+
+	install -d -m755 "$pkgdir/usr/share/runonce/scripts"
+	install -d -m755 "$pkgdir/usr/share/runonce/targets"
+	install -d -m755 "$pkgdir/var/lib/runonce/queue"
+	install -d -m755 "$pkgdir/var/lib/runonce/done"
+}
