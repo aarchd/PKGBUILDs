@@ -1,32 +1,20 @@
 # Maintainer: Deepak Kumar <notwho53@gmail.com>
 pkgname=lxc-android
 pkgver=1.38
-pkgrel=2
+pkgrel=3
 pkgdesc="LXC configuration for starting Android containers"
 arch=('any')
 url="https://github.com/droidian/lxc-android"
 license=('custom')
-depends=('cpio' 'lxc' 'glibc' 'halium-wrappers' 'parse-android-dynparts' 'device-mapper')
+depends=('cpio' 'lxc' 'glibc' 'halium-wrappers' 'parse-android-dynparts' 'device-mapper' 'dnsmasq')
 source=("git+https://github.com/aarchd/lxc-android.git")
 sha256sums=('SKIP')
 
 package() {
   cd "$srcdir/$pkgname"
 
-  install -Dm644 etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf \
-      "$pkgdir/etc/NetworkManager/conf.d/99-wifi-disable-random-mac.conf"
-  
-  install -Dm644 etc/systemd/system/lxc@android.service \
-      "$pkgdir/etc/systemd/system/lxc@android.service"
-  
-  install -Dm644 etc/udev/rules.d/50-firmware.rules "$pkgdir/etc/udev/rules.d/50-firmware.rules"
-  install -Dm644 etc/udev/rules.d/60-persistent-v4l.rules "$pkgdir/etc/udev/rules.d/60-persistent-v4l.rules"
-  install -Dm644 etc/udev/rules.d/90-alsa-restore.rules "$pkgdir/etc/udev/rules.d/90-alsa-restore.rules"
-  install -Dm644 etc/udev/rules.d/90-alsa-ucm.rules "$pkgdir/etc/udev/rules.d/90-alsa-ucm.rules"
-  install -Dm644 etc/udev/rules.d/90-btdevice-cursorfix.rules "$pkgdir/etc/udev/rules.d/90-btdevice-cursorfix.rules"
-  install -Dm644 etc/udev/rules.d/90-touchscreen.rules "$pkgdir/etc/udev/rules.d/90-touchscreen.rules"
-  
   mkdir -p "$pkgdir/{usr,var}"
+  cp -r etc/* "$pkgdir/"
   cp -r usr/lib "$pkgdir/usr/"
   cp -r var/lib "$pkgdir/var/"
 }
