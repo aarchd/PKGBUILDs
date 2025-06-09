@@ -1,6 +1,6 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgname=mobile-power-saver
-pkgver=0.9.2
+pkgver=0.9.3
 pkgrel=1
 pkgdesc="Mobile Power Saver enable hard power saving when screen is off."
 arch=('aarch64')
