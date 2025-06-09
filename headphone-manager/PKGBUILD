@@ -1,13 +1,13 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgname=headphone-manager
-pkgver=0.2.0
+pkgver=0.2.1
 pkgrel=1
 pkgdesc="Session headphone manager for Linux."
 arch=('aarch64')
 url="https://github.com/droidian/headphone-manager"
 license=('custom')
 depends=('dbus' 'glib2' 'alsa-lib')
-makedepends=('meson' 'glib2-devel' 'alsa-lib')
+makedepends=('meson' 'glib2-devel' 'alsa-lib' 'libgudev')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
