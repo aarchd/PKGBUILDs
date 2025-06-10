@@ -1,0 +1,25 @@
+From 7fc73ce7ad6366065c15be0a21f0a7401f21ea8e Mon Sep 17 00:00:00 2001
+From: Deepak Meena <notwho53@gmail.com>
+Date: Tue, 10 Jun 2025 15:52:06 +0530
+Subject: [PATCH] meson: disable landlock header
+
+Signed-off-by: Deepak Meena <notwho53@gmail.com>
+---
+ meson.build | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/meson.build b/meson.build
+index c045b3bf..36f34918 100644
+--- a/meson.build
++++ b/meson.build
+@@ -127,7 +127,6 @@ libseccomp = dependency('libseccomp',
+                         required : false)
+ conf.set('HAVE_LIBSECCOMP', libseccomp.found())
+ foreach header : [
+-    'linux/landlock.h',
+     'mntent.h',
+     'sys/mnttab.h',
+     'sys/mount.h',
+-- 
+2.49.0
+
