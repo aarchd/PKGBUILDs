@@ -102,10 +102,15 @@ jobs:
 
           for pkg in /tmp/pkgs/*.pkg.tar.zst; do
             name=$(sudo pacman -Qip "$pkg" | awk '/^Name/ {print $3}')
-            version=$(sudo pacman -Qip "$pkg" | awk '/^Version/ {print $3}')
-          
-            find PKGS/ -type f -name "${name}-*.pkg.tar.zst" -exec rm -v {} +
-            find PKGS/ -type f -name "${name}-*.pkg.tar.zst.sig" -exec rm -v {} +
+            for f in PKGS/${name}-*.pkg.tar.zst; do
+              [[ ! -e "$f" ]] && continue
+              suffix="${f##*/$name-}"
+              prefix="${suffix%%-*}"
+              if [[ "$prefix" =~ ^[0-9] ]]; then
+                echo "Deleting $f"
+                rm -rf "$f" "$f.sig"
+              fi
+            done
           done
 
           cp /tmp/pkgs/* PKGS/
