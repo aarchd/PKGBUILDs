@@ -1,5 +1,7 @@
+# Maintainer: Jguer <pkgbuilds at jguer.space>
+# aarchd
 # Maintainer: Deepak Meena <notwho53@gmail.com>
-# taken from chaotic-aur
+
 pkgname=yay
 pkgver=12.5.0
 pkgrel=1

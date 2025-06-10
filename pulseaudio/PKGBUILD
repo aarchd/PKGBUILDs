@@ -1,4 +1,7 @@
+# Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
+# aarchd
 # Maintainer: Deepak Meena <notwho53@gmail.com>
+
 pkgbase=pulseaudio
 pkgname=(pulseaudio libpulse pulsecore pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp})
 pkgdesc="A featureful, general-purpose sound server"
