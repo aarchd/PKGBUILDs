@@ -39,7 +39,7 @@ package_libhybris() {
 
   cd "$srcdir/$pkgbase/hybris"
   DESTDIR="$pkgdir" make install
-  rm -rf "$pkgdir/usr/include/{CL,EGL,GLES{,2,3},KHR}"
+  rm -rf $pkgdir/usr/include/{CL,EGL,GLES{,2,3},KHR}
   for man in getprop setprop; do
     gzip -n -c "../debian/$man.1" > "$man.1.gz"
     install -Dm644 "$man.1.gz" "$pkgdir/usr/share/man/man1/$man.1.gz"
