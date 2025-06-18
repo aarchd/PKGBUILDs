@@ -45,7 +45,7 @@ jobs:
           mkdir -p /tmp/rootfs
           sudo tar -xzf rootfs.tar.gz -C /tmp/rootfs
           sudo mv /tmp/rootfs/etc/pacman.d/mirrorlist /tmp/rootfs/etc/pacman.d/mirrorlist.bak
-          echo "Server = http://hu.mirror.archlinuxarm.org/aarch64/\$repo" | sudo tee "/tmp/rootfs/etc/pacman.d/mirrorlist"
+          echo "Server = http://ca.us.mirror.archlinuxarm.org/aarch64/\$repo" | sudo tee "/tmp/rootfs/etc/pacman.d/mirrorlist"
 
       - name: Build changed packages
         if: env.CHANGED_PKGS != ''
