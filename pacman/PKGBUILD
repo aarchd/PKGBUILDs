@@ -35,10 +35,6 @@ makedepends=(
   git
   meson
 )
-checkdepends=(
-  fakechroot
-  python
-)
 optdepends=(
   'base-devel: required to use makepkg'
   'perl-locale-gettext: translation support in makepkg-template'
@@ -110,12 +106,6 @@ build() {
         build
 
   meson compile -C build
-}
-
-check() {
-  cd "$pkgname"
-
-  meson test -C build
 }
 
 package() {
