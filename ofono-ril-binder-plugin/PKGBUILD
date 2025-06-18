@@ -22,7 +22,7 @@ build() {
 }
 
 package_ofono-ril-binder-plugin() {
-	depends=('libgbinder')ofono-ril-binder-plugin/PKGBUILD
+	depends=('libgbinder')
 
 	install -Dm644 $srcdir/build/usr/lib/ofono/plugins/rilbinderplugin.so \
 		"$pkgdir/usr/lib/ofono/plugins/rilbinderplugin.so"
