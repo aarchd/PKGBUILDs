@@ -7,8 +7,8 @@ url='https://01.org/ofono'
 arch=(aarch64)
 license=('GPL2')
 depends=('bluez' 'dbus-glib' 'glib2' 'udev' 'mobile-broadband-provider-info' 'systemd' 'python')
-makedepends=('bluez' 'dbus-glib' 'glib2-devel' 'udev' 'mobile-broadband-provider-info' 'systemd' 'libglibutil-dev' 'libgrilio-dev'
-	'libwspcodec-dev')
+makedepends=('bluez' 'dbus-glib' 'glib2-devel' 'udev' 'mobile-broadband-provider-info' 'systemd' 'libglibutil' 'libgrilio'
+	'libwspcodec')
 source=('git+https://github.com/sailfishos/ofono.git'
 	'ofono.service')
 sha256sums=('SKIP'

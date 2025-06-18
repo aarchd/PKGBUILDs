@@ -26,7 +26,7 @@ depends=(
     'xcb-util-wm'
     'libdroid'
     'android-headers'
-    'libhybris-dev'
+    'libhybris'
 )
 makedepends=(
     'glslang'
@@ -37,8 +37,7 @@ makedepends=(
     'wayland-protocols'
     'xorg-xwayland'
     'android-headers'
-    'libhybris-dev'
-    'libhardware-dev'
+    'libhybris'
     'libdroid'
 )
 optdepends=(

@@ -2,7 +2,6 @@
 pkgbase=libgbinder
 pkgname=(
 	'libgbinder'
-	'libgbinder-dev'
 	'libgbinder-tools'
 )
 pkgver=1.1.42
@@ -11,7 +10,7 @@ pkgdesc="GLib-style interface to binder"
 arch=('aarch64')
 url="https://github.com/mer-hybris/libgbinder"
 license=('BSD-3-Clause')
-makedepends=('flex' 'bison' 'glib2-devel' 'libglibutil-dev')
+makedepends=('flex' 'bison' 'libglibutil')
 source=("git+${url}.git"
 	'0001-libgbinder-Add-getTransport-support-to-hidl.patch'
 	'0002-libgbinder-Implement-binder-wait.patch')
@@ -30,13 +29,7 @@ package_libgbinder() {
 	depends=('libglibutil')
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
-}
-
-package_libgbinder-dev() {
-	depends=('libgbinder' 'libgbinder-dev' 'libglibutil-dev')
-	cd $srcdir/$pkgbase
 	make install-dev DESTDIR="${pkgdir}"
-	rm $pkgdir/usr/lib/libgbinder.so.*
 }
 
 package_libgbinder-tools() {

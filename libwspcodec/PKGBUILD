@@ -1,15 +1,12 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
-pkgbase=libwspcodec
-pkgname=(
-	'libwspcodec'
-	'libwspcodec-dev'
-)
+pkgname=libwspcodec
 pkgver=2.2.6
 pkgrel=1
 pkgdesc="WSP encoder and decoder library"
 arch=('aarch64')
 url="https://github.com/sailfishos/libwspcodec"
 license=('custom')
+depends=('glib2')
 makedepends=('glib2-devel')
 source=("git+${url}.git")
 sha256sums=('SKIP')
@@ -20,14 +17,7 @@ build() {
 }
 
 package_libwspcodec() {
-	depends=('glib2')
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
-}
-
-package_libwspcodec-dev() {
-	depends=('libwspcodec' 'glib2-devel')
-	cd $srcdir/$pkgbase
 	make install-dev DESTDIR="${pkgdir}"
-	rm $pkgdir/usr/lib/libwspcodec*.so{,.*}
 }

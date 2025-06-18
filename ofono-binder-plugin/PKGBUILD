@@ -9,8 +9,8 @@ pkgrel=1
 arch=('any')
 url="https://github.com/mer-hybris/ofono-binder-plugin"
 license=('BSD 3-Clause')
-makedepends=('glib2-devel' 'libgbinder-dev' 'libgbinder-radio-dev' 'ofono' 'libglibutil-dev')
-depends=('ofono' 'libgbinder' 'libgbinder-radio')
+makedepends=('glib2-devel' 'libgbinder-radio' 'ofono')
+depends=('ofono' 'libgbinder-radio')
 source=("git+https://github.com/droidian/ofono-binder-plugin.git")
 sha256sums=('SKIP')
 

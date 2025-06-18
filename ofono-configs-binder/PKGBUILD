@@ -12,7 +12,7 @@ pkgdesc="ofono configuration for devices using the binder plugin"
 arch=('aarch64')
 url="https://github.com/droidian/ofono-config-ril-binder"
 license=('custom')
-makedepends=('ofono' 'libgbinder-dev' 'libglibutil-dev' 'libgbinder-radio-dev' 'libgrilio-dev')
+makedepends=('ofono' 'libgbinder-radio' 'libgrilio')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 

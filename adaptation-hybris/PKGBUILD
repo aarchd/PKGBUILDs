@@ -12,7 +12,6 @@ md5sums=()
 pkgname=(
   "adaptation-hybris-common"
   "adaptation-hybris-phone"
-  "adaptation-hybris-devtools"
   "adaptation-hybris-phosh"
   "adaptation-hybris-api28"
   "adaptation-hybris-api28-phone"
@@ -32,14 +31,14 @@ package_adaptation-hybris-common() {
 	"android-base"
 	"lxc-android"
 	"libhybris"
-	"libhybris-utils"
 	"hadess-sensorfw-proxy"
 	"droidian-quirks-hybris-gl"
 	"droidian-quirks-tls-padding"
 	"gst-droid"
 	"flash-bootimage"
 	"droidian-quirks-device"
-	"flashlightd")
+	"flashlightd"
+	"hybris-usb")
 }
 
 package_adaptation-hybris-phone() {
@@ -48,15 +47,6 @@ package_adaptation-hybris-phone() {
 	"adaptation-hybris-common"
 	"ofono"
 	"ofono2mm")
-}
-
-package_adaptation-hybris-devtools() {
-    pkgdesc="Base metapackage for adaptation-hybris adaptations (devtools variant)"
-    depends=(
-	"adaptation-hybris-common"
-	"libhybris-test"
-	"hybris-usb"
-	"openssh")
 }
 
 package_adaptation-hybris-phosh() {

@@ -1,14 +1,12 @@
 # Maintainer: Deepak Kumar <notwho53@gmail.com>
-pkgbase=libglibutil
-pkgname=(
-	'libglibutil'
-	'libglibutil-dev'
-)
+pkgname=libglibutil
 pkgver=1.0.79
 pkgrel=1
 pkgdesc="Library of glib utilities"
 arch=('aarch64')
 url="https://github.com/sailfishos/libglibutil"
+depends=('glib2')
+makedepends=('glib2-devel')
 license=('BSD-3-Clause')
 source=("git+${url}.git")
 sha512sums=('SKIP')
@@ -21,11 +19,5 @@ build() {
 package_libglibutil() {
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
-}
-
-package_libglibutil-dev() {
-	depends+=('libglibutil')
-	cd $srcdir/$pkgbase
 	make install-dev DESTDIR="${pkgdir}"
-	rm -rf ${pkgdir}/usr/lib/libglibutil.so.*
 }

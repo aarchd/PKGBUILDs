@@ -6,7 +6,7 @@ pkgrel=1
 arch=('aarch64')
 url="https://github.com/mer-hybris/pulseaudio-modules-droid-jb2q"
 license=('custom')
-makedepends=('dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'expat' 'libevdev' 'udev' 'meson' 'libhardware-dev' 'libhybris-dev')
+makedepends=('dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'expat' 'libevdev' 'udev' 'meson' 'libhybris')
 source=("git+https://github.com/droidian/pulseaudio-modules-droid-jb2q.git")
 sha256sums=('SKIP')
 

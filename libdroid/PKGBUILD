@@ -6,8 +6,8 @@ pkgdesc="Library to ease interaction with Android HALs"
 arch=('aarch64')
 url="https://github.com/droidian/libdroid"
 license=('custom')
-makedepends=('meson' 'glib2-devel' 'libgbinder-dev' 'systemd' 'libgirepository' 'libgudev' 'gobject-introspection')
-depends=('libgbinder-dev')
+depends=('libgbinder')
+makedepends=('meson' 'libgbinder' 'systemd' 'libgirepository' 'libgudev' 'gobject-introspection')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

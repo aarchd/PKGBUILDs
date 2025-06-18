@@ -6,8 +6,7 @@ pkgdesc="Sensor framework daemon"
 arch=('aarch64')
 url="https://github.com/sailfishos/sensorfw"
 license=('GPL-2.1')
-makedepends=('qt6-base' 'udev' 'systemd' 'libhardware-dev' 'android-headers' 
-  'libhybris-dev' 'glib2-devel' 'libglibutil-dev' 'libgbinder-dev')
+makedepends=('qt6-base' 'udev' 'systemd' 'android-headers' 'libhybris' 'libgbinder')
 source=("git+$url.git"
     "0001-drop-doc-test-example-qt-api.patch"
     "sensorfwd.service"

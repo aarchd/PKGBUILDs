@@ -1,24 +1,11 @@
 # Maintainer: Deepak Kumar <notwho53@gmail.com>
-pkgbase=libhybris
-pkgname=(
-  'libandroid-properties1'
-  'libandroid-properties-dev'
-  'libmedia1'
-  'libmedia-dev'
-  'libhardware2'
-  'libhardware-dev'
-  'libhybris-common1'
-  'libhybris-common-dev'
-  'libhybris'
-  'libhybris-dev'
-  'libhybris-utils'
-  'libhybris-test'
-)
+pkgname=libhybris
 pkgver=0.0.5.53
 pkgrel=1
 arch=('aarch64')
-url="https://gitlab.com/libhybris/libhybris"
+url="https://github.com/libhybris/libhybris"
 license=('LGPL')
+depends=('glibc')
 makedepends=(
   'android-headers'
   'wayland'
@@ -45,205 +32,16 @@ build() {
   autoreconf -fi
   ./configure --enable-wayland --with-android-headers=/usr/include/android --enable-property-cache --enable-experimental --enable-glvnd --enable-clicd --enable-arch=arm64 --enable-mali-quirks --enable-adreno-quirks --prefix=/usr 
   make
-  make install DESTDIR="$srcdir/build"
-}
-
-package_libandroid-properties1() {
-  pkgdesc="Library to provide access to get, set and list Android properties"
-  depends=('glibc')
-  
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libandroid-properties.so.* "$pkgdir/usr/lib/"
-}
-
-package_libandroid-properties-dev() {
-  pkgdesc="Development headers files for libandroid-properties"
-  depends=('libandroid-properties1')
-  
-  mkdir -p "$pkgdir/usr/include/hybris/properties/"
-  install -m644 $srcdir/build/usr/include/hybris/properties/* "$pkgdir/usr/include/hybris/properties/"
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libandroid-properties.so" "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/lib/pkgconfig"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libandroid-properties.pc" "$pkgdir/usr/lib/pkgconfig/"
-}
-
-package_libmedia1() {
-  pkgdesc="Library to provide access to the Android Media HAL"
-  depends=('glibc')
-  
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libmedia.so.* "$pkgdir/usr/lib/"
-}
-
-package_libmedia-dev() {
-  pkgdesc="Development files for libmedia"
-  depends=('libmedia1')
-
-  mkdir -p "$pkgdir/usr/include/hybris/media/"
-  install -m644 $srcdir/build/usr/include/hybris/media/* "$pkgdir/usr/include/hybris/media/"
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libmedia.so" "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libmedia.pc" "$pkgdir/usr/lib/pkgconfig/"
-}
-
-package_libhardware2() {
-  pkgdesc="Library to provide access to the Android libhardware HAL"
-  depends=('glibc')
-  
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libhardware.so.* "$pkgdir/usr/lib/"
-}
-
-package_libhardware-dev() {
-  pkgdesc="Development files for libhardware"
-  depends=('libhardware2')
-
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libhardware.so" "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/lib/pkgconfig/"
-  install -m644 "$srcdir/build/usr/lib/pkgconfig/libhardware.pc" "$pkgdir/usr/lib/pkgconfig/"
-}
-
-package_libhybris-common1() {
-  pkgdesc="Common library containing Android linker and custom hooks"
-  depends=('glibc')
-  
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libhybris-common.so.* "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/lib/libhybris/linker/"
-  cp -a $srcdir/build/usr/lib/libhybris/linker/*.so "$pkgdir/usr/lib/libhybris/linker/"
-}
-
-package_libhybris-common-dev() {
-  pkgdesc="Development files for libhybris-common"
-  depends=('libhybris-common1')
-
-  mkdir -p "$pkgdir/usr/lib/"
-  install -m777 "$srcdir/build/usr/lib/libhybris-common.so" "$pkgdir/usr/lib/"
 }
 
 package_libhybris() {
-  pkgdesc="Allows use of bionic-based HW adaptations in glibc systems - libs"
-  depends=(
-    'libandroid-properties1'
-    'libhardware2'
-    'libmedia1'
-    'glibc'
-  )
-  
-  mkdir -p "$pkgdir/usr/lib/" 
-  cp -a $srcdir/build/usr/lib/libhybris-*platformcommon.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libhybris-hwcomposerwindow.so.* "$pkgdir/usr/lib/" 
-  cp -a $srcdir/build/usr/lib/libsync.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libhwc2.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libgralloc.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libui.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libsf.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libis.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libcamera.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libwifi.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libnfc_nxp.so.*  "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libnfc_ndef_nxp.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libvibrator.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libhybris/*.so "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libEGL_libhybris.so.*  "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libGLESv2_libhybris.so.* "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libGLESv1_CM_libhybris.so.*  "$pkgdir/usr/lib/"
-  cp -a $srcdir/build/usr/lib/libOpenCL_libhybris.so.* "$pkgdir/usr/lib/"
-  install -Dm755 "$srcdir/build/usr/share/glvnd/egl_vendor.d/10_libhybris.json" "$pkgdir/usr/share/glvnd/egl_vendor.d/10_libhybris.json"
-  install -Dm755 "$srcdir/build/usr/etc/OpenCL/vendors/libhybris.icd" "$pkgdir/etc/OpenCL/vendors/libhybris.icd"
+  pkgdesc="Allows use of bionic-based HW adaptations"
 
-  ln -s /usr/lib/libhybris-common.so.1 "$pkgdir/usr/lib/libhybris_ics.so"
-}  
-
-package_libhybris-dev() {
-  pkgdesc="Development headers and libraries for libhybris"
-  depends=(
-    'libandroid-properties-dev'
-    'libhardware-dev'
-    'libmedia-dev'
-    'libhybris'
-    'libhybris-common-dev'
-    'mesa'
-  )
-
-  mkdir -p "$pkgdir/usr/include/hybris/camera/"
-  install -m644 $srcdir/build/usr/include/hybris/camera/* "$pkgdir/usr/include/hybris/camera/"
-  mkdir -p "$pkgdir/usr/include/hybris/common/"
-  install -m644 $srcdir/build/usr/include/hybris/common/* "$pkgdir/usr/include/hybris/common/"
-  mkdir -p "$pkgdir/usr/include/hybris/dlfcn/"
-  install -m644 $srcdir/build/usr/include/hybris/dlfcn/* "$pkgdir/usr/include/hybris/dlfcn/"
-  mkdir -p "$pkgdir/usr/include/hybris/platformcommon/"
-  install -m644 $srcdir/build/usr/include/hybris/platformcommon/* "$pkgdir/usr/include/hybris/platformcommon/"
-  mkdir -p "$pkgdir/usr/include/hybris/hwc2/"
-  install -m644 $srcdir/build/usr/include/hybris/hwc2/* "$pkgdir/usr/include/hybris/hwc2/"
-  mkdir -p "$pkgdir/usr/include/hybris/hwcomposerwindow/"
-  install -m644 $srcdir/build/usr/include/hybris/hwcomposerwindow/* "$pkgdir/usr/include/hybris/hwcomposerwindow/"
-  mkdir -p "$pkgdir/usr/include/hybris/input/"
-  install -m644 $srcdir/build/usr/include/hybris/input/* "$pkgdir/usr/include/hybris/input/"
-  mkdir -p "$pkgdir/usr/include/hybris/surface_flinger/"
-  install -m644 $srcdir/build/usr/include/hybris/surface_flinger/* "$pkgdir/usr/include/hybris/surface_flinger/"
-  mkdir -p "$pkgdir/usr/include/hybris/ui/"
-  install -m644 $srcdir/build/usr/include/hybris/ui/* "$pkgdir/usr/include/hybris/ui/"
-  mkdir -p "$pkgdir/usr/include/hybris/gralloc/"
-  install -m644 $srcdir/build/usr/include/hybris/gralloc/* "$pkgdir/usr/include/hybris/gralloc/"
-  mkdir -p "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libcamera.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libgralloc.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libhwc2.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libhybris-platformcommon.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libhybris-eglplatformcommon.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libhybris-hwcomposerwindow.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libis.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libnfc_nxp.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libnfc_ndef_nxp.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libsf.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libsync.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libui.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libvibrator.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libwifi.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libEGL_libhybris.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libGLESv1_CM_libhybris.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libGLESv2_libhybris.so" "$pkgdir/usr/lib/"
-  cp -a "$srcdir/build/usr/lib/libOpenCL_libhybris.so" "$pkgdir/usr/lib/"
-  mkdir -p "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/hwcomposer-egl.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/hybris-egl-platform.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libcamera.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libgralloc.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libhwc2.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libis.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libnfc_nxp.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libnfc_ndef_nxp.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libsf.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libsync.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libvibrator.pc" "$pkgdir/usr/lib/pkgconfig/"
-  cp -a "$srcdir/build/usr/lib/pkgconfig/libwifi.pc" "$pkgdir/usr/lib/pkgconfig/"
-}
-
-package_libhybris-utils() {
-  pkgdesc="Utilities to help working with the Android HW abstraction layer"
-  depends=('libhybris')
-  
-  mkdir -p "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/getprop" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/setprop" "$pkgdir/usr/bin/"
-  mkdir -p "$pkgdir/usr/share/libhybris/gdb/"
-  install -m755 "$srcdir/$pkgbase/utils/load_sym_files.py" "$pkgdir/usr/share/libhybris/gdb/"
-}
-
-package_libhybris-test() {
-  pkgdesc="Test applications to validate libhybris"
-  depends=('libhybris')
-  
-  mkdir -p "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_hwcomposer" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_egl" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_egl_configs" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_lights" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_glesv2" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_glesv3" "$pkgdir/usr/bin/"
-  install -m755 "$srcdir/build/usr/bin/test_dlopen" "$pkgdir/usr/bin/"
+  cd "$srcdir/$pkgbase/hybris"
+  DESTDIR="$pkgdir" make install
+  rm -rf "$pkgdir/usr/include/{CL,EGL,GLES{,2,3},KHR}"
+  for man in getprop setprop; do
+    gzip -n -c "../debian/$man.1" > "$man.1.gz"
+    install -Dm644 "$man.1.gz" "$pkgdir/usr/share/man/man1/$man.1.gz"
+  done
 }

@@ -6,7 +6,7 @@ pkgdesc="GStreamer droid plug-in."
 arch=('aarch64')
 url="https://github.com/sailfishos/gst-droid"
 license=('custom')
-makedepends=('meson' 'droidmedia' 'libexif' 'libhybris-dev' 'nemo-gst-interfaces' 'gst-plugins-bad-libs')
+makedepends=('meson' 'droidmedia' 'libexif' 'libhybris' 'nemo-gst-interfaces' 'gst-plugins-bad-libs')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

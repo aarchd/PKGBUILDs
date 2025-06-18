@@ -11,7 +11,6 @@ COMMON_PACKAGES = [
 	"android-base",
 	"lxc-android",
 	"libhybris",
-	"libhybris-utils",
 	"hadess-sensorfw-proxy",
 	"droidian-quirks-hybris-gl",
 	"droidian-quirks-tls-padding",
@@ -19,6 +18,7 @@ COMMON_PACKAGES = [
 	"flash-bootimage",
 	"droidian-quirks-device",
 	"flashlightd",
+	"hybris-usb",
 ]
 
 COMMON_PHOSH = [
@@ -30,14 +30,6 @@ COMMON_PHONE_PACKAGES = [
 	"adaptation-hybris-common",
 	"ofono",
 	"ofono2mm",
-]
-
-# Devtools packages
-COMMON_DEVTOOLS_PACKAGES = [
-	"adaptation-hybris-common",
-	"libhybris-test",
-	"hybris-usb",
-	"openssh",
 ]
 
 # Common packages for api levels 16+
@@ -85,7 +77,6 @@ SUPPORTED_APILEVELS = {
 	0 : {
 		"common" : COMMON_PACKAGES,
 		"phone"    : COMMON_PHONE_PACKAGES,
-		"devtools" : COMMON_DEVTOOLS_PACKAGES,
 		"phosh"    : COMMON_PHOSH,
 	},
 	28 : {

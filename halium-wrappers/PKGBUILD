@@ -8,9 +8,7 @@ license=('custom')
 depends=('util-linux')
 makedepends=(
 	'pkg-config'
-	'libhybris-dev'
-	'libhybris-common-dev'
-	'libandroid-properties-dev'
+	'libhybris'
 	'zlib'
 	'libglvnd'
 )
