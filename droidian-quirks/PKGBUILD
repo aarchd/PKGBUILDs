@@ -52,7 +52,7 @@ package_droidian-quirks-api30() {
 	install -Dm644 quirks-30/systemd/android-mount.service.d/10-selinux.conf "$pkgdir/usr/lib/systemd/system/android-mount.service.d/10-selinux.conf"
 
 	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
-	cp -a quirks-30/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
+	cp -ar quirks-30/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
 
 	ln -s /vendor/lib64/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/eglSubDriverAndroid.so
 	ln -s /vendor/lib/egl/eglSubDriverAndroid.so $pkgdir/usr/lib/droid-vendor-overlay/lib/eglSubDriverAndroid.so
@@ -67,7 +67,7 @@ package_droidian-quirks-api32() {
 	install -Dm644 quirks-32/systemd/android-mount.service.d/10-selinux.conf "$pkgdir/usr/lib/systemd/system/android-mount.service.d/10-selinux.conf"
 
 	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
-	cp -a quirks-32/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
+	cp -ar quirks-32/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
 
 	ln -s /apex/com.android.i18n/lib/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libandroidicu.so
 	ln -s /apex/com.android.i18n/lib64/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libandroidicu.so
@@ -88,7 +88,7 @@ package_droidian-quirks-api33() {
 	install -Dm644 quirks-33/systemd/android-mount.service.d/10-selinux.conf "$pkgdir/usr/lib/systemd/system/android-mount.service.d/10-selinux.conf"
 
 	mkdir -p $pkgdir/usr/lib/droid-vendor-overlay/{lib,lib64}
-	cp -a quirks-33/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
+	cp -ar quirks-33/droid-vendor-overlay/* $pkgdir/usr/lib/droid-vendor-overlay/
 
 	ln -s /apex/com.android.i18n/lib/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib/libandroidicu.so
 	ln -s /apex/com.android.i18n/lib64/libandroidicu.so $pkgdir/usr/lib/droid-vendor-overlay/lib64/libandroidicu.so
@@ -105,7 +105,7 @@ package_droidian-quirks-device() {
 
 	cd $srcdir/$pkgbase
 	mkdir -p $pkgdir/usr/bin
-	cp -a device/*.sh "$pkgdir/usr/bin/"
+	cp -ar device/*.sh "$pkgdir/usr/bin/"
 
 	install -Dm644 "device/systemd-drop-ins/lxc.service.d/90-disable-apparmor.conf" "$pkgdir/usr/lib/systemd/system/lxc.service.d/90-disable-apparmor.conf"
 	install -Dm644 "device/tmpfiles.d/10-droidian-net.conf" "$pkgdir/usr/lib/tmpfiles.d/10-droidian-net.conf"
@@ -143,7 +143,7 @@ package_droidian-quirks-systemd() {
 
 	cd $srcdir/$pkgbase
 	mkdir -p $pkgdir/etc/systemd
-	cp -a systemd/* $pkgdir/etc/systemd/
+	cp -ar systemd/* $pkgdir/etc/systemd/
 }
 
 package_droidian-quirks-tls-padding() {

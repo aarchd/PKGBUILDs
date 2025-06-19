@@ -39,7 +39,7 @@ package_libofonobinderpluginext() {
   pkgdesc="Extension interfaces for ofono-binder-plugin"
 
   mkdir -p "$pkgdir/usr/lib"
-  cp -a $srcdir/build/usr/lib/libofonobinderpluginext.so{,.*} \
+  cp -ar $srcdir/build/usr/lib/libofonobinderpluginext.so{,.*} \
     "$pkgdir/usr/lib/"
   install -Dm644 $srcdir/build/usr/lib/pkgconfig/libofonobinderpluginext.pc \
     "$pkgdir/usr/lib/pkgconfig/libofonobinderpluginext.pc"
