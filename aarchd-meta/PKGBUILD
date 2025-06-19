@@ -17,8 +17,6 @@ package_aarchd-base() {
 		'alsa-utils'
 		'ca-certificates'
 		'systemd'
-		'f2fs-tools'
-		'lvm2'
 		'file'
 		'kbd'
 		'glibc'
