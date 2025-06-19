@@ -12,8 +12,12 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-	arch-meson --buildtype=release "$srcdir/$pkgname" build
-	ninja -C build
+    export CFLAGS=$(echo "$CFLAGS" | sed 's/ *-flto[=a-z0-9\-]*//g')
+    export CXXFLAGS=$(echo "$CXXFLAGS" | sed 's/ *-flto[=a-z0-9\-]*//g')
+    export LDFLAGS=$(echo "$LDFLAGS" | sed 's/ *-flto[=a-z0-9\-]*//g')
+    export LTOFLAGS=""
+    arch-meson --buildtype=release "$srcdir/$pkgname" build
+    ninja -C build
 }
 
 package() {
