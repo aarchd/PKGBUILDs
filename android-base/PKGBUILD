@@ -15,9 +15,8 @@ install=android-base.install
 
 package() {
 	# mountpoints
-	for dir in data system vendor cache persist product metadata apex odm vendor_dlkm; do
-	    mkdir -p "${pkgdir}/$dir"
-	    ln -s "/android/$dir" "${pkgdir}/$dir"
+	for symlink in data system vendor cache persist product metadata apex odm vendor_dlkm; do
+	    ln -s "/android/$symlink" "${pkgdir}/$symlink"
 	done
 
 	cd ${srcdir}/${pkgname}
