@@ -13,8 +13,7 @@ sha256sums=('SKIP')
 package() {
   cd "$srcdir/$pkgname"
 
-  mkdir -p "$pkgdir/{usr,var}"
-  cp -r etc/* "$pkgdir/"
-  cp -r usr/lib "$pkgdir/usr/"
-  cp -r var/lib "$pkgdir/var/"
+  cp -ar etc "$pkgdir/"
+  cp -ar usr/lib "$pkgdir/usr/"
+  cp -ar var/lib "$pkgdir/var/"
 }
