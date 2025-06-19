@@ -12,7 +12,7 @@ source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-	arch-meson "$srcdir/$pkgbase" build
+	arch-meson --buildtype=release "$srcdir/$pkgbase" build
 	ninja -C build
 }
 

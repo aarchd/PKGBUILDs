@@ -51,7 +51,7 @@ sha256sums=('SKIP')
 
 
 build() {
-    arch-meson "$srcdir/wlroots" build \
+    arch-meson --buildtype=release "$srcdir/wlroots" build \
         -Dbackends=hwcomposer,drm,libinput,x11 \
         -Ddroidian-extensions=true
     ninja -C build

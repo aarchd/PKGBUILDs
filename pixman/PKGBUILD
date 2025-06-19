@@ -24,7 +24,7 @@ sha512sums=('c7ef987b7db89c58278c537f862bc9eb17c19f8288a3b7e88f8501a0486662f1e2c
 #validpgpkeys=('') # Maarten Lankhorst <maarten.lankhorst@linux.intel.com>
 
 build() {
-  arch-meson $pkgname-$pkgver build \
+  arch-meson --buildtype=release $pkgname-$pkgver build \
     -D loongson-mmi=disabled \
     -D vmx=disabled \
     -D arm-simd=disabled \
@@ -40,6 +40,6 @@ build() {
 }
 
 package() {
-  DESTDIR="$pkgdir" meson install -C build
+  DESTDIR="$pkgdir" ninja -C build install
   install -Dt "$pkgdir/usr/share/licenses/$pkgname" -m644 $pkgname-$pkgver/COPYING
 }

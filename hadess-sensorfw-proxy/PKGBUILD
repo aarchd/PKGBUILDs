@@ -15,7 +15,7 @@ sha256sums=('SKIP')
 install=$pkgname.install
 
 build() {
-	arch-meson "$srcdir/$pkgname" build
+	arch-meson --buildtype=release "$srcdir/$pkgname" build
 	ninja -C build
 }
 

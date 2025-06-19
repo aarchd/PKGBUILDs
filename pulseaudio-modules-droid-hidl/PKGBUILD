@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   PA_MODULE_DIR=$(readlink -f /usr/lib/pulse-*/modules)
-  arch-meson $pkgname build -Dmodlibexecdir=${PA_MODULE_DIR}
+  arch-meson --buildtype=release $pkgname build -Dmodlibexecdir=${PA_MODULE_DIR}
   meson compile -C build
 }
 

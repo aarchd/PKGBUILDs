@@ -16,7 +16,7 @@ sha256sums=('SKIP'
 install=mint.install
 
 build() {
-	arch-meson "$srcdir/$pkgname" build
+	arch-meson --buildtype=release "$srcdir/$pkgname" build
 	ninja -C build
 }
 

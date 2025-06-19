@@ -7,13 +7,13 @@ arch=(aarch64)
 url=https://wayfire.org
 license=(MIT)
 depends=('libevdev' 'libxml2')
-makedepends=('meson' 'ninja' 'pkg-config' 'wayland-protocols' 'glm' 'doctest' 'cmake')
+makedepends=('meson' 'pkg-config' 'wayland-protocols' 'glm' 'doctest' 'cmake')
 source=("git+https://github.com/droidian/wf-config.git")
 sha256sums=('SKIP')
 
 build() {
 	rm -rf build
-	arch-meson "${srcdir}/${pkgname}" build \
+	arch-meson --buildtype=release "${srcdir}/${pkgname}" build \
 		--auto-features=disabled
 	ninja -C build
 }

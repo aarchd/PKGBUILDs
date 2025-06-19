@@ -7,12 +7,12 @@ arch=(aarch64)
 url=https://wayfire.org
 license=(MIT)
 depends=('cairo' 'pango' 'wf-config' 'libjpeg' 'libinput' 'wlroots' 'glibmm' 'iio-sensor-proxy')
-makedepends=('meson' 'ninja' 'wayland-protocols' 'glm' 'cmake' 'doctest' 'nlohmann-json' 'wf-config' 'wlroots' 'glibmm')
+makedepends=('meson' 'wayland-protocols' 'glm' 'cmake' 'doctest' 'nlohmann-json' 'wf-config' 'wlroots' 'glibmm')
 source=("git+https://github.com/droidian/wayfire.git")
 sha256sums=('SKIP')
 
 build() {
-	arch-meson "${srcdir}/${pkgname}" build \
+	arch-meson --buildtype=release "${srcdir}/${pkgname}" build \
 		-Duse_system_wlroots=enabled \
 		-Duse_system_wfconfig=enabled
 	ninja -C build

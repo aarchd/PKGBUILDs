@@ -29,7 +29,7 @@ prepare() {
 }
 
 build() {
-    arch-meson pulseaudio build \
+    arch-meson --buildtype=release pulseaudio build \
         -D pulsedsp-location='/usr/\$LIB/pulseaudio' \
         -D stream-restore-clear-old-devices=true \
         -D udevrulesdir=/usr/lib/udev/rules.d
