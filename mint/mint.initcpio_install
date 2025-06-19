@@ -4,6 +4,8 @@
 build() {
     map add_binary mint
 
+    add_udev_rule /usr/share/mint/90-offline-charging.rules
+
     add_runscript
 }
 

@@ -1,6 +1,6 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
 pkgname=mint
-pkgver=0.6
+pkgver=0.7
 pkgrel=1
 pkgdesc="minui-based splash and info display tool for Linux and Android devices"
 arch=('aarch64')
@@ -9,10 +9,12 @@ depends=('android-minui' 'cairo' 'freetype2' 'systemd')
 makedepends=('meson' 'android-minui' 'cairo' 'systemd')
 source=("git+$url.git"
     "mint.initcpio_install"
-    "mint.initcpio_hook")
+    "mint.initcpio_hook"
+    "90-offline-charging.rules")
 sha256sums=('SKIP'
-    '106a0e22e2dc2ead12abfee6d428411defac4f9ea945c30f9ff8ed1a860b201f'
-    '023514c26e860dfe5b5213251bf03a03ef0eb87a03fb28edf6bbc2d58da50324')
+    '30079ed2f9f0626642ec53d8f6d3f7648e79d6ed25a2bf19090a4c74647c6090'
+    '8382a8fb0af1678693fee7fcaecd7641997c02f5a24117702c6998742f6e0305'
+    'bac6459b88b543107322cbe1a87c667ff75d989946fc683c9926c7797ebe72b6')
 install=mint.install
 
 build() {
@@ -24,4 +26,5 @@ package() {
     DESTDIR="$pkgdir" ninja -C build install
     install -Dm644 "$srcdir/mint.initcpio_install" "$pkgdir/usr/lib/initcpio/install/mint"
     install -Dm644 "$srcdir/mint.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/mint"
+    install -Dm644 "$srcdir/90-offline-charging.rules" "$pkgdir/usr/share/mint/90-offline-charging.rules"
 }

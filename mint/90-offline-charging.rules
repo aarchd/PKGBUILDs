@@ -1,0 +1,1 @@
+SUBSYSTEM=="power_supply", ATTR{online}=="0", ACTION=="change", TEST=="/tmp/charger_mode", RUN+="/usr/bin/poweroff -f"

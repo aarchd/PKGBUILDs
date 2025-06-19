@@ -14,6 +14,12 @@ run_hook() {
 
     case "$mode" in
         *charger*|usb)
+            touch /tmp/charger_mode
+            (
+                sleep 7
+                # FIXME: SOMEHOW AUTODETECT THE BRIGHTNESS NODE
+                echo 0 > /sys/class/leds/lcd-backlight/brightness 2>/dev/null
+            ) &
             for dev in /sys/class/power_supply/*; do
                 if udevadm info -q property -p "$dev" 2>/dev/null | grep -q '^POWER_SUPPLY_TYPE=Battery$'; then
                     mint --charging "$(basename "$dev")"
