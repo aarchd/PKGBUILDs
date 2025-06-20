@@ -11,7 +11,7 @@ makedepends=('cmake')
 source=("git+https://github.com/droidian/parse-android-dynparts.git"
   "parse-android-dynparts.initcpio_install")
 sha256sums=('SKIP'
-  '9e408c79eb2740ba48d889064546ee288376d7d140af186523015ad5ae539af8')
+  '74adb89724cbd9ba5b14e270409de3ad199aafb8b049899b663c6414f396a8ce')
 
 build() {
   cd "$srcdir/$pkgname"

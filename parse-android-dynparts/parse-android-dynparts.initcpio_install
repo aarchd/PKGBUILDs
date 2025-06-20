@@ -3,6 +3,7 @@
 
 build() {
     map add_binary parse-android-dynparts
+    map add_binary dmsetup
 }
 
 help() {
