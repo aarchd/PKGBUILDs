@@ -1,13 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=mobile-power-saver
 pkgver=0.9.3
 pkgrel=1
 pkgdesc="Mobile Power Saver enable hard power saving when screen is off."
 arch=('aarch64')
 url="https://github.com/droidian/mobile-power-saver"
-license=('custom')
-depends=('libgbinder-radio' 'libnl')
-makedepends=('meson' 'libgbinder-radio' 'libnl')
+license=('GPL-3.0-or-later')
+depends=('libgbinder-radio' 'libnl' 'systemd')
+makedepends=('meson')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

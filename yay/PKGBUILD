@@ -1,6 +1,6 @@
 # Maintainer: Jguer <pkgbuilds at jguer.space>
-# aarchd
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# AArchD
+# Maintainer: Deepak Meena <who53@disroot.org>
 
 pkgname=yay
 pkgver=12.5.0

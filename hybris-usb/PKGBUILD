@@ -1,11 +1,12 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=hybris-usb
 pkgver=4.1.0
 pkgrel=1
 pkgdesc="USB control for Android with hybris"
 arch=('any')
 url="https://github.com/droidian/hybris-usb"
-license=('custom')
+license=('GPL-2.0-or-later')
 depends=('net-tools' 'dhcp' 'systemd' 'openssh')
 source=("git+https://github.com/aarchd/hybris-usb.git")
 sha256sums=('SKIP')

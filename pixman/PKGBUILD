@@ -1,11 +1,12 @@
 # Maintainer: Andreas Radke <andyrtr@archlinux.org>
+
 # Contributor: Jan de Groot <jgc@archlinux.org>
 # Contributor: Alexander Baldeck <alexander@archlinux.org>
 
 # ALARM: Kevin Mihelich <kevin@archlinuxarm.org>
 #  - disable x86 extensions (mmx, sse2, ssse3)
 
-# aarchd: Deepak Meena <notwho53@gmail.com>
+# AArchD: Deepak Meena <who53@disroot.org>
 # - enable asimd
 # - drop checks
 
@@ -13,7 +14,7 @@ pkgname=pixman
 pkgver=0.46.0
 pkgrel=1
 pkgdesc="The pixel-manipulation library for X and cairo"
-arch=(aarch64)
+arch=('aarch64')
 url="https://cgit.freedesktop.org/pixman/"
 license=('MIT')
 depends=('glibc')

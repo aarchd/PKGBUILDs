@@ -1,6 +1,6 @@
 # Maintainer: Jan Alexander Steffens (heftig) <heftig@archlinux.org>
-# aarchd
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# AArchD
+# Maintainer: Deepak Meena <who53@disroot.org>
 
 pkgbase=pulseaudio
 pkgname=(pulseaudio libpulse pulsecore pulseaudio-{zeroconf,lirc,jack,bluetooth,equalizer,rtp})
@@ -9,7 +9,7 @@ pkgver=14.2
 pkgrel=2
 arch=(aarch64)
 url="https://www.freedesktop.org/wiki/Software/PulseAudio/"
-license=(GPL)
+license=(LGPL-2.1-or-later)
 makedepends=('libasyncns' 'libcap' 'attr' 'libxtst' 'libsm' 'libsndfile' 'rtkit' 'libsoxr'
     'speexdsp' 'tdb' 'systemd' 'dbus' 'avahi' 'bluez' 'bluez-libs' 'jack2' 'sbc'
     'lirc' 'openssl' 'fftw' 'orc' 'gtk3' 'webrtc-audio-processing-1' 'check' 'git' 'meson'
@@ -123,7 +123,6 @@ package_libpulse() {
     depends=(dbus libasyncns libcap libxcb libsm libsndfile systemd)
     optdepends=('glib2: mainloop integration')
     provides=(libpulse{,-simple,-mainloop-glib}.so)
-    license=(LGPL)
     backup=(etc/pulse/client.conf)
 
     mv libpulse/* "$pkgdir"

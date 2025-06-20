@@ -1,13 +1,13 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=libgrilio
 pkgver=1.0.44
 pkgrel=1
 pkgdesc="RIL I/O library"
 arch=('aarch64')
 url="https://github.com/sailfishos/libgrilio"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('libglibutil')
-makedepends=('libglibutil')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -20,4 +20,5 @@ package_libgrilio() {
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
 	make install-dev DESTDIR="${pkgdir}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

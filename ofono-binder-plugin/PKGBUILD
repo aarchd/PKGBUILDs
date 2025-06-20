@@ -1,4 +1,5 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgbase=ofono-binder-plugin
 pkgname=(
   'ofono-binder-plugin'
@@ -6,11 +7,12 @@ pkgname=(
   )
 pkgver=1.1.15
 pkgrel=1
-arch=('any')
+pkgdesc="Binder plugin for the Sailfish OS fork of ofono"
+arch=('aarch64')
 url="https://github.com/mer-hybris/ofono-binder-plugin"
-license=('BSD 3-Clause')
-makedepends=('glib2-devel' 'libgbinder-radio' 'ofono')
+license=('BSD-3-Clause')
 depends=('ofono' 'libgbinder-radio')
+makedepends=('glib2-devel')
 source=("git+https://github.com/droidian/ofono-binder-plugin.git")
 sha256sums=('SKIP')
 
@@ -33,6 +35,8 @@ package_ofono-binder-plugin() {
 
   install -Dm644 "$srcdir/build/usr/lib/ofono/plugins/binderplugin.so" \
     "$pkgdir/usr/lib/ofono/plugins/binderplugin.so"
+  install -Dm644 "$srcdir/$pkgbase/LICENSE" \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
 
 package_libofonobinderpluginext() {
@@ -46,4 +50,6 @@ package_libofonobinderpluginext() {
   mkdir -p "$pkgdir/usr/include/ofonobinderpluginext"
   install -Dm644 $srcdir/build/ofonobinderpluginext/*.h \
     "$pkgdir/usr/include/ofonobinderpluginext/"
+  install -Dm644 $srcdir/$pkgbase/LICENSE \
+    "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }

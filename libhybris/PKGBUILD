@@ -1,10 +1,13 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=libhybris
 pkgver=0.0.5.53
 pkgrel=1
 arch=('aarch64')
 url="https://github.com/libhybris/libhybris"
-license=('LGPL')
+license=('Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'BSD-4-Clause'
+         'GPL-3.0-or-later' 'ISC' 'LGPL-2.1-only' 'MIT')
+pkgdesc="Allows use of bionic-based HW adaptations"
 depends=('glibc')
 makedepends=(
   'android-headers'
@@ -16,7 +19,6 @@ makedepends=(
   'binutils'
   'patchelf'
   'python'
-  'glibc'
   'pkgconf'
   'mesa'
 )
@@ -34,14 +36,13 @@ build() {
   make
 }
 
-package_libhybris() {
-  pkgdesc="Allows use of bionic-based HW adaptations"
-
+package() {
   cd "$srcdir/$pkgbase/hybris"
   DESTDIR="$pkgdir" make install
   rm -rf $pkgdir/usr/include/{CL,EGL,GLES{,2,3},KHR}
-  for man in getprop setprop; do
-    gzip -n -c "../debian/$man.1" > "$man.1.gz"
-    install -Dm644 "$man.1.gz" "$pkgdir/usr/share/man/man1/$man.1.gz"
-  done
+  install -Dm644 ../debian/getprop.1 "$pkgdir/usr/share/man/man1/getprop.1"
+  install -Dm644 ../debian/setprop.1 "$pkgdir/usr/share/man/man1/setprop.1"
+
+  mkdir -p "$pkgdir/usr/share/licenses/$pkgname"
+  install -m644 ../LICENSE.* "$pkgdir/usr/share/licenses/$pkgname/"
 }

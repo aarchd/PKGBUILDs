@@ -1,12 +1,15 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgbase=pulseaudio-modules-droid-jb2q
 pkgname=('pulseaudio-modules-droid-jb2q' 'pulseaudio-modules-droid')
 pkgver=14.2.102
 pkgrel=1
+pkgdesc="Pulseaudio modules to interact with the Android HAL."
 arch=('aarch64')
 url="https://github.com/mer-hybris/pulseaudio-modules-droid-jb2q"
-license=('custom')
-makedepends=('dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'expat' 'libevdev' 'udev' 'meson' 'libhybris')
+license=('LGPL-2.1-only')
+depends=('libpulse' 'expat' 'libevdev' 'udev' 'libhybris' 'pulseaudio' 'pulsecore')
+makedepends=('dbus' 'android-headers' 'meson')
 source=("git+https://github.com/droidian/pulseaudio-modules-droid-jb2q.git")
 sha256sums=('SKIP')
 

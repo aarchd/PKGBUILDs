@@ -1,13 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=bluebinder
 pkgver=1.0.17
 pkgrel=3
 pkgdesc="Simple proxy for using Android binder based Bluetooth through VHCI"
 arch=('aarch64')
 url="https://github.com/mer-hybris/bluebinder"
-license=('custom')
-depends=('halium-wrappers' 'libgbinder')
-makedepends=('libgbinder' 'bluez-libs' 'systemd')
+license=('GPL-2.0-or-later')
+depends=('halium-wrappers' 'libgbinder' 'systemd-libs')
+makedepends=('bluez-libs' 'systemd')
 source=("git+https://github.com/droidian/bluebinder.git")
 sha256sums=('SKIP')
 

@@ -1,11 +1,13 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=flashlightd
 pkgver=14
 pkgrel=1
 pkgdesc="Simple daemon to manage camera flash light using gstreamer."
 arch=('aarch64')
 url="https://github.com/droidian/flashlightd"
-license=('custom')
+license=('GPL-3.0-or-later')
+depends=('gstreamer' 'glib2')
 makedepends=('meson' 'glib2-devel' 'vala' 'gst-devtools-libs')
 source=("git+$url.git")
 sha256sums=('SKIP')

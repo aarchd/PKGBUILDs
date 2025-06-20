@@ -1,11 +1,12 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=libwspcodec
 pkgver=2.2.6
 pkgrel=1
 pkgdesc="WSP encoder and decoder library"
 arch=('aarch64')
 url="https://github.com/sailfishos/libwspcodec"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('glib2')
 makedepends=('glib2-devel')
 source=("git+${url}.git")
@@ -20,4 +21,5 @@ package_libwspcodec() {
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
 	make install-dev DESTDIR="${pkgdir}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,11 +1,12 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=droidmedia
 pkgver=0.20241121.0
 pkgrel=1
 pkgdesc="Android media wrapper library"
 arch=('aarch64')
 url="https://github.com/sailfishos/droidmedia"
-license=('custom')
+license=('Apache-2.0')
 makedepends=('meson')
 options=('staticlibs')
 source=("git+$url.git")

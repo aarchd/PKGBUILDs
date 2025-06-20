@@ -1,13 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=pulseaudio-modules-droid-hidl
 pkgver=1.4.0
 pkgrel=1
 pkgdesc="HIDL module for PulseAudio"
 arch=('aarch64')
 url="https://github.com/mer-hybris/pulseaudio-modules-droid-hidl"
-license=('custom')
+license=('LGPL-2.1-only')
 depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific')
-makedepends=('meson' 'dbus' 'android-headers' 'pulseaudio' 'pulsecore' 'audiosystem-passthrough')
+makedepends=('meson' 'dbus' 'android-headers' 'pulsecore' 'audiosystem-passthrough')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

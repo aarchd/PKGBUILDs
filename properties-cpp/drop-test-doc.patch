@@ -1,9 +1,9 @@
 From a8d7c371e45d542e2643952d7f5c98b8a2dd23ef Mon Sep 17 00:00:00 2001
-From: Deepak Kumar <notwho53@gmail.com>
+From: Deepak Meena <who53@disroot.org>
 Date: Mon, 28 Apr 2025 00:16:13 +0530
 Subject: [PATCH] drop-test-doc
 
-Signed-off-by: Deepak Kumar <notwho53@gmail.com>
+Signed-off-by: Deepak Meena <who53@disroot.org>
 ---
  CMakeLists.txt | 2 --
  1 file changed, 2 deletions(-)

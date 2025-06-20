@@ -11,7 +11,7 @@ build() {
 
 help() {
     cat <<HELPEOF
-This hook provides crucial runtime necessities for booting aarchd. DO NOT
+This hook provides crucial runtime necessities for booting AArchD. DO NOT
 remove this hook unless you know what you're doing.
 HELPEOF
 }

@@ -1,4 +1,5 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgbase=droidian-quirks
 pkgname=(
 	'droidian-quirks-api28'
@@ -17,7 +18,9 @@ pkgver=95
 pkgrel=1
 arch=('any')
 url="https://github.com/droidian/droidian-quirks"
-license=('custom')
+license=('GPL-3.0-or-later')
+makedepends=('halium-wrappers' 'systemd' 'libgbinder')
+pkgdesc="Various quirks"
 source=("git+$url.git")
 sha256sums=('SKIP')
 
@@ -110,11 +113,16 @@ package_droidian-quirks-device() {
 	install -Dm644 "device/systemd-drop-ins/lxc.service.d/90-disable-apparmor.conf" "$pkgdir/usr/lib/systemd/system/lxc.service.d/90-disable-apparmor.conf"
 	install -Dm644 "device/tmpfiles.d/10-droidian-net.conf" "$pkgdir/usr/lib/tmpfiles.d/10-droidian-net.conf"
 
-	install -Dm644 "debian/droidian-quirks-device.droidian-boot-wlan.path" "${pkgdir}/etc/systemd/system/droidian-boot-wlan.path"
-	install -Dm644 "debian/droidian-quirks-device.droidian-boot-wlan.service" "${pkgdir}/etc/systemd/system/droidian-boot-wlan.service"
-	install -Dm644 "debian/droidian-quirks-device.droidian-ipa-enable.service" "${pkgdir}/etc/systemd/system/droidian-ipa-enable.service"
-	install -Dm644 "debian/droidian-quirks-device.droidian-lmk-disable.service" "${pkgdir}/etc/systemd/system/droidian-lmk-disable.service"
-	install -Dm644 "debian/droidian-quirks-device.droidian-wcnss-enable.service" "${pkgdir}/etc/systemd/system/droidian-wcnss-enable.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-boot-wlan.path" \
+		"${pkgdir}/usr/lib/systemd/system/droidian-boot-wlan.path"
+	install -Dm644 "debian/droidian-quirks-device.droidian-boot-wlan.service" \
+		"${pkgdir}/usr/lib/systemd/system/droidian-boot-wlan.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-ipa-enable.service" \
+		"${pkgdir}/usr/lib/systemd/system/droidian-ipa-enable.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-lmk-disable.service" \
+		"${pkgdir}/usr/lib/systemd/system/droidian-lmk-disable.service"
+	install -Dm644 "debian/droidian-quirks-device.droidian-wcnss-enable.service" \
+		"${pkgdir}/usr/lib/systemd/system/droidian-wcnss-enable.service"
 
 	mkdir -p $pkgdir/etc/systemd/{system,user}
 	ln -s /dev/null $pkgdir/etc/systemd/system/apparmor.service

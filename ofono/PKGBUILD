@@ -1,14 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=ofono
 pkgver=1.29
 pkgrel=1
 pkgdesc='Infrastructure for building mobile telephony (GSM/UMTS) applications'
 url='https://01.org/ofono'
 arch=(aarch64)
-license=('GPL2')
-depends=('bluez' 'dbus-glib' 'glib2' 'udev' 'mobile-broadband-provider-info' 'systemd' 'python')
-makedepends=('bluez' 'dbus-glib' 'glib2-devel' 'udev' 'mobile-broadband-provider-info' 'systemd' 'libglibutil' 'libgrilio'
-	'libwspcodec')
+license=('GPL-2.0')
+depends=('bluez' 'dbus-glib' 'libglibutil' 'udev' 'mobile-broadband-provider-info' 'systemd' 'python' 'libwspcodec')
+makedepends=('glib2-devel' 'libgrilio')
 source=('git+https://github.com/sailfishos/ofono.git'
 	'ofono.service')
 sha256sums=('SKIP'

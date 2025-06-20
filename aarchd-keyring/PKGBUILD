@@ -1,11 +1,12 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=aarchd-keyring
 pkgver=1.0
 pkgrel=1
-pkgdesc='aarchd keyring'
+pkgdesc='AArchD Keyring'
 arch=('any')
 url='http://aarchd.who53.me'
-license=('GPL')
+license=('GPL-3.0-or-later')
 groups=('base-devel')
 install="${pkgname}.install"
 depends=('pacman')

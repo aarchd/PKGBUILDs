@@ -1,7 +1,0 @@
-post_install() {
-	systemd-sysusers
-}
-
-post_upgrade() {
-	post_install
-}

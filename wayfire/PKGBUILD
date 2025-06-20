@@ -1,13 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=wayfire
 pkgver=0.9.0
 pkgrel=1
 pkgdesc="3D wayland compositor"
-arch=(aarch64)
+arch=('aarch64')
 url=https://wayfire.org
-license=(MIT)
+license=('MIT')
 depends=('cairo' 'pango' 'wf-config' 'libjpeg' 'libinput' 'wlroots' 'glibmm' 'iio-sensor-proxy')
-makedepends=('meson' 'wayland-protocols' 'glm' 'cmake' 'doctest' 'nlohmann-json' 'wf-config' 'wlroots' 'glibmm')
+makedepends=('meson' 'wayland-protocols' 'glm' 'cmake' 'doctest' 'nlohmann-json')
 source=("git+https://github.com/droidian/wayfire.git")
 sha256sums=('SKIP')
 

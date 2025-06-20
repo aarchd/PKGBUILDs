@@ -1,21 +1,24 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=libdroid
 pkgver=0.2.0
 pkgrel=1
 pkgdesc="Library to ease interaction with Android HALs"
 arch=('aarch64')
 url="https://github.com/droidian/libdroid"
-license=('custom')
-depends=('libgbinder')
-makedepends=('meson' 'libgbinder' 'systemd' 'libgirepository' 'libgudev' 'gobject-introspection')
+license=('BSD-3-Clause')
+depends=('libgbinder' 'systemd' 'libgudev' 'dconf')
+makedepends=('meson'  'libgirepository' 'gobject-introspection')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
 build() {
-	arch-meson --buildtype=release "$srcdir/$pkgbase" build
+	arch-meson --buildtype=release "$srcdir/$pkgname" build
 	ninja -C build
 }
 
 package() {
     DESTDIR="$pkgdir" ninja -C build install
+
+    install -Dm644 "$srcdir/$pkgname/COPYING" -t "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

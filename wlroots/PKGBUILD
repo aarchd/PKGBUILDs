@@ -1,4 +1,5 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=wlroots
 pkgver=0.17.4
 pkgrel=3
@@ -25,8 +26,8 @@ depends=(
     'xcb-util-renderutil'
     'xcb-util-wm'
     'libdroid'
-    'android-headers'
     'libhybris'
+    'libdroid'
 )
 makedepends=(
     'glslang'
@@ -37,8 +38,6 @@ makedepends=(
     'wayland-protocols'
     'xorg-xwayland'
     'android-headers'
-    'libhybris'
-    'libdroid'
 )
 optdepends=(
     'xorg-xwayland: Xwayland support'

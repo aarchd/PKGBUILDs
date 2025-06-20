@@ -1,11 +1,12 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=flash-bootimage
 pkgver=8
 pkgrel=1
 pkgdesc="Utility to flash Android boot images"
 arch=('any')
 url="https://github.com/droidian/flash-bootimage"
-license=('custom')
+license=('GPL-3.0-or-later')
 depends=('halium-wrappers' 'util-linux' 'coreutils')
 source=("git+$url.git"
 	"zz-flash-bootimage")

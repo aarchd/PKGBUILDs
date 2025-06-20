@@ -1,4 +1,5 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgbase=libgbinder
 pkgname=(
 	'libgbinder'
@@ -16,7 +17,7 @@ source=("git+${url}.git"
 	'0002-libgbinder-Implement-binder-wait.patch')
 sha256sums=('SKIP'
 	'0805f79cacf6c926981506a4fdaff6f833108408332d8377e40004345ff6c88a'
-	'45bf38052ad29391e55003d726e7d9b2221e25f651daf5bd1d02a982cd6fac65')
+	'65e759463a1611c9c7a8dc70052ee84510896fe0e85f7e02ac208e8481890de0')
 
 build() {
 	cd $srcdir/$pkgbase
@@ -30,10 +31,12 @@ package_libgbinder() {
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
 	make install-dev DESTDIR="${pkgdir}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 package_libgbinder-tools() {
 	depends=('libgbinder')
 	cd $srcdir/$pkgbase/test
 	make install DESTDIR="${pkgdir}"
+	install -Dm644 ../LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

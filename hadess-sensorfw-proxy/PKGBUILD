@@ -1,13 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=hadess-sensorfw-proxy
 pkgver=0.2.1
 pkgrel=1
 pkgdesc="Sensorfw sensors to hadess iio proxy adaptor"
 arch=('aarch64')
 url="https://github.com/droidian/hadess-sensorfw-proxy"
-license=('custom')
-depends=('sensorfw')
-makedepends=('dbus' 'systemd' 'meson' 'libgbinder' 'polkit')
+license=('GPL-3.0-or-later')
+depends=('sensorfw' 'dbus' 'systemd' 'libglibutil')
+makedepends=('meson' 'libgbinder' 'polkit')
 provides=('iio-sensor-proxy')
 conflicts=('iio-sensor-proxy')
 source=("git+https://github.com/aarchd/hadess-sensorfw-proxy.git")

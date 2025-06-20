@@ -1,18 +1,20 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=mint
 pkgver=0.7
 pkgrel=1
 pkgdesc="minui-based splash and info display tool for Linux and Android devices"
 arch=('aarch64')
+license=('MIT')
 url="https://github.com/aarchd/mint"
 depends=('android-minui' 'cairo' 'freetype2' 'systemd')
-makedepends=('meson' 'android-minui' 'cairo' 'systemd')
+makedepends=('meson')
 source=("git+$url.git"
     "mint.initcpio_install"
     "mint.initcpio_hook"
     "90-offline-charging.rules")
 sha256sums=('SKIP'
-    '30079ed2f9f0626642ec53d8f6d3f7648e79d6ed25a2bf19090a4c74647c6090'
+    '5a9a40bd27a89fa5e0f71686f7b98072ff06aac0814abbdb4aa42efedad4fe55'
     '8382a8fb0af1678693fee7fcaecd7641997c02f5a24117702c6998742f6e0305'
     'bac6459b88b543107322cbe1a87c667ff75d989946fc683c9926c7797ebe72b6')
 install=mint.install
@@ -27,4 +29,5 @@ package() {
     install -Dm644 "$srcdir/mint.initcpio_install" "$pkgdir/usr/lib/initcpio/install/mint"
     install -Dm644 "$srcdir/mint.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/mint"
     install -Dm644 "$srcdir/90-offline-charging.rules" "$pkgdir/usr/share/mint/90-offline-charging.rules"
+    install -Dm644 "$srcdir/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

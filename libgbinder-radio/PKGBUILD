@@ -1,13 +1,13 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=libgbinder-radio
 pkgver=1.6.0
 pkgrel=1
 pkgdesc="GLib-style interface to binder"
 arch=('aarch64')
 url="https://github.com/mer-hybris/libgbinder-radio"
-license=('custom')
+license=('BSD-3-Clause')
 depends=('libgbinder')
-makedepends=('libgbinder')
 source=("git+${url}.git")
 sha256sums=('SKIP')
 
@@ -20,4 +20,5 @@ package_libgbinder-radio() {
 	cd $srcdir/$pkgbase
 	make install DESTDIR="${pkgdir}"
 	make install-dev DESTDIR="${pkgdir}"
+	install -Dm644 LICENSE "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }

@@ -1,12 +1,14 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=sensorfw
 pkgver=0.15.1
 pkgrel=1
 pkgdesc="Sensor framework daemon"
 arch=('aarch64')
 url="https://github.com/sailfishos/sensorfw"
-license=('GPL-2.1')
-makedepends=('qt6-base' 'udev' 'systemd' 'android-headers' 'libhybris' 'libgbinder')
+license=('LGPL-2.1-only')
+depends=('udev' 'qt6-base' 'libgbinder' 'libhybris' 'systemd')
+makedepends=('android-headers')
 source=("git+$url.git"
     "0001-drop-doc-test-example-qt-api.patch"
     "sensorfwd.service"

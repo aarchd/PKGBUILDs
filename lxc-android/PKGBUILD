@@ -1,11 +1,12 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=lxc-android
 pkgver=1.38
 pkgrel=3
 pkgdesc="LXC configuration for starting Android containers"
 arch=('any')
 url="https://github.com/droidian/lxc-android"
-license=('custom')
+license=('GPL-2.0-or-later')
 depends=('cpio' 'lxc' 'glibc' 'halium-wrappers' 'parse-android-dynparts' 'device-mapper' 'dnsmasq')
 source=("git+https://github.com/aarchd/lxc-android.git")
 sha256sums=('SKIP')
@@ -14,6 +15,6 @@ package() {
   cd "$srcdir/$pkgname"
 
   cp -ar etc "$pkgdir/"
-  cp -ar usr/lib "$pkgdir/usr/"
-  cp -ar var/lib "$pkgdir/var/"
+  cp -ar usr/ "$pkgdir/"
+  cp -ar var/ "$pkgdir/"
 }

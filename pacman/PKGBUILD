@@ -1,7 +1,7 @@
 # Maintainer: Levente Polyak <anthraxx[at]archlinux[dot]org>
 # Maintainer: Morten Linderud <foxboron@archlinux.org>
-# aarchd
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# AArchD
+# Maintainer: Deepak Meena <who53@disroot.org>
 
 pkgname=pacman
 pkgver=7.0.0.r7.g1f38429
@@ -27,7 +27,6 @@ depends=(
   openssl libcrypto.so
   pacman-mirrorlist
   systemd
-  aarchd-mirrorlist
 )
 makedepends=(
   asciidoc

@@ -1,9 +1,11 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=android-base
 pkgver=2
 pkgrel=0
 pkgdesc="Android base mountpoints, user and groups"
 arch=('any')
+license=('GPL-2.0-or-later')
 url="https://github.com/droidian/android-base"
 source=("git+https://github.com/aarchd/android-base.git"
 	'android-base.hook'
@@ -11,7 +13,6 @@ source=("git+https://github.com/aarchd/android-base.git"
 sha256sums=('SKIP'
 		'ffa4206c1d1168157a182630464c6b581e309ea3c0e46fa45f574c192c08f769'
 		'db6ca9e68735ee614e25e556ecf07c8d38eab6d5cf4254776f72ffb303176171')
-install=android-base.install
 
 package() {
 	# mountpoints

@@ -3,7 +3,7 @@ From: Erfan Abdi <erfangplus@gmail.com>
 Date: Tue, 13 May 2025 11:50:24 +0530
 Subject: [PATCH 2/2] libgbinder: Implement binder-wait
 
-Signed-off-by: Deepak Kumar <notwho53@gmail.com>
+Signed-off-by: Deepak Meena <who53@disroot.org>
 ---
  debian/rules                   |   2 +
  rpm/libgbinder.spec            |   3 +

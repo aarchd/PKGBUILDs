@@ -1,4 +1,5 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgbase=aarchd-meta
 pkgname=(
 	'aarchd-base'
@@ -7,41 +8,20 @@ pkgver=1
 pkgrel=1
 arch=('any')
 url="https://aarchd.who53.me"
-license=('custom')
-source=()
-sha256sums=()
+pkgdesc="Meta packages for AArchD"
+license=('GPL-3.0-or-later')
 
 package_aarchd-base() {
-	pkgdesc="aarchd base meta package"
+	pkgdesc="AArchD base meta package"
 	depends=(
-		'alsa-utils'
-		'ca-certificates'
-		'systemd'
-		'file'
-		'kbd'
-		'glibc'
-		'libcanberra'
-		'pam'
-		'bash-completion'
-		'gawk'
+		'base'
 		'less'
 		'vim'
 		'sudo'
 		'curl'
 		'wget'
-		'unzip'
-		'zip'
-		'xz'
-		'dnsmasq'
-		'iw'
 		'networkmanager'
-		'iputils'
-		'util-linux'
-		'wireless_tools'
-		'wpa_supplicant'
 		'libgbinder-tools'
-		'cups'
-		'dialog'
 		'droidian-quirks-journald-standard'
 		'droidian-quirks-systemd'
 		'droidian-quirks-wayland'

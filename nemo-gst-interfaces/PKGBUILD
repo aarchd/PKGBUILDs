@@ -1,12 +1,13 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=nemo-gst-interfaces
 pkgver=0.20211122.0
 pkgrel=1
 pkgdesc="Nemo mobile GStreamer interfaces"
 arch=('aarch64')
 url="https://github.com/sailfishos/nemo-gst-interfaces"
-license=('GPL 2.1')
-depends=('gst-plugins-bad-libs')
+license=('LGPL-2.1-only')
+depends=('gst-plugins-bad-libs' 'gst-plugins-base-libs')
 source=("git+$url.git")
 sha256sums=('SKIP')
 

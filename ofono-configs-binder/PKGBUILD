@@ -1,4 +1,5 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgbase=ofono-configs-binder
 pkgname=(
 	'ofono-configs-binder-common'
@@ -9,9 +10,9 @@ pkgname=(
 pkgver=6
 pkgrel=1
 pkgdesc="ofono configuration for devices using the binder plugin"
-arch=('aarch64')
+arch=('any')
 url="https://github.com/droidian/ofono-config-ril-binder"
-license=('custom')
+license=('GPL-3.0-or-later')
 makedepends=('ofono' 'libgbinder-radio' 'libgrilio')
 source=("git+${url}.git")
 sha256sums=('SKIP')

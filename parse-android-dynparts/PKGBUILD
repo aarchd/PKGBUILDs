@@ -1,17 +1,18 @@
-# Maintainer: Deepak Kumar <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=parse-android-dynparts
 pkgver=1.0
 pkgrel=1
 pkgdesc="A tool to parse Android super partition layout"
 arch=('aarch64')
 url="https://github.com/tchebb/parse-android-dynparts"
-license=('custom')
+license=('Apache-2.0')
 depends=('openssl')
 makedepends=('cmake')
 source=("git+https://github.com/droidian/parse-android-dynparts.git"
   "parse-android-dynparts.initcpio_install")
 sha256sums=('SKIP'
-  '74adb89724cbd9ba5b14e270409de3ad199aafb8b049899b663c6414f396a8ce')
+  '68649aacb1b74686ade3db5a26ee2b691f5aa4a8e13fce54141081c77cb139a1')
 
 build() {
   cd "$srcdir/$pkgname"

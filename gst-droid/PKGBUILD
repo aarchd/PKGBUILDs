@@ -1,12 +1,22 @@
-# Maintainer: Deepak Meena <notwho53@gmail.com>
+# Maintainer: Deepak Meena <who53@disroot.org>
+
 pkgname=gst-droid
 pkgver=0.20241209.0
 pkgrel=1
 pkgdesc="GStreamer droid plug-in."
 arch=('aarch64')
 url="https://github.com/sailfishos/gst-droid"
-license=('custom')
-makedepends=('meson' 'droidmedia' 'libexif' 'libhybris' 'nemo-gst-interfaces' 'gst-plugins-bad-libs')
+license=('LGPL-2.1-or-later')
+depends=('android-headers' 
+    'gstreamer' 
+    'gst-plugins-base-libs' 
+    'gst-plugins-bad-libs' 
+    'nemo-gst-interfaces' 
+    'libhybris' 
+    'libglvnd' 
+    'orc' 
+    'libexif')
+makedepends=('meson' 'droidmedia')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
