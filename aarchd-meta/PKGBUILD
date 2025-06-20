@@ -1,4 +1,5 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
+
 pkgbase=aarchd-meta
 pkgname=(
 	'aarchd-base'
@@ -7,7 +8,8 @@ pkgver=1
 pkgrel=1
 arch=('any')
 url="https://aarchd.who53.me"
-license=('custom')
+pkgdesc="Meta packages for aarchd"
+license=('GPL-3.0-or-later')
 source=()
 sha256sums=()
 

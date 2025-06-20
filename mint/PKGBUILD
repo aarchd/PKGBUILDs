@@ -1,12 +1,14 @@
 # Maintainer: Deepak Meena <notwho53@gmail.com>
+
 pkgname=mint
 pkgver=0.7
 pkgrel=1
 pkgdesc="minui-based splash and info display tool for Linux and Android devices"
 arch=('aarch64')
+license=('MIT')
 url="https://github.com/aarchd/mint"
 depends=('android-minui' 'cairo' 'freetype2' 'systemd')
-makedepends=('meson' 'android-minui' 'cairo' 'systemd')
+makedepends=('meson')
 source=("git+$url.git"
     "mint.initcpio_install"
     "mint.initcpio_hook"
@@ -27,4 +29,5 @@ package() {
     install -Dm644 "$srcdir/mint.initcpio_install" "$pkgdir/usr/lib/initcpio/install/mint"
     install -Dm644 "$srcdir/mint.initcpio_hook" "$pkgdir/usr/lib/initcpio/hooks/mint"
     install -Dm644 "$srcdir/90-offline-charging.rules" "$pkgdir/usr/share/mint/90-offline-charging.rules"
+    install -Dm644 "$srcdir/$pkgname/COPYING" "$pkgdir/usr/share/licenses/$pkgname/COPYING"
 }

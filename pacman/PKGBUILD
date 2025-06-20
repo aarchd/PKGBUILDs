@@ -27,7 +27,6 @@ depends=(
   openssl libcrypto.so
   pacman-mirrorlist
   systemd
-  aarchd-mirrorlist
 )
 makedepends=(
   asciidoc
