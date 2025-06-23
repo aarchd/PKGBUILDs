@@ -26,6 +26,7 @@ for user in root "$BUILD_USER"; do
 done
 
 pacman -Syu base-devel fakeroot git --needed --noconfirm
+sed -i 's/^#MAKEFLAGS=.*/MAKEFLAGS="-j$(nproc)"/' /etc/makepkg.conf
 chown -R "$BUILD_USER:$BUILD_USER" "$PKGDIR_BASE"
 
 declare -A DEP_MAP
