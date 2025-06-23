@@ -30,11 +30,12 @@ prepare() {
 build() {
     cd "$srcdir/$pkgname/$_builddir"
 
-    export CFLAGS="-Wall -Wno-psabi"
-    [[ "$CFLAGS" != *-O* ]] && CFLAGS+=" -O2"
+    export CFLAGS="$CFLAGS -Wall -Wno-psabi"
 
     qmake6 CONFIG+="configs autohybris binder systemdunit" \
-        QMAKE_CXXFLAGS="$CFLAGS" ../${_projname}.pro
+        QMAKE_CXXFLAGS="$CFLAGS" \
+        QMAKE_LFLAGS="$LDFLAGS" \
+        ../${_projname}.pro
 
     make -j$(nproc)
 
