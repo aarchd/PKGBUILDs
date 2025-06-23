@@ -103,9 +103,9 @@ for pkg in "${BUILD_ORDER[@]}"; do
     info "Building package: $pkg"
 
     if [[ -f "$pkgdir/.noinstall" ]]; then
-        sudo -u "$BUILD_USER" -H bash -c "cd '$pkgdir' && makepkg -scf --noconfirm"
+        sudo -u "$BUILD_USER" -H bash -c "cd '$pkgdir' && PACKAGER='Deepak Meena <who53@disroot.org>' makepkg -scf --noconfirm"
     else
-        sudo -u "$BUILD_USER" -H bash -c "cd '$pkgdir' && makepkg -scif --noconfirm"
+        sudo -u "$BUILD_USER" -H bash -c "cd '$pkgdir' && PACKAGER='Deepak Meena <who53@disroot.org>' makepkg -scif --noconfirm"
     fi
 
     find "$pkgdir" -maxdepth 1 \( -name "*.pkg.tar.zst" -o -name "*.pkg.tar.zst.sig" \) -exec mv -v {} /mnt/pkgs/ \;
