@@ -7,11 +7,9 @@ pkgdesc="Utility to flash Android boot images"
 arch=('any')
 url="https://github.com/droidian/flash-bootimage"
 license=('GPL-3.0-or-later')
-depends=('halium-wrappers' 'util-linux' 'coreutils')
-source=("git+$url.git"
-	"zz-flash-bootimage")
-sha256sums=('SKIP'
-	'5098f9effef8c3c610e8063270b466ef99863db9b838539ac17d31ea594bc8a3')
+depends=('halium-wrappers')
+source=("git+$url.git")
+sha256sums=('SKIP')
 
 package() {
 	cd "$srcdir/$pkgname"
@@ -24,7 +22,6 @@ package() {
 	install -Dm755 src/flash-bootimage-generator $pkgdir/usr/lib/systemd/system-generators/flash-bootimage-generator
 	install -Dm644 config/flash-bootimage.conf $pkgdir/usr/lib/flash-bootimage/flash-bootimage.conf
 	install -Dm644 config/00-empty $pkgdir/etc/flash-bootimage/00-empty
-	install -Dm644 $srcdir/zz-flash-bootimage $pkgdir/etc/kernel/bootimage_postinst.d/zz-flash-bootimage
 	mkdir -p $pkgdir/usr/lib/systemd/system
 	cp -ar systemd/*.service $pkgdir/usr/lib/systemd/system/
 	mkdir -p $pkgdir/usr/lib/systemd/system/switch-slot.target.wants
