@@ -23,6 +23,7 @@ pkgbase = libhybris
 	makedepends = python
 	makedepends = pkgconf
 	makedepends = mesa
+	depends = libglvnd
 	source = git+https://github.com/droidian/libhybris.git
 	source = 0002-Fix-gralloc-wrapper-include-file-installation.patch
 	sha256sums = SKIP

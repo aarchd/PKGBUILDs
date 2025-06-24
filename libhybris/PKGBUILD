@@ -8,6 +8,7 @@ url="https://github.com/libhybris/libhybris"
 license=('Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'BSD-4-Clause'
          'GPL-3.0-or-later' 'ISC' 'LGPL-2.1-only' 'MIT')
 pkgdesc="Allows use of bionic-based HW adaptations"
+depends=('libglvnd')
 makedepends=(
   'android-headers'
   'wayland'
@@ -39,6 +40,8 @@ package() {
   cd "$srcdir/$pkgbase/hybris"
   DESTDIR="$pkgdir" make install
   rm -rf $pkgdir/usr/include/{CL,EGL,GLES{,2,3},KHR}
+  mv $pkgdir/usr/etc/* $pkgdir/etc/
+  rm -rf $pkgdir/usr/etc
   install -Dm644 ../debian/getprop.1 "$pkgdir/usr/share/man/man1/getprop.1"
   install -Dm644 ../debian/setprop.1 "$pkgdir/usr/share/man/man1/setprop.1"
 
