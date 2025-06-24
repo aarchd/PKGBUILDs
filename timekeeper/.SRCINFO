@@ -6,6 +6,8 @@ pkgbase = timekeeper
 	arch = aarch64
 	license = GPL-3.0-only
 	makedepends = cmake
+	depends = glibc
+	depends = gcc-libs
 	source = git+https://github.com/ubports/timekeeper.git
 	sha256sums = SKIP
 
