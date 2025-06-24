@@ -2,13 +2,12 @@
 
 pkgname=libhybris
 pkgver=0.0.5.53
-pkgrel=1
+pkgrel=2
 arch=('aarch64')
 url="https://github.com/libhybris/libhybris"
 license=('Apache-2.0' 'BSD-2-Clause' 'BSD-3-Clause' 'BSD-4-Clause'
          'GPL-3.0-or-later' 'ISC' 'LGPL-2.1-only' 'MIT')
 pkgdesc="Allows use of bionic-based HW adaptations"
-depends=('glibc')
 makedepends=(
   'android-headers'
   'wayland'
