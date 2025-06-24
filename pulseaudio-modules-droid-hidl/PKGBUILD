@@ -7,8 +7,8 @@ pkgdesc="HIDL module for PulseAudio"
 arch=('aarch64')
 url="https://github.com/mer-hybris/pulseaudio-modules-droid-hidl"
 license=('LGPL-2.1-only')
-depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific')
-makedepends=('meson' 'dbus' 'android-headers' 'pulsecore' 'audiosystem-passthrough')
+depends=('pulseaudio' 'pulseaudio-modules-droid-apispecific' 'dbus')
+makedepends=('meson' 'android-headers' 'pulsecore' 'audiosystem-passthrough')
 source=("git+$url.git")
 sha256sums=('SKIP')
 
