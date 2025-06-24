@@ -2,12 +2,12 @@
 
 pkgname=headphone-manager
 pkgver=0.2.1
-pkgrel=1
+pkgrel=2
 pkgdesc="Session headphone manager for Linux."
 arch=('aarch64')
 url="https://github.com/droidian/headphone-manager"
 license=('GPL-3.0-or-later')
-depends=('dbus' 'glib2' 'alsa-lib' 'libgudev')
+depends=('dbus' 'glib2' 'alsa-lib' 'libgudev' 'dconf')
 makedepends=('meson' 'glib2-devel' )
 source=("git+$url.git")
 sha256sums=('SKIP')

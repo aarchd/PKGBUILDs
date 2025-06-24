@@ -2,12 +2,12 @@
 
 pkgname=mobile-power-saver
 pkgver=0.9.3
-pkgrel=1
+pkgrel=2
 pkgdesc="Mobile Power Saver enable hard power saving when screen is off."
 arch=('aarch64')
 url="https://github.com/droidian/mobile-power-saver"
 license=('GPL-3.0-or-later')
-depends=('libgbinder-radio' 'libnl' 'systemd')
+depends=('libgbinder-radio' 'libnl' 'systemd' 'dconf')
 makedepends=('meson')
 source=("git+$url.git")
 sha256sums=('SKIP')
