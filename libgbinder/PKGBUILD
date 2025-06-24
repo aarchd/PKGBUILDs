@@ -17,7 +17,7 @@ source=("git+${url}.git"
 	'0002-libgbinder-Implement-binder-wait.patch')
 sha256sums=('SKIP'
 	'0805f79cacf6c926981506a4fdaff6f833108408332d8377e40004345ff6c88a'
-	'65e759463a1611c9c7a8dc70052ee84510896fe0e85f7e02ac208e8481890de0')
+	'700f6125b62d90668779c3ef8deff11d4ec1105e996ac3c022c0abb92fa0909b')
 
 build() {
 	cd $srcdir/$pkgbase
