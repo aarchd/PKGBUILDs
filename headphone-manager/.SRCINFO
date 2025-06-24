@@ -1,0 +1,18 @@
+pkgbase = headphone-manager
+	pkgdesc = Session headphone manager for Linux.
+	pkgver = 0.2.1
+	pkgrel = 2
+	url = https://github.com/droidian/headphone-manager
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = glib2-devel
+	depends = dbus
+	depends = glib2
+	depends = alsa-lib
+	depends = libgudev
+	depends = dconf
+	source = git+https://github.com/droidian/headphone-manager.git
+	sha256sums = SKIP
+
+pkgname = headphone-manager

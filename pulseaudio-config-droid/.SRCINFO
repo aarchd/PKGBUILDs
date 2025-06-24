@@ -1,0 +1,17 @@
+pkgbase = pulseaudio-config-droid
+	pkgdesc = pulseaudio configs for hybris devices
+	pkgver = 1.0.17
+	pkgrel = 3
+	url = https://github.com/droidian/pulseaudio-config-droid
+	arch = any
+	license = GPL-3.0-or-later
+	depends = pulseaudio
+	depends = pulseaudio-modules-droid-apispecific
+	source = git+https://github.com/droidian/pulseaudio-config-droid.git
+	source = pulseaudio-config-droid.hook
+	source = update-default-pa.sh
+	sha256sums = SKIP
+	sha256sums = c46fcfe72a15fe6624d556156c8886573f778497b4ff6683d44276934c5819f6
+	sha256sums = 0ac7717d0eb332dfa7040d0dca739e7be4e35a6408561621001f7ff214d7a5b1
+
+pkgname = pulseaudio-config-droid

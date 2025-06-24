@@ -1,0 +1,25 @@
+pkgbase = wayfire
+	pkgdesc = 3D wayland compositor
+	pkgver = 0.9.0
+	pkgrel = 1
+	url = https://wayfire.org
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	makedepends = wayland-protocols
+	makedepends = glm
+	makedepends = cmake
+	makedepends = doctest
+	makedepends = nlohmann-json
+	depends = cairo
+	depends = pango
+	depends = wf-config
+	depends = libjpeg
+	depends = libinput
+	depends = wlroots
+	depends = glibmm
+	depends = iio-sensor-proxy
+	source = git+https://github.com/droidian/wayfire.git
+	sha256sums = SKIP
+
+pkgname = wayfire

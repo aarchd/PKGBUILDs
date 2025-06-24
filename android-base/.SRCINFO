@@ -1,0 +1,15 @@
+pkgbase = android-base
+	pkgdesc = Android base mountpoints, user and groups
+	pkgver = 2
+	pkgrel = 0
+	url = https://github.com/droidian/android-base
+	arch = any
+	license = GPL-2.0-or-later
+	source = git+https://github.com/aarchd/android-base.git
+	source = android-base.hook
+	source = update-hook.sh
+	sha256sums = SKIP
+	sha256sums = ffa4206c1d1168157a182630464c6b581e309ea3c0e46fa45f574c192c08f769
+	sha256sums = db6ca9e68735ee614e25e556ecf07c8d38eab6d5cf4254776f72ffb303176171
+
+pkgname = android-base

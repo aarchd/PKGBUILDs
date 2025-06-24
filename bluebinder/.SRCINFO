@@ -1,0 +1,16 @@
+pkgbase = bluebinder
+	pkgdesc = Simple proxy for using Android binder based Bluetooth through VHCI
+	pkgver = 1.0.17
+	pkgrel = 3
+	url = https://github.com/mer-hybris/bluebinder
+	arch = aarch64
+	license = GPL-2.0-or-later
+	makedepends = bluez-libs
+	makedepends = systemd
+	depends = halium-wrappers
+	depends = libgbinder
+	depends = systemd-libs
+	source = git+https://github.com/droidian/bluebinder.git
+	sha256sums = SKIP
+
+pkgname = bluebinder

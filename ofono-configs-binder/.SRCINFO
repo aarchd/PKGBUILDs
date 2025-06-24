@@ -1,0 +1,29 @@
+pkgbase = ofono-configs-binder
+	pkgdesc = ofono configuration for devices using the binder plugin
+	pkgver = 6
+	pkgrel = 1
+	url = https://github.com/droidian/ofono-config-ril-binder
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = ofono
+	makedepends = libgbinder-radio
+	makedepends = libgrilio
+	source = git+https://github.com/droidian/ofono-config-ril-binder.git
+	sha256sums = SKIP
+
+pkgname = ofono-configs-binder-common
+	pkgdesc = ofono configuration for devices using the binder plugin - common configurations
+	depends = ofono-binder-plugin
+	provides = ofono-configs-binder
+
+pkgname = ofono-configs-binder-single-sim-sim2
+	pkgdesc = ofono configuration for devices using the binder plugin - single sim on slot2
+	depends = ofono-configs-binder-common
+
+pkgname = ofono-config-ril-binder
+	pkgdesc = ofono configuration for devices using binder as transport - transactional package
+	depends = ofono-configs-binder-common
+
+pkgname = ofono-config-ril-binder-single-sim-sim2
+	pkgdesc = ofono configuration for devices using binder as transport (dual sim addon, SIM2-only) - transactional package
+	depends = ofono-configs-binder-single-sim-sim2

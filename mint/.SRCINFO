@@ -1,0 +1,23 @@
+pkgbase = mint
+	pkgdesc = minui-based splash and info display tool for Linux and Android devices
+	pkgver = 0.7
+	pkgrel = 1
+	url = https://github.com/aarchd/mint
+	install = mint.install
+	arch = aarch64
+	license = MIT
+	makedepends = meson
+	depends = android-minui
+	depends = cairo
+	depends = freetype2
+	depends = systemd
+	source = git+https://github.com/aarchd/mint.git
+	source = mint.initcpio_install
+	source = mint.initcpio_hook
+	source = 90-offline-charging.rules
+	sha256sums = SKIP
+	sha256sums = 5a9a40bd27a89fa5e0f71686f7b98072ff06aac0814abbdb4aa42efedad4fe55
+	sha256sums = 8382a8fb0af1678693fee7fcaecd7641997c02f5a24117702c6998742f6e0305
+	sha256sums = bac6459b88b543107322cbe1a87c667ff75d989946fc683c9926c7797ebe72b6
+
+pkgname = mint

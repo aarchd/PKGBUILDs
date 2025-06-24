@@ -1,0 +1,23 @@
+pkgbase = aarchd-meta
+	pkgdesc = Meta packages for AArchD
+	pkgver = 1
+	pkgrel = 1
+	url = https://aarchd.who53.me
+	arch = any
+	license = GPL-3.0-or-later
+
+pkgname = aarchd-base
+	pkgdesc = AArchD base meta package
+	depends = base
+	depends = less
+	depends = vim
+	depends = sudo
+	depends = curl
+	depends = wget
+	depends = networkmanager
+	depends = libgbinder-tools
+	depends = droidian-quirks-journald-standard
+	depends = droidian-quirks-systemd
+	depends = droidian-quirks-wayland
+	depends = aarchd-keyring
+	depends = aarchd-mirrorlist

@@ -1,0 +1,16 @@
+pkgbase = parse-android-dynparts
+	pkgdesc = A tool to parse Android super partition layout
+	pkgver = 1.0
+	pkgrel = 2
+	url = https://github.com/tchebb/parse-android-dynparts
+	arch = aarch64
+	license = Apache-2.0
+	makedepends = cmake
+	depends = openssl
+	depends = gcc-libs
+	source = git+https://github.com/droidian/parse-android-dynparts.git
+	source = parse-android-dynparts.initcpio_install
+	sha256sums = SKIP
+	sha256sums = 68649aacb1b74686ade3db5a26ee2b691f5aa4a8e13fce54141081c77cb139a1
+
+pkgname = parse-android-dynparts

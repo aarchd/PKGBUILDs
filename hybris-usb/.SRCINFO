@@ -1,0 +1,16 @@
+pkgbase = hybris-usb
+	pkgdesc = USB control for Android with hybris
+	pkgver = 4.1.0
+	pkgrel = 1
+	url = https://github.com/droidian/hybris-usb
+	install = hybris-usb.install
+	arch = any
+	license = GPL-2.0-or-later
+	depends = net-tools
+	depends = dhcp
+	depends = systemd
+	depends = openssh
+	source = git+https://github.com/aarchd/hybris-usb.git
+	sha256sums = SKIP
+
+pkgname = hybris-usb

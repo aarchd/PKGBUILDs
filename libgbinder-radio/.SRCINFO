@@ -1,0 +1,12 @@
+pkgbase = libgbinder-radio
+	pkgdesc = GLib-style interface to binder
+	pkgver = 1.6.0
+	pkgrel = 1
+	url = https://github.com/mer-hybris/libgbinder-radio
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = libgbinder
+	source = git+https://github.com/mer-hybris/libgbinder-radio.git
+	sha256sums = SKIP
+
+pkgname = libgbinder-radio

@@ -1,0 +1,17 @@
+pkgbase = ofono2mm
+	pkgdesc = A simple python script implementing ModemManager DBus API and using ofono to manage the modem
+	pkgver = 1.0.17
+	pkgrel = 3
+	url = https://github.com/droidian/ofono2mm
+	arch = any
+	license = BSD-3-Clause
+	makedepends = python
+	depends = python-dbus-next
+	depends = python-gobject
+	depends = modemmanager
+	depends = ofono
+	depends = geoclue
+	source = git+https://github.com/droidian/ofono2mm.git
+	sha256sums = SKIP
+
+pkgname = ofono2mm

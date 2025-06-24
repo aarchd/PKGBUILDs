@@ -1,0 +1,22 @@
+pkgbase = libgbinder
+	pkgdesc = GLib-style interface to binder
+	pkgver = 1.1.42
+	pkgrel = 1
+	url = https://github.com/mer-hybris/libgbinder
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = flex
+	makedepends = bison
+	makedepends = libglibutil
+	source = git+https://github.com/mer-hybris/libgbinder.git
+	source = 0001-libgbinder-Add-getTransport-support-to-hidl.patch
+	source = 0002-libgbinder-Implement-binder-wait.patch
+	sha256sums = SKIP
+	sha256sums = 0805f79cacf6c926981506a4fdaff6f833108408332d8377e40004345ff6c88a
+	sha256sums = 700f6125b62d90668779c3ef8deff11d4ec1105e996ac3c022c0abb92fa0909b
+
+pkgname = libgbinder
+	depends = libglibutil
+
+pkgname = libgbinder-tools
+	depends = libgbinder

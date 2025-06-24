@@ -1,0 +1,13 @@
+pkgbase = nemo-gst-interfaces
+	pkgdesc = Nemo mobile GStreamer interfaces
+	pkgver = 0.20211122.0
+	pkgrel = 1
+	url = https://github.com/sailfishos/nemo-gst-interfaces
+	arch = aarch64
+	license = LGPL-2.1-only
+	depends = gst-plugins-bad-libs
+	depends = gst-plugins-base-libs
+	source = git+https://github.com/sailfishos/nemo-gst-interfaces.git
+	sha256sums = SKIP
+
+pkgname = nemo-gst-interfaces

@@ -1,0 +1,17 @@
+pkgbase = ofono-ril-binder-plugin
+	pkgdesc = ofono plugin which implements binder transport for RIL
+	pkgver = 1.2.8
+	pkgrel = 1
+	url = https://github.com/mer-hybris/ofono-ril-binder-plugin
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = ofono
+	source = git+https://github.com/mer-hybris/ofono-ril-binder-plugin.git
+	sha256sums = SKIP
+
+pkgname = ofono-ril-binder-plugin
+	depends = libgrilio-binder
+
+pkgname = libgrilio-binder
+	depends = libgbinder-radio
+	depends = libgrilio

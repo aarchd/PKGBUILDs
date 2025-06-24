@@ -1,0 +1,29 @@
+pkgbase = pulseaudio-modules-droid-modern
+	pkgdesc = Pulseaudio modules to interact with the Android HAL.
+	pkgver = 14.2.103
+	pkgrel = 1
+	url = https://github.com/mer-hybris/pulseaudio-modules-droid-modern
+	arch = aarch64
+	license = LGPL-2.1-only
+	makedepends = dbus
+	makedepends = android-headers
+	makedepends = meson
+	depends = libpulse
+	depends = expat
+	depends = libevdev
+	depends = udev
+	depends = libhybris
+	depends = pulseaudio
+	depends = pulsecore
+	source = git+https://github.com/droidian/pulseaudio-modules-droid-modern.git
+	sha256sums = SKIP
+
+pkgname = pulseaudio-modules-droid-modern
+	pkgdesc = PulseAudio Droid HAL module
+	depends = pulseaudio
+	provides = pulseaudio-modules-droid-apispecific
+	conflicts = pulseaudio-modules-droid-apispecific
+
+pkgname = pulseaudio-modules-droid
+	pkgdesc = PulseAudio Droid HAL module - transitional package
+	depends = pulseaudio-modules-droid-modern

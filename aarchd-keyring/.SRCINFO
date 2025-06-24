@@ -1,0 +1,14 @@
+pkgbase = aarchd-keyring
+	pkgdesc = AArchD Keyring
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://aarchd.who53.me
+	install = aarchd-keyring.install
+	arch = any
+	groups = base-devel
+	license = GPL-3.0-or-later
+	depends = pacman
+	source = aarchd.gpg
+	sha256sums = 0ec2047b39fde65846616b443b884f2d6c1b2ba6a84a7ea772c3b53ffe371722
+
+pkgname = aarchd-keyring

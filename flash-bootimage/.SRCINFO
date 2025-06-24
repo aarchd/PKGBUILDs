@@ -1,0 +1,12 @@
+pkgbase = flash-bootimage
+	pkgdesc = Utility to flash Android boot images
+	pkgver = 8
+	pkgrel = 1
+	url = https://github.com/droidian/flash-bootimage
+	arch = any
+	license = GPL-3.0-or-later
+	depends = halium-wrappers
+	source = git+https://github.com/droidian/flash-bootimage.git
+	sha256sums = SKIP
+
+pkgname = flash-bootimage

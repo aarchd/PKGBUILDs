@@ -1,0 +1,126 @@
+pkgbase = adaptation-hybris
+	pkgdesc = Metapackages for various VNDK hybris adaptations
+	pkgver = 29
+	pkgrel = 1
+	url = https://aarchd.who53.me
+	arch = any
+	license = GPL-3.0-or-later
+
+pkgname = adaptation-hybris-common
+	pkgdesc = Base metapackage for adaptations (common variant)
+	depends = android-base
+	depends = lxc-android
+	depends = libhybris
+	depends = hadess-sensorfw-proxy
+	depends = droidian-quirks-hybris-gl
+	depends = droidian-quirks-tls-padding
+	depends = gst-droid
+	depends = flash-bootimage
+	depends = droidian-quirks-device
+	depends = flashlightd
+	depends = hybris-usb
+
+pkgname = adaptation-hybris-phone
+	pkgdesc = Base metapackage for adaptations (phone variant)
+	depends = adaptation-hybris-common
+	depends = ofono
+	depends = ofono2mm
+
+pkgname = adaptation-hybris-phosh
+	pkgdesc = Base metapackage for adaptations (phosh variant)
+	depends = phosh-config-hwcomposer
+
+pkgname = adaptation-hybris-api28
+	pkgdesc = Base metapackage for VNDK api28 adaptations (standard variant)
+	depends = adaptation-hybris-common
+	depends = pulseaudio-config-droid
+	depends = droidian-quirks-api28
+	depends = pulseaudio-modules-droid-jb2q
+	depends = bluebinder
+	depends = timekeeper
+
+pkgname = adaptation-hybris-api28-phone
+	pkgdesc = Base metapackage for VNDK api28 adaptations (phone variant)
+	depends = adaptation-hybris-common
+	depends = adaptation-hybris-phone
+	depends = adaptation-hybris-api28
+	depends = ofono-binder-plugin
+	depends = ofono-configs-binder-common
+	depends = pulseaudio-modules-droid-hidl
+	depends = audiosystem-passthrough
+
+pkgname = adaptation-hybris-api29
+	pkgdesc = Base metapackage for VNDK api29 adaptations (standard variant)
+	depends = adaptation-hybris-common
+	depends = pulseaudio-config-droid
+	depends = droidian-quirks-api29
+	depends = pulseaudio-modules-droid-jb2q
+	depends = bluebinder
+	depends = timekeeper
+
+pkgname = adaptation-hybris-api29-phone
+	pkgdesc = Base metapackage for VNDK api29 adaptations (phone variant)
+	depends = adaptation-hybris-common
+	depends = adaptation-hybris-phone
+	depends = adaptation-hybris-api29
+	depends = ofono-binder-plugin
+	depends = ofono-configs-binder-common
+	depends = pulseaudio-modules-droid-hidl
+	depends = audiosystem-passthrough
+
+pkgname = adaptation-hybris-api30
+	pkgdesc = Base metapackage for VNDK api30 adaptations (standard variant)
+	depends = adaptation-hybris-common
+	depends = pulseaudio-config-droid
+	depends = droidian-quirks-api30
+	depends = pulseaudio-modules-droid-modern
+	depends = bluebinder
+	depends = timekeeper
+
+pkgname = adaptation-hybris-api30-phone
+	pkgdesc = Base metapackage for VNDK api30 adaptations (phone variant)
+	depends = adaptation-hybris-common
+	depends = adaptation-hybris-phone
+	depends = adaptation-hybris-api30
+	depends = ofono-binder-plugin
+	depends = ofono-configs-binder-common
+	depends = pulseaudio-modules-droid-hidl
+	depends = audiosystem-passthrough
+
+pkgname = adaptation-hybris-api32
+	pkgdesc = Base metapackage for VNDK api32 adaptations (standard variant)
+	depends = adaptation-hybris-common
+	depends = pulseaudio-config-droid
+	depends = droidian-quirks-api32
+	depends = pulseaudio-modules-droid-modern
+	depends = bluebinder
+	depends = timekeeper
+
+pkgname = adaptation-hybris-api32-phone
+	pkgdesc = Base metapackage for VNDK api32 adaptations (phone variant)
+	depends = adaptation-hybris-common
+	depends = adaptation-hybris-phone
+	depends = adaptation-hybris-api32
+	depends = ofono-binder-plugin
+	depends = ofono-configs-binder-common
+	depends = pulseaudio-modules-droid-hidl
+	depends = audiosystem-passthrough
+
+pkgname = adaptation-hybris-api33
+	pkgdesc = Base metapackage for VNDK api33 adaptations (standard variant)
+	depends = adaptation-hybris-common
+	depends = pulseaudio-config-droid
+	depends = droidian-quirks-api33
+	depends = pulseaudio-modules-droid-modern
+	depends = bluebinder
+	depends = timekeeper
+
+pkgname = adaptation-hybris-api33-phone
+	pkgdesc = Base metapackage for VNDK api33 adaptations (phone variant)
+	depends = adaptation-hybris-common
+	depends = adaptation-hybris-phone
+	depends = adaptation-hybris-api33
+	depends = ofono-binder-plugin
+	depends = ofono-configs-binder-common
+	depends = pulseaudio-modules-droid-hidl
+	depends = audiosystem-passthrough

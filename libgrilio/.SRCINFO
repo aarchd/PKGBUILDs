@@ -1,0 +1,12 @@
+pkgbase = libgrilio
+	pkgdesc = RIL I/O library
+	pkgver = 1.0.44
+	pkgrel = 1
+	url = https://github.com/sailfishos/libgrilio
+	arch = aarch64
+	license = BSD-3-Clause
+	depends = libglibutil
+	source = git+https://github.com/sailfishos/libgrilio.git
+	sha256sums = SKIP
+
+pkgname = libgrilio

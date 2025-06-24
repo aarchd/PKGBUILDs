@@ -1,0 +1,18 @@
+pkgbase = libdroid
+	pkgdesc = Library to ease interaction with Android HALs
+	pkgver = 0.2.0
+	pkgrel = 1
+	url = https://github.com/droidian/libdroid
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = meson
+	makedepends = libgirepository
+	makedepends = gobject-introspection
+	depends = libgbinder
+	depends = systemd
+	depends = libgudev
+	depends = dconf
+	source = git+https://github.com/droidian/libdroid.git
+	sha256sums = SKIP
+
+pkgname = libdroid

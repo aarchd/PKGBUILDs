@@ -1,0 +1,22 @@
+pkgbase = gst-droid
+	pkgdesc = GStreamer droid plug-in.
+	pkgver = 0.20241209.0
+	pkgrel = 1
+	url = https://github.com/sailfishos/gst-droid
+	arch = aarch64
+	license = LGPL-2.1-or-later
+	makedepends = meson
+	makedepends = droidmedia
+	depends = android-headers
+	depends = gstreamer
+	depends = gst-plugins-base-libs
+	depends = gst-plugins-bad-libs
+	depends = nemo-gst-interfaces
+	depends = libhybris
+	depends = libglvnd
+	depends = orc
+	depends = libexif
+	source = git+https://github.com/sailfishos/gst-droid.git
+	sha256sums = SKIP
+
+pkgname = gst-droid

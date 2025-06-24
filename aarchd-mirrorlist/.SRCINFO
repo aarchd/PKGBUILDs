@@ -1,0 +1,12 @@
+pkgbase = aarchd-mirrorlist
+	pkgdesc = AArchD mirror list
+	pkgver = 1.0
+	pkgrel = 1
+	url = http://aarchd.who53.me
+	arch = any
+	groups = base
+	license = GPL-3.0-or-later
+	source = mirrorlist
+	sha256sums = 13fc0276383c5a5634a37bfdb18ef0d0e970309305dd2100eda3a2a44a31d116
+
+pkgname = aarchd-mirrorlist

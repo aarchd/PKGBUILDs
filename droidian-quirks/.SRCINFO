@@ -1,0 +1,54 @@
+pkgbase = droidian-quirks
+	pkgdesc = Various quirks
+	pkgver = 95
+	pkgrel = 1
+	url = https://github.com/droidian/droidian-quirks
+	arch = any
+	license = GPL-3.0-or-later
+	makedepends = halium-wrappers
+	makedepends = systemd
+	makedepends = libgbinder
+	source = git+https://github.com/droidian/droidian-quirks.git
+	sha256sums = SKIP
+
+pkgname = droidian-quirks-api28
+	pkgdesc = Various generic quirks for API 28 (P) devices
+	depends = libgbinder
+
+pkgname = droidian-quirks-api29
+	pkgdesc = Various generic quirks for API 29 (Q) devices
+	depends = libgbinder
+
+pkgname = droidian-quirks-api30
+	pkgdesc = Various generic quirks for API 30 (R) devices
+	depends = libgbinder
+
+pkgname = droidian-quirks-api32
+	pkgdesc = Various generic quirks for API 32 (S) devices
+	depends = libgbinder
+
+pkgname = droidian-quirks-api33
+	pkgdesc = Various generic quirks for API 33 (T) devices
+	depends = libgbinder
+
+pkgname = droidian-quirks-device
+	pkgdesc = Various quirks to enable device features at boot
+	install = droidian-quirks-device.install
+	depends = halium-wrappers
+	depends = systemd
+
+pkgname = droidian-quirks-hybris-gl
+	pkgdesc = Various quirks to make GL apps happy
+
+pkgname = droidian-quirks-journald-standard
+	pkgdesc = Journald configuration for standard Droidian installations
+
+pkgname = droidian-quirks-systemd
+	pkgdesc = Various systemd quirks
+
+pkgname = droidian-quirks-tls-padding
+	pkgdesc = Quirk to preload libtls-padding
+	depends = halium-wrappers
+
+pkgname = droidian-quirks-wayland
+	pkgdesc = Various wayland tweaks

@@ -1,0 +1,21 @@
+pkgbase = hadess-sensorfw-proxy
+	pkgdesc = Sensorfw sensors to hadess iio proxy adaptor
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/droidian/hadess-sensorfw-proxy
+	install = hadess-sensorfw-proxy.install
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = libgbinder
+	makedepends = polkit
+	depends = sensorfw
+	depends = dbus
+	depends = systemd
+	depends = libglibutil
+	provides = iio-sensor-proxy
+	conflicts = iio-sensor-proxy
+	source = git+https://github.com/aarchd/hadess-sensorfw-proxy.git
+	sha256sums = SKIP
+
+pkgname = hadess-sensorfw-proxy

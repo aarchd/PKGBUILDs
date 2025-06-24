@@ -1,0 +1,15 @@
+pkgbase = halium-wrappers
+	pkgdesc = Wrappers for various utilities supplied by the Android system image
+	pkgver = 22
+	pkgrel = 3
+	url = https://github.com/droidian/halium-wrappers
+	arch = aarch64
+	license = GPL-3.0-or-later
+	depends = util-linux
+	depends = zlib
+	depends = libhybris
+	depends = libglvnd
+	source = git+https://github.com/aarchd/halium-wrappers.git
+	sha256sums = SKIP
+
+pkgname = halium-wrappers

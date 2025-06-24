@@ -1,0 +1,21 @@
+pkgbase = ofono-binder-plugin
+	pkgdesc = Binder plugin for the Sailfish OS fork of ofono
+	pkgver = 1.1.15
+	pkgrel = 1
+	url = https://github.com/mer-hybris/ofono-binder-plugin
+	arch = aarch64
+	license = BSD-3-Clause
+	makedepends = glib2-devel
+	depends = ofono
+	depends = libgbinder-radio
+	source = git+https://github.com/droidian/ofono-binder-plugin.git
+	sha256sums = SKIP
+
+pkgname = ofono-binder-plugin
+	pkgdesc = Binder plugin for the Sailfish OS fork of ofono
+	depends = ofono
+	depends = libgbinder-radio
+	depends = libofonobinderpluginext
+
+pkgname = libofonobinderpluginext
+	pkgdesc = Extension interfaces for ofono-binder-plugin

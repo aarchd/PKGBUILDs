@@ -1,0 +1,18 @@
+pkgbase = lxc-android
+	pkgdesc = LXC configuration for starting Android containers
+	pkgver = 1.38
+	pkgrel = 3
+	url = https://github.com/droidian/lxc-android
+	arch = any
+	license = GPL-2.0-or-later
+	depends = cpio
+	depends = lxc
+	depends = glibc
+	depends = halium-wrappers
+	depends = parse-android-dynparts
+	depends = device-mapper
+	depends = dnsmasq
+	source = git+https://github.com/aarchd/lxc-android.git
+	sha256sums = SKIP
+
+pkgname = lxc-android

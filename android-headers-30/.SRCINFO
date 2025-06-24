@@ -1,0 +1,12 @@
+pkgbase = android-headers-30
+	pkgdesc = Android Platform Headers from AOSP releases
+	pkgver = 11.0.0
+	pkgrel = 1
+	url = https://github.com/droidian/android-headers-30
+	arch = any
+	license = Apache-2.0
+	provides = android-headers
+	source = git+https://github.com/droidian/android-headers-30.git
+	md5sums = SKIP
+
+pkgname = android-headers-30

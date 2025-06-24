@@ -1,0 +1,17 @@
+pkgbase = mobile-settings
+	pkgdesc = Allows tweaking OS from userspace.
+	pkgver = 0.2.3
+	pkgrel = 2
+	url = https://github.com/droidian/mobile-settings
+	arch = aarch64
+	license = GPL-3.0-or-later
+	makedepends = meson
+	makedepends = glib2-devel
+	depends = dbus
+	depends = glib2
+	depends = systemd
+	depends = dconf
+	source = git+https://github.com/droidian/mobile-settings.git
+	sha256sums = SKIP
+
+pkgname = mobile-settings

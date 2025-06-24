@@ -1,0 +1,12 @@
+pkgbase = timekeeper
+	pkgdesc = utility to keep/restore RTC offset for Qualcomm devices.
+	pkgver = 0.3
+	pkgrel = 1
+	url = https://github.com/ubports/timekeeper
+	arch = aarch64
+	license = GPL-3.0-only
+	makedepends = cmake
+	source = git+https://github.com/ubports/timekeeper.git
+	sha256sums = SKIP
+
+pkgname = timekeeper

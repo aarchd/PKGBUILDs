@@ -1,0 +1,20 @@
+pkgbase = pulseaudio-modules-droid-hidl
+	pkgdesc = HIDL module for PulseAudio
+	pkgver = 1.4.0
+	pkgrel = 1
+	url = https://github.com/mer-hybris/pulseaudio-modules-droid-hidl
+	arch = aarch64
+	license = LGPL-2.1-only
+	makedepends = meson
+	makedepends = android-headers
+	makedepends = pulsecore
+	makedepends = audiosystem-passthrough
+	depends = pulseaudio
+	depends = pulseaudio-modules-droid-apispecific
+	depends = dbus
+	source = git+https://github.com/mer-hybris/pulseaudio-modules-droid-hidl.git
+	sha256sums = SKIP
+
+pkgname = pulseaudio-modules-droid-hidl
+	depends = pulseaudio
+	depends = pulseaudio-modules-droid-apispecific

@@ -1,0 +1,23 @@
+pkgbase = sensorfw
+	pkgdesc = Sensor framework daemon
+	pkgver = 0.15.1
+	pkgrel = 1
+	url = https://github.com/sailfishos/sensorfw
+	arch = aarch64
+	license = LGPL-2.1-only
+	makedepends = android-headers
+	depends = udev
+	depends = qt6-base
+	depends = libgbinder
+	depends = libhybris
+	depends = systemd
+	source = git+https://github.com/sailfishos/sensorfw.git
+	source = 0001-drop-doc-test-example-qt-api.patch
+	source = sensorfwd.service
+	source = sensorfwd-hybris-dropin.conf
+	sha256sums = SKIP
+	sha256sums = 0d2a4c54f1c49e1d62571b4562a1ec087d335be0603ba5178abd582e7c30631a
+	sha256sums = b9223498ed0a9c15cd317d5375ee8f211f5508b4c684576fa1937f3b47391361
+	sha256sums = 1282f58a06ef5b4265f051097c0fba95aa6e69d9482d597fd560a2d680196271
+
+pkgname = sensorfw
