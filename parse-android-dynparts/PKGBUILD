@@ -2,12 +2,12 @@
 
 pkgname=parse-android-dynparts
 pkgver=1.0
-pkgrel=1
+pkgrel=2
 pkgdesc="A tool to parse Android super partition layout"
 arch=('aarch64')
 url="https://github.com/tchebb/parse-android-dynparts"
 license=('Apache-2.0')
-depends=('openssl')
+depends=('openssl' 'gcc-libs')
 makedepends=('cmake')
 source=("git+https://github.com/droidian/parse-android-dynparts.git"
   "parse-android-dynparts.initcpio_install")
