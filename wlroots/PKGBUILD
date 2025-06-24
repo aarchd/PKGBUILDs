@@ -58,4 +58,5 @@ build() {
 
 package() {
     DESTDIR="$pkgdir" ninja -C build install
+    install -Dm644 "$srcdir/$pkgname/LICENSE" -t "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
 }
