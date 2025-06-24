@@ -2,11 +2,11 @@
 
 pkgname=ofono
 pkgver=1.29
-pkgrel=1
+pkgrel=2
 pkgdesc='Infrastructure for building mobile telephony (GSM/UMTS) applications'
 url='https://01.org/ofono'
 arch=(aarch64)
-license=('GPL-2.0')
+license=('GPL-2.0-only')
 depends=('bluez' 'dbus-glib' 'libglibutil' 'udev' 'mobile-broadband-provider-info' 'systemd' 'python' 'libwspcodec')
 makedepends=('glib2-devel' 'libgrilio')
 source=('git+https://github.com/sailfishos/ofono.git'
