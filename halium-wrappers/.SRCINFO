@@ -5,7 +5,6 @@ pkgbase = halium-wrappers
 	url = https://github.com/droidian/halium-wrappers
 	arch = aarch64
 	license = GPL-3.0-or-later
-	depends = util-linux
 	depends = zlib
 	depends = libhybris
 	depends = libglvnd

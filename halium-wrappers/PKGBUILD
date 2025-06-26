@@ -7,7 +7,7 @@ pkgdesc="Wrappers for various utilities supplied by the Android system image"
 arch=('aarch64')
 url="https://github.com/droidian/halium-wrappers"
 license=('GPL-3.0-or-later')
-depends=('util-linux' 'zlib' 'libhybris' 'libglvnd')
+depends=('zlib' 'libhybris' 'libglvnd')
 source=("git+https://github.com/aarchd/halium-wrappers.git")
 sha256sums=('SKIP')
 
