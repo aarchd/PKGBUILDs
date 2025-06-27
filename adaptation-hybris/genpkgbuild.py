@@ -18,7 +18,6 @@ COMMON_PACKAGES = [
 	"flash-bootimage",
 	"droidian-quirks-device",
 	"flashlightd",
-	"hybris-usb",
 ]
 
 COMMON_PHOSH = [

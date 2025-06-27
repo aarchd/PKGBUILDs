@@ -18,7 +18,6 @@ pkgname = adaptation-hybris-common
 	depends = flash-bootimage
 	depends = droidian-quirks-device
 	depends = flashlightd
-	depends = hybris-usb
 
 pkgname = adaptation-hybris-phone
 	pkgdesc = Base metapackage for adaptations (phone variant)
