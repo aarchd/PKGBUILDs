@@ -40,6 +40,9 @@ pkgname = droidian-quirks-device
 pkgname = droidian-quirks-hybris-gl
 	pkgdesc = Various quirks to make GL apps happy
 
+pkgname = droidian-quirks-journald-development
+	pkgdesc = Journald configuration for development Droidian installations
+
 pkgname = droidian-quirks-journald-standard
 	pkgdesc = Journald configuration for standard Droidian installations
 

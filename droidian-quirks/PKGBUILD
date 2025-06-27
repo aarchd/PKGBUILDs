@@ -9,6 +9,7 @@ pkgname=(
 	'droidian-quirks-api33'
 	'droidian-quirks-device'
 	'droidian-quirks-hybris-gl'
+	'droidian-quirks-journald-development'
 	'droidian-quirks-journald-standard'
 	'droidian-quirks-systemd'
 	'droidian-quirks-tls-padding'
@@ -137,6 +138,13 @@ package_droidian-quirks-hybris-gl() {
 	cd $srcdir/$pkgbase
 	install -Dm777 hybris-gl/zz-droidian.sh $pkgdir/etc/profile.d/zz-droidian.sh
 	install -Dm777 hybris-gl/zz-gles-shader-cache.sh $pkgdir/etc/profile.d/zz-gles-shader-cache.sh
+}
+
+package_droidian-quirks-journald-development() {
+	pkgdesc="Journald configuration for development Droidian installations"
+
+	cd $srcdir/$pkgbase
+	install -Dm644 journald/15-journald-persistent.conf $pkgdir/usr/lib/systemd/journald.conf.d/15-journald-persistent.conf
 }
 
 package_droidian-quirks-journald-standard() {
