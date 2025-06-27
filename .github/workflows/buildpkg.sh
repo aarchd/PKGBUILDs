@@ -108,6 +108,9 @@ for pkg in "${BUILD_ORDER[@]}"; do
         sudo -u "$BUILD_USER" -H bash -c "cd '$pkgdir' && PACKAGER='Deepak Meena <who53@disroot.org>' makepkg -scif --noconfirm"
     fi
 
+    if [[ "$pkg" != "aarchd-keyring" && "$pkg" != "aarchd-mirrorlist" ]]; then
+        sudo pacman -Rns --noconfirm "$pkg" || true
+    fi
     find "$pkgdir" -maxdepth 1 \( -name "*.pkg.tar.zst" -o -name "*.pkg.tar.zst.sig" \) -exec mv -v {} /mnt/pkgs/ \;
 done
 
