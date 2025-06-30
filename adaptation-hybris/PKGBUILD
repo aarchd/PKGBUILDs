@@ -61,8 +61,7 @@ package_adaptation-hybris-api28() {
 	"pulseaudio-config-droid"
 	"droidian-quirks-api28"
 	"pulseaudio-modules-droid-jb2q"
-	"bluebinder"
-	"timekeeper")
+	"bluebinder")
 }
 
 package_adaptation-hybris-api28-phone() {
@@ -84,8 +83,7 @@ package_adaptation-hybris-api29() {
 	"pulseaudio-config-droid"
 	"droidian-quirks-api29"
 	"pulseaudio-modules-droid-jb2q"
-	"bluebinder"
-	"timekeeper")
+	"bluebinder")
 }
 
 package_adaptation-hybris-api29-phone() {
@@ -107,8 +105,7 @@ package_adaptation-hybris-api30() {
 	"pulseaudio-config-droid"
 	"droidian-quirks-api30"
 	"pulseaudio-modules-droid-modern"
-	"bluebinder"
-	"timekeeper")
+	"bluebinder")
 }
 
 package_adaptation-hybris-api30-phone() {
@@ -130,8 +127,7 @@ package_adaptation-hybris-api32() {
 	"pulseaudio-config-droid"
 	"droidian-quirks-api32"
 	"pulseaudio-modules-droid-modern"
-	"bluebinder"
-	"timekeeper")
+	"bluebinder")
 }
 
 package_adaptation-hybris-api32-phone() {
@@ -153,8 +149,7 @@ package_adaptation-hybris-api33() {
 	"pulseaudio-config-droid"
 	"droidian-quirks-api33"
 	"pulseaudio-modules-droid-modern"
-	"bluebinder"
-	"timekeeper")
+	"bluebinder")
 }
 
 package_adaptation-hybris-api33-phone() {

@@ -51,7 +51,6 @@ COMMON_30_PACKAGES = [
 # Common packages for api levels 26+ (8+)
 COMMON_26_PACKAGES = [
 	"bluebinder",
-	"timekeeper",
 ]
 
 # Common phone packages for api levels 26+ (8+)
