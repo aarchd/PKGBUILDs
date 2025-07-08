@@ -1,7 +1,7 @@
 # Maintainer: Deepak Meena <who53@disroot.org>
 
 pkgname=droidmedia
-pkgver=0.20241121.0
+pkgver=0.20250621.0
 pkgrel=1
 pkgdesc="Android media wrapper library"
 arch=('aarch64')
