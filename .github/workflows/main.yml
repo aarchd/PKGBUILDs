@@ -100,10 +100,9 @@ jobs:
         run: |
           git clone https://$PAT@github.com/aarchd/repo.git --depth=1
           cd repo && mkdir -p PKGS/
-          sudo apt-get install pacman-package-manager
 
           for pkg in /tmp/pkgs/*.pkg.tar.zst; do
-            name=$(sudo pacman -Qip "$pkg" | awk '/^Name/ {print $3}')
+            name=$(bsdtar -xOf "$pkg" .PKGINFO | awk -F ' = ' '/^pkgname =/ {print $2}')
             for f in PKGS/${name}-*.pkg.tar.zst; do
               [[ ! -e "$f" ]] && continue
               suffix="${f##*/$name-}"
