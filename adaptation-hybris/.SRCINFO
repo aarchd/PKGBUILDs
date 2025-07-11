@@ -36,7 +36,6 @@ pkgname = adaptation-hybris-api28
 	depends = droidian-quirks-api28
 	depends = pulseaudio-modules-droid-jb2q
 	depends = bluebinder
-	depends = timekeeper
 
 pkgname = adaptation-hybris-api28-phone
 	pkgdesc = Base metapackage for VNDK api28 adaptations (phone variant)
@@ -55,7 +54,6 @@ pkgname = adaptation-hybris-api29
 	depends = droidian-quirks-api29
 	depends = pulseaudio-modules-droid-jb2q
 	depends = bluebinder
-	depends = timekeeper
 
 pkgname = adaptation-hybris-api29-phone
 	pkgdesc = Base metapackage for VNDK api29 adaptations (phone variant)
@@ -74,7 +72,6 @@ pkgname = adaptation-hybris-api30
 	depends = droidian-quirks-api30
 	depends = pulseaudio-modules-droid-modern
 	depends = bluebinder
-	depends = timekeeper
 
 pkgname = adaptation-hybris-api30-phone
 	pkgdesc = Base metapackage for VNDK api30 adaptations (phone variant)
@@ -93,7 +90,6 @@ pkgname = adaptation-hybris-api32
 	depends = droidian-quirks-api32
 	depends = pulseaudio-modules-droid-modern
 	depends = bluebinder
-	depends = timekeeper
 
 pkgname = adaptation-hybris-api32-phone
 	pkgdesc = Base metapackage for VNDK api32 adaptations (phone variant)
@@ -112,7 +108,6 @@ pkgname = adaptation-hybris-api33
 	depends = droidian-quirks-api33
 	depends = pulseaudio-modules-droid-modern
 	depends = bluebinder
-	depends = timekeeper
 
 pkgname = adaptation-hybris-api33-phone
 	pkgdesc = Base metapackage for VNDK api33 adaptations (phone variant)

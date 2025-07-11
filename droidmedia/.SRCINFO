@@ -1,6 +1,6 @@
 pkgbase = droidmedia
 	pkgdesc = Android media wrapper library
-	pkgver = 0.20241121.0
+	pkgver = 0.20250621.0
 	pkgrel = 1
 	url = https://github.com/sailfishos/droidmedia
 	arch = aarch64

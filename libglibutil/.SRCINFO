@@ -1,6 +1,6 @@
 pkgbase = libglibutil
 	pkgdesc = Library of glib utilities
-	pkgver = 1.0.79
+	pkgver = 1.0.80
 	pkgrel = 1
 	url = https://github.com/sailfishos/libglibutil
 	arch = aarch64
