@@ -1,12 +1,13 @@
 pkgbase = mint
 	pkgdesc = minui-based splash and info display tool for Linux and Android devices
-	pkgver = 0.8
+	pkgver = 0.9
 	pkgrel = 1
 	url = https://github.com/aarchd/mint
 	install = mint.install
 	arch = aarch64
 	license = MIT
 	makedepends = meson
+	makedepends = xxd
 	depends = android-minui
 	depends = cairo
 	depends = freetype2
