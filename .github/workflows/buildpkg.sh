@@ -54,6 +54,16 @@ extract_makedepends() {
     )
 }
 
+extract_depends() {
+    local pkgdir="$1"
+    (
+        unset depends
+        shopt -s extglob
+        source "$pkgdir/PKGBUILD" &>/dev/null
+        echo "${depends[@]:-}"
+    )
+}
+
 for pkg in "${PKGS[@]}"; do
     pkgdir="$PKGDIR_BASE/$pkg"
     if [[ ! -d "$pkgdir" ]]; then
@@ -69,6 +79,7 @@ done
 for pkg in "${PKGS[@]}"; do
     pkgdir="$PKGDIR_BASE/$pkg"
     deps=($(extract_makedepends "$pkgdir"))
+    deps+=($(extract_depends "$pkgdir"))
 
     intra_deps=()
     for dep in "${deps[@]}"; do
