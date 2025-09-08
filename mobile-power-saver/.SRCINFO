@@ -1,7 +1,7 @@
 pkgbase = mobile-power-saver
 	pkgdesc = Mobile Power Saver enable hard power saving when screen is off.
-	pkgver = 0.9.3
-	pkgrel = 2
+	pkgver = 0.9.6
+	pkgrel = 1
 	url = https://github.com/droidian/mobile-power-saver
 	arch = aarch64
 	license = GPL-3.0-or-later

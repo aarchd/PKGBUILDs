@@ -114,7 +114,7 @@ pkgrel=1
 arch=(any)
 license=('GPL-3.0-or-later')
 pkgdesc="Metapackages for various VNDK hybris adaptations"
-url="https://aarchd.who53.me"
+url="https://aarchd.github.io"
 """
 
 SPLIT_TEMPLATE = """

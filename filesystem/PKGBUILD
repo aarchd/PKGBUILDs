@@ -11,7 +11,7 @@ pkgrel=1
 pkgdesc='Base AArchD files'
 arch=('any')
 license=('GPL-3.0-or-later')
-url='https://aarchd.who53.me'
+url='https://aarchd.github.io'
 depends=('iana-etc')
 backup=(
   'etc/crypttab'

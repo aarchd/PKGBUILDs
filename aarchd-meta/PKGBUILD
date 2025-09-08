@@ -7,7 +7,7 @@ pkgname=(
 pkgver=1
 pkgrel=1
 arch=('any')
-url="https://aarchd.who53.me"
+url="https://aarchd.github.io"
 pkgdesc="Meta packages for AArchD"
 license=('GPL-3.0-or-later')
 

@@ -2,7 +2,7 @@ pkgbase = adaptation-hybris
 	pkgdesc = Metapackages for various VNDK hybris adaptations
 	pkgver = 29
 	pkgrel = 1
-	url = https://aarchd.who53.me
+	url = https://aarchd.github.io
 	arch = any
 	license = GPL-3.0-or-later
 
