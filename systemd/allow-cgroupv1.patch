@@ -1,0 +1,76 @@
+From a9bd5972edbaece1401e1e2b71759ddbf61f79a8 Mon Sep 17 00:00:00 2001
+From: "Eugenio Paolantonio (g7)" <me@medesimo.eu>
+Date: Sat, 13 Jul 2024 01:39:45 +0200
+Subject: [PATCH] [systemd] Allow cgroupv1 in Droidian
+
+Signed-off-by: Eugenio Paolantonio (g7) <me@medesimo.eu>
+---
+ debian/rules              |  3 +++
+ src/core/main.c           |  3 +++
+ src/shared/cgroup-setup.c | 10 ++++++++++
+ 3 files changed, 16 insertions(+)
+
+diff --git a/debian/rules b/debian/rules
+index 5c088b1de13..fb98e17f9e0 100755
+--- a/debian/rules
++++ b/debian/rules
+@@ -223,6 +223,9 @@ endif
+ endif
+ endif
+ 
++# Droidian extensions
++CONFFLAGS_DISTRO += -Dc_args='-DWITH_DROIDIAN_EXTENSIONS'
++
+ override_dh_auto_configure:
+ 	dh_auto_configure \
+ 		-- $(CONFFLAGS) $(CONFFLAGS_DISTRO) $(CONFFLAGS_UPSTREAM)
+diff --git a/src/core/main.c b/src/core/main.c
+index 7ca7b0177ca..caa6b5aa824 100644
+--- a/src/core/main.c
++++ b/src/core/main.c
+@@ -1764,6 +1764,7 @@ static void cmdline_take_random_seed(void) {
+                    "This functionality should not be used outside of testing environments.");
+ }
+ 
++
+ static void initialize_core_pattern(bool skip_setup) {
+         int r;
+ 
+@@ -3091,10 +3092,12 @@ int main(int argc, char *argv[]) {
+                                         error_message = "Failed to mount cgroup v1 hierarchy";
+                                 goto finish;
+                         }
++#ifndef WITH_DROIDIAN_EXTENSIONS
+                         if (r > 0) {
+                                 log_full(LOG_CRIT, "Legacy cgroup v1 support selected. This is no longer supported. Will proceed anyway after 30s.");
+                                 (void) usleep_safe(30 * USEC_PER_SEC);
+                         }
++#endif /* WITH_DROIDIAN_EXTENSIONS */
+                 }
+ 
+                 /* The efivarfs is now mounted, let's lock down the system token. */
+diff --git a/src/shared/cgroup-setup.c b/src/shared/cgroup-setup.c
+index 093b6d0d22e..5439900f530 100644
+--- a/src/shared/cgroup-setup.c
++++ b/src/shared/cgroup-setup.c
+@@ -161,10 +161,20 @@ bool cg_is_legacy_force_enabled(void) {
+         if (detect_container() > 0)
+                 return true;
+ 
++        /* Droidian: do not require a special cmdline for cgroup v1 */
++#ifndef WITH_DROIDIAN_EXTENSIONS
+         if (proc_cmdline_get_bool("SYSTEMD_CGROUP_ENABLE_LEGACY_FORCE", /* flags = */ 0, &force) < 0)
+                 return false;
++#else
++        int r;
++        bool b;
++        r = proc_cmdline_get_bool("systemd.unified_cgroup_hierarchy", /* flags = */ 0, &b);
++        if (r > 0)
++                force = !b;
++#endif /* WITH_DROIDIAN_EXTENSIONS */
+ 
+         return force;
++
+ }
+ 
+ int cg_weight_parse(const char *s, uint64_t *ret) {
