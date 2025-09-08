@@ -11,7 +11,7 @@ groups=('base-devel')
 install="${pkgname}.install"
 depends=('pacman')
 source=('aarchd.gpg')
-sha256sums=('0ec2047b39fde65846616b443b884f2d6c1b2ba6a84a7ea772c3b53ffe371722')
+sha256sums=('edc900ce6e0a2ab6ad4bc763418704b2b774cb0dbfc5052f1869919a4a2e0fe9')
 
 package() {
 	install -dm755 "${pkgdir}"/usr/share/pacman/keyrings/
