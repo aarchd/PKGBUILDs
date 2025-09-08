@@ -15,6 +15,16 @@ BUILD_USER="aarchd-builder"
 
 PKGS=("$@")
 
+SYSTEMD=0
+for i in "${!PKGS[@]}"; do
+    if [[ "${PKGS[i]}" == "systemd" ]]; then
+        SYSTEMD=1
+        unset 'PKGS[i]'
+        break
+    fi
+done
+PKGS=("${PKGS[@]}")
+
 if ! id -u "$BUILD_USER" &>/dev/null; then
     useradd -m -s /bin/bash "$BUILD_USER"
 fi
@@ -107,6 +117,7 @@ for pkg in "${PKGS[@]}"; do
     [[ -z "${VISITED["$pkg"]:-}" ]] && topo_sort "$pkg"
 done
 
+(( SYSTEMD )) && BUILD_ORDER+=("systemd")
 info "Build order: ${BUILD_ORDER[*]}"
 
 for pkg in "${BUILD_ORDER[@]}"; do
