@@ -62,6 +62,7 @@ jobs:
           sudo umount /tmp/rootfs/mnt/PKGBUILDs
           sudo umount /tmp/rootfs/mnt/build-tools
           sudo umount /tmp/rootfs/mnt/pkgs
+          sudo chown -R $USER:$USER .
       
       - name: Push packages
         if: env.CHANGED_PKGS != ''
@@ -92,7 +93,6 @@ jobs:
       - name: Update build-metadata
         if: env.CHANGED_PKGS != ''
         run: |
-          sudo chown -R $USER:$USER .
           rm build-metadata
           git switch meta
           mv ../build-metadata .
