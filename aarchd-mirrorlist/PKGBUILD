@@ -9,7 +9,7 @@ url="http://aarchd.github.io"
 license=('GPL-3.0-or-later')
 groups=('base')
 source=(mirrorlist)
-sha256sums=('13fc0276383c5a5634a37bfdb18ef0d0e970309305dd2100eda3a2a44a31d116')
+sha256sums=('9e29c10ff096c35ddaa89e4db37add2707fe12b7cf0edaeac927f302cdd5fca3')
 
 package() {
   install -Dm644 "$srcdir/mirrorlist" "$pkgdir/etc/pacman.d/aarchd-mirrorlist"
