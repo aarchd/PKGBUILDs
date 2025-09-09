@@ -18,7 +18,7 @@ pkgname=('systemd'
 # Upstream versioning is incompatible with pacman's version comparisons, one
 # way or another. We use proper version for pacman here (no dash for rc
 # release!), and change in source array below.
-pkgver=257.9
+pkgver=257.7
 pkgrel=2
 arch=('aarch64')
 license=('LGPL-2.1-or-later')
@@ -56,9 +56,9 @@ source=("git+https://github.com/systemd/systemd#tag=v${pkgver/rc/-rc}"
         '30-systemd-tmpfiles.hook'
         '30-systemd-udev-reload.hook'
         '30-systemd-update.hook')
-sha512sums=('27daa6035ef853ec802f8423c9d8d90810c2b0f71af2ec7d21d468905eacc109497e2186d15834856c006fea71cf9b96278d26a20e48bb212b7c049eac9fdd08'
+sha512sums=(SKIP
             '78065bde708118b7d6e4ed492e096c763e4679a1c54bd98750d5d609d8cc2f1373023f308880f14fc923ae7f9fea34824917ef884c0f996b1f43d08ef022c0fb'
-            '872d5cc767a14fbd6b6eeaa2a0ea1ecdded59b2264502a4860f8844a1c8b11d88df66e6e59850ed1a733065e0c31f97be142a627c64906afc70dc8eb9ced0816'
+            'b45a69fac0abb7c00aac5a7eff3f81c5b22c84a389bf04f506bcb9bc18535b6e237a2d0fb73e95cf83e076eb7c53de56aaf2bf22c3ef6d0b69b835b52cd1578e'
             '61032d29241b74a0f28446f8cf1be0e8ec46d0847a61dadb2a4f096e8686d5f57fe5c72bcf386003f6520bc4b5856c32d63bf3efe7eb0bc0deefc9f68159e648'
             '3194d1f8bff31b88a79657df83632b9224b66ca2cf8fd806a3ef35cf7a43f46c09c57f3dfd02256a99b6514a8f789b7d3bcfd7e17e00e34aa55ff0c6cedb5f01'
             '5a1d78b5170da5abe3d18fdf9f2c3a4d78f15ba7d1ee9ec2708c4c9c2e28973469bc19386f70b3cf32ffafbe4fcc4303e5ebbd6d5187a1df3314ae0965b25e75'

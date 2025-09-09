@@ -5,25 +5,10 @@ Subject: [PATCH] [systemd] Allow cgroupv1 in Droidian
 
 Signed-off-by: Eugenio Paolantonio (g7) <me@medesimo.eu>
 ---
- debian/rules              |  3 +++
  src/core/main.c           |  3 +++
  src/shared/cgroup-setup.c | 10 ++++++++++
- 3 files changed, 16 insertions(+)
+ 2 files changed, 13 insertions(+)
 
-diff --git a/debian/rules b/debian/rules
-index 5c088b1de13..fb98e17f9e0 100755
---- a/debian/rules
-+++ b/debian/rules
-@@ -223,6 +223,9 @@ endif
- endif
- endif
- 
-+# Droidian extensions
-+CONFFLAGS_DISTRO += -Dc_args='-DWITH_DROIDIAN_EXTENSIONS'
-+
- override_dh_auto_configure:
- 	dh_auto_configure \
- 		-- $(CONFFLAGS) $(CONFFLAGS_DISTRO) $(CONFFLAGS_UPSTREAM)
 diff --git a/src/core/main.c b/src/core/main.c
 index 7ca7b0177ca..caa6b5aa824 100644
 --- a/src/core/main.c
